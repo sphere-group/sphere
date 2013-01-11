@@ -1,0 +1,917 @@
+{\rtf1\ansi\ansicpg1252\deff0\deflang1033\deflangfe1033{\fonttbl{\f0\fswiss\fprq2\fcharset0 Microsoft Sans Serif;}{\f1\froman\fprq2\fcharset0 Times New Roman;}}
+{\colortbl ;\red255\green0\blue0;\red0\green0\blue255;\red0\green128\blue0;\red255\green0\blue255;\red0\green0\blue0;\red128\green0\blue0;}
+\viewkind4\uc1\pard\nowidctlpar\ri-1800\cf1\ul\f0\fs20 Wild-Tiger's sphere tutorial!\ulnone        ---    email me at  \cf2 wildtiger670@hotmail.com\cf1   for more information.\par
+Thanks to GoddessLaura for helping me change mistakes throughout this tutorial.\par
+\par
+\b Before I start, I recommend opening this in WordPad, because that's what I wrote it in!\par
+             -- Or else it \ul may\ulnone  look screwy --\cf0\b0\par
+\pard\nowidctlpar\cf3\par
+\cf1\b Please tell me what you think of this tutorial by emailing me at the adress above.\cf4\par
+\cf1 I just wanna know what you guys think of it. :) Tell me if it's helpful or not. Thankyou.\par
+\cf4\b0\par
+\cf1 http://a-extreme.homeip.net/downloads/  You can find this tutorial, my game in progress (with Neko-San's help) and whatever little things I put there. Also visit http://www.a-extreme.tk/ if you want, that's my site.\cf0\par
+\par
+So you want to learn Sphere? Do you know how to actually \b use\b0  the program but want to script something? Read on!\par
+\b\par
+First of all, let's start with the basics. I know you probably just want to skip this, but it's really good for you to know if you seriously want to use Sphere. Even if you have some knowledge of Javascript you may need to read it. Please bare with it, it'll help you in the end.\par
+\par
+Also...this tutorial will be long, and I\rquote m making it long so I can feed a lot of information to you. Trying to make sphere easier for you :) You should probably go over something a couple of times if you don't understand it, and if you still can't understand something you can visit the \cf1\b0 #sphere\cf0\b  channel on IRC at: \cf1\b0 irc.esper.net\cf0\b  port: \cf1\b0 6667\cf0\b .\par
+If I\rquote m there (I\rquote m Wild-Tiger) I\rquote ll help you, and if I can't or I\rquote m not there ask someone else that's there. :)\par
+\b0\par
+Okay, first thing's first, let's create ourselves a project! File | New | Project shall get you there. Just type in a name, anything at the moment. You can change it later (I like to use the same name in both the project title and the game title).\par
+\par
+Okay, now goto File | New | Script and up shall pop up a script with absolutely nothing in it! Woohoo! Let's make it do something. Okay, to begin with, \b save\b0  \b the new script\b0  as "Game.js" in the scripts folder of your game. Now we need to go to the project page (It'll have the name Project [name] up the top of it and list the different folders (Maps, Spritesets etc.). Double click Game Settings. Now in main script choose "Game.js". Click okay. This is the \b starting\b0  script that will run when you press the execute button. \par
+\par
+Now, when you start a game, you \b need \b0 to have a starting function, or else it won't know what to do!\par
+Write this in:\par
+\par
+\cf2 function\cf0  game\cf4 ()\par
+\{\par
+  \cf3 // Script goes here.\cf4\par
+\}\par
+\par
+\cf5 What will this do? No terribly much. game\cf4 ()\cf5  is the start of \b every \b0 sphere program. \b You can only have one of these in your whole game. \b0 You place whatever you want to happen inside \cf4\{\cf5  and \cf4\}\cf5 . Okay, let's make it say "Hello world?" Replace the above with this:\par
+\par
+\cf2 var \cf5 main_font\cf2  \cf4 =\cf2  \cf5 GetSystemFont\cf4 ();  \cf3 // variable name_of_variable = what_it_equals;\cf2\par
+\par
+function \cf5 game\cf4 ()\cf2\par
+\cf4\{   \cf2\par
+\cf5   main_font.drawText \cf4 (\cf6 0\cf4 ,\cf5  \cf6 0\cf4 ,\cf5  \cf3 "Hello world!"\cf4 );  \cf3 // Draw Text\cf5\par
+  FlipScreen\cf4 ();  \cf3 // You HAVE to FlipScreen to get anything to appear on the screen!!!\cf5\par
+  GetKey\cf4 (); \cf3 // Waits until you press a key (Any key) \cf2\par
+\cf4\}\par
+\par
+\cf5 To run the program, either press \b CTRL + F5 \b0 or, click the\b  little lightning icon\b0 .\cf4\par
+\par
+\cf1 GetSystemFont() : \cf5 This is the system's default font. If you'd like the change it just use LoadFont ("name.rfn"); name.rfn being the name of your font's name.\cf4\par
+\par
+\cf1 drawText :\cf5  main_font.drawText \cf4 (\cf6 0\cf4 ,\cf5  \cf6 0\cf4 ,\cf5  \cf3 "Hello world!"\cf4 ); \cf5  means GetSystemFont().drawText(x, y, string_or_value);\par
+Don't try using that by the way, as it won't work. X and Y has to equal a number, and string_or_value has to be just as the name says, unless of course any of those three have been defined somewhere.\cf0\f1\par
+\cf5\f0\par
+\cf1 FlipScreen() : \cf5 This \b has\b0  to be used to draw the text, images and such. The text will not appear if you don't.\par
+\cf4\par
+\cf1 GetKey() : \cf5 Waits until any key is pressed.\par
+\par
+---------------------------------------------------------------------------------------------------------------------------------\cf4\par
+\par
+\cf5 Just incase you don't know, anything with\cf3   //\cf5   is a comment, which means that the engine cannot see it at all.\par
+A comment can also be used across multiple lines, like so:\par
+\par
+\cf2 function \cf5 game\cf4 ()\cf2\par
+\cf4\{\par
+ \cf3 /*\par
+  main_font.drawText (0, 0, "Hello world!");\par
+  FlipScreen();\par
+  GetKey();\par
+*/ \cf4                        \par
+\par
+\cf3 /*\par
+  Text can also be written here, and you don't have to worry about\par
+  the engine caring, because when it's in a comment\par
+  it completely disregards it!\par
+*/\cf4                                             \cf2\par
+\cf4\}\cf1\par
+                 *** This would run, but close as there's no text to the screen. If you added something that's \b not\b0  in the comment brackets, that would run. ***\par
+\cf5\par
+Comments tell you or someone reading your code what it does, or even use it to block out pieces of code to see if something works or not.\par
+\par
+---------------------------------------------------------------------------------------------------------------------------------\par
+\par
+Now, variables (like the one above) can be used in different ways.\par
+\par
+\cf2 var \cf5 name_of_variable\cf2  \cf4 =\cf2  \cf5 what_the_variable_changes_to\cf4 ;\par
+\par
+\cf5 It could be...\par
+\par
+\cf2 var \cf5 how_many_items\cf2  \cf4 =\cf2  \cf5 0\cf4 ;  \cf3 // This would cause variable how_many_items to equal to 0.\par
+\par
+\cf1 or\cf3\par
+\cf5\par
+\cf2 var \cf5 hello\cf2  \cf4 =\cf2  \cf3 "Hello world!"\cf4 ;  \cf3 // This would cause variable hello to equal the string "Hello world!"\par
+\par
+\cf1 or\par
+\cf5\par
+\cf2 var \cf5 main_font\cf2  \cf4 =\cf2  \cf5 GetSystemFont\cf4 (); \cf3  // This will get the system font, and they can be used in front of .drawText.\par
+\par
+\cf1 *****\cf3\par
+\par
+\cf5 To use these in the above game() function, edit:\par
+\par
+ main_font.drawText \cf4 (\cf6 0\cf4 ,\cf5  \cf6 0\cf4 ,\cf5  \cf3 "Hello world!"\cf4 );\par
+\par
+\cf1 to\cf5\par
+\par
+main_font.drawText \cf4 (\cf6 0\cf4 ,\cf5  \cf6 0\cf4 ,\cf5  hello\cf4 );\par
+\par
+\cf5 See how it says everything that is in the "hello" variable? If you changed hello to how_many_items, it'd show 0 on the screen.\par
+Variables are used to store values and strings.\par
+\cf2 var \cf5 hello\cf2  \cf4 =\cf2  \cf3 "Hello how are you today?"\cf4 ;\par
+\cf5 Can be used over and over, without having to write "Hello how are you today?"  over and over again.\par
+\par
+\cf1 By the way, you should keep in mind; \b a variable\rquote s name must be original each time.\b0\par
+\cf5\par
+Variables are case sensitive. Hello and hello would be completely different variable names.\par
+\par
+You \b can\b0  update a variable with the same name however:\par
+\par
+\cf2 var\cf5  main_font \cf4 =\cf5  GetSystemFont\cf4 ();\cf5\par
+\cf2 var\cf5  hello \cf4 =\cf5  \cf3 "Hello world!"\cf4 ;\cf5\par
+\par
+\cf2 function \cf5 game\cf4 ()\cf5\par
+\cf4\{\par
+  \cf5 hello \cf4 = \cf3 "Hello world...has changed!"\cf4 ;\cf5\par
+  main_font\cf4 .\cf5 drawText \cf4 (\cf6 10\cf4 ,\cf6 10\cf5 , hello\cf4 );\cf5      \cf3 // Instead of hello being "Hello world" it'll be the changed version.\cf5\par
+  FlipScreen\cf4 ();\cf5\par
+  GetKey\cf4 ();  \cf5\par
+\cf4\}\cf5\par
+\par
+---------------------------------------------------------------------------------------------------------------------------------\par
+\par
+Hrm, I just remembered. What if you want to add things on the same line? A string of text plus a variable...or many strings and variables? Easy, just use the \cf4 +\cf5  sign.\par
+\par
+\cf2 var\cf5  main_font \cf4 =\cf5  GetSystemFont\cf4 ();\par
+\cf2 var\cf5  hello \cf4 =\cf5  \cf3 "Hello world!"\cf4 ;\par
+\par
+\cf2 function \cf5 game\cf4 ()\cf5\par
+\cf4\{\par
+  \cf5 hello \cf4 = \cf3 "Hello world...has changed!"\cf4 ;\cf5\par
+  main_font\cf4 .\cf5 drawText \cf4 (\cf6 10\cf4 ,\cf6 10\cf5 , hello \cf4 +\cf5  \cf3 " "\cf5  \cf4 +\cf5  \cf3 "Hello world...again!"\cf4 );\cf5\par
+  FlipScreen\cf4 ();\cf5\par
+  GetKey\cf4 ();  \cf5\par
+\cf4\}\cf5\par
+\par
+That \cf3 " "\cf5  with nothing in it would just make a space, or otherwise it'd come out as \cf3 "Hello world!Hello world...again!"\cf5 .\par
+\par
+If you had the variables ready, you could do things like: \par
+\par
+main_font\cf4 .\cf5 drawText \cf4 (\cf6 10\cf4 ,\cf6 10\cf5 , var_1 \cf4 +\cf5  var_2 \cf4 +\cf5  var_3 \cf4 +\cf5  \cf3 " "\cf5  \cf4 +\cf5  var_4\cf4 );\par
+\par
+\cf5 That'd come out different, depending on what the variables are. Just make sure it has a space in the strings that have no \cf3 " "\cf5  after it, like \cf2 var\cf5  var_1 \cf4 =\cf5  \cf3 "Hello! "\cf5\par
+\par
+---------------------------------------------------------------------------------------------------------------------------------\par
+\par
+One thing can stop the use of a variable though. If it's in a function, it can \b ONLY\b0  be used in that function (unless you had prototypes, I\rquote ll get to that later)\par
+\par
+\cf2 var\cf5  main_font \cf4 =\cf5  GetSystemFont\cf4 ();\cf5\par
+\cf2 var\cf5  a \cf4 =\cf5  \cf3 "A"\cf4 ;\cf5\par
+\cf2 function \cf5 game\cf4 ()\cf5\par
+\cf4\{\cf5\par
+  main_font\cf4 .\cf5 drawText \cf4 (\cf6 0\cf4 , \cf6 0\cf5 , a\cf4 );\cf5      \cf3 // This will work!\cf5\par
+  FlipScreen\cf4 ();\cf5\par
+  GetKey\cf4 ();  \cf5\par
+  \par
+\pard\nowidctlpar\ri-270   \cf2 var\cf5  b \cf4 =\cf5  \cf3 "B"\cf4 ;    \cf3 //  This is in \b another \b0 function, so it won't work in Goto_B, as it's \b not\b0  \b a\b0  \b global \b0 variable.\cf5\par
+\pard\nowidctlpar   Goto_B\cf4 ();\cf5\par
+\cf4\}\par
+\cf5\par
+\cf2 function\cf5  Goto_B \cf4 ()\par
+\{\par
+  \cf5 main_font.drawText \cf4 (\cf6 0\cf4 , \cf6 10\cf4 , \cf5 a\cf4 );   \cf3 // This will work, seeing \b the a variable is a global\b0 .\cf5\par
+  main_font\cf4 .\cf5 drawText \cf4 (\cf6 0\cf5 , \cf6 20\cf5 , b\cf4 );\cf5      \cf3 // This won't work, \b b is\b0  \b not defined\b0 !\par
+\cf5   FlipScreen\cf4 ();\cf5\par
+  GetKey\cf4 ();  \cf5   \par
+\cf4\}\par
+\par
+\cf5 A global variable is a variable that can be used anywhere, and updated anywhere no matter where it's being updated.\par
+It could be in a function, it could be out in the middle of nowhere. To make a global variable, just put it out in the open, above everything else. See \cf2 var\cf5  main_font and \cf2 var \cf5 a  above? Those could be changed anywhere.\par
+\par
+---------------------------------------------------------------------------------------------------------------------------------\par
+\par
+That brings me to functions!\par
+\par
+See the above one? That's how you make one, I\rquote m sure you can figure it out, it's just like game...just an original name. To call it would just be:\par
+\par
+   Goto_B\cf4 ();\par
+\par
+\cf1 Keep in mind, just like variables, functions must have original names, and just like variables, they are case sensitive.\cf5\par
+\par
+Now, a trickier one would be one with arguments. Eg,   \par
+\par
+\cf2 var\cf5  main_font \cf4 =\cf5  GetSystemFont\cf4 ();\cf5\par
+\cf2 function\cf5  game\cf4 ()\cf5\par
+\cf4\{\cf5\par
+  Text \cf4 (\cf6 0\cf4 ,\cf5  \cf6 0\cf4 ,\cf5  \cf3 "Hello world!"\cf4 );\cf5   \cf3 // This will place "Hello world" at 0,0 on the screen, using the Text() function below.\par
+  \cf5 Text \cf4 (\cf6 10\cf5 , \cf6 10\cf5 , \cf3 "Hello world, again!!"\cf4 );\cf5   \cf3 // This would place "Hello world, again!!" on the screen, after pressing a key after the first.\cf5\line\cf4\}\cf5\par
+\par
+\cf2 function\cf4  \cf5 Text \cf4 (\cf5 x\cf4 ,\cf5  y\cf4 , \cf5 what_to_write\cf4 )\cf5\par
+\cf4\{\cf5\par
+  main_font\cf4 .\cf5 drawText \cf4 (\cf5 x\cf4 ,\cf5  y\cf4 ,\cf5  what_to_write\cf4 )\cf5\par
+  FlipScreen\cf4 ();\cf5\par
+  GetKey\cf4 ();\cf5\par
+\cf4\}\cf5\par
+\par
+\cf1 Another example:\cf5\par
+\par
+\cf2 function\cf5  game\cf4 ()\cf5\par
+\cf4\{\cf5\par
+  Draw_Image \cf4 (\cf6 0\cf4 , \cf6 0\cf4 ,\cf5  \cf3 "Bob.png"\cf4 );\cf5  \cf3  // Draw's image "Bob.png" at point x, y.\par
+\cf4\}\cf5\par
+\par
+\cf2 function\cf5  Draw_Image \cf4 (\cf5 x\cf4 ,\cf5  y\cf4 ,\cf5  image\cf4 )\cf5\par
+\cf4\{\cf5\par
+  \cf2 var\cf5  cur_image \cf4 =\cf5  LoadImage\cf4 (\cf5 image\cf4 );\cf5   \cf3 /* LoadImage (image) is basically what it sounds like. It \par
+                                                                    loads the image.*/\par
+\cf5   cur_image\cf4 .\cf5 blit \cf4 (\cf5 x\cf4 ,\cf5  y\cf4 );\cf5        \cf3 // This will draw the image at point x, y.\cf5\par
+  FlipScreen\cf4 ();\cf5  \par
+\cf4\}\cf5\par
+\par
+\cf1 It can be a variable as well.\cf5\par
+\par
+\cf2 var \cf5 main_font \cf4 =\cf5  GetSystemFont\cf4 ();\cf5\par
+var Hello = function\cf4 ()\cf5\par
+\cf4\{\cf5\par
+  main_font\cf4 .\cf5 drawText \cf4 (\cf6 0\cf4 , \cf6 0\cf4 ,\cf5  \cf3 "Hello!"\cf4 );\cf5   \par
+  FlipScreen\cf4 ();\cf5\par
+  GetKey\cf4 ();\cf5\par
+\cf4\}\cf5\par
+\par
+\cf2 function\cf5  game\cf4 ()\cf5\par
+\pard\nowidctlpar\tx3825\cf4\{\cf5\par
+\pard\nowidctlpar   Hello\cf4 ();\cf5\par
+\cf4\}\cf5\par
+\par
+---------------------------------------------------------------------------------------------------------------------------------\par
+\par
+Hrm, let's talk about operators. \par
+\par
+Okay, example.  \par
+\par
+\cf2 var \cf5 x \cf4 = \cf6 10\cf4 ;\cf5\par
+x \cf4 = \cf5 x \cf4 +\cf2  \cf6 1\cf4 ;  \cf3 // This would return x = 10 + 1, so x = 11;\par
+\cf1 An easy shortcut:\par
+\cf5 x \cf4 += \cf6 1\cf4 ;\cf1\par
+And to just add by 1 could also be said as:\par
+\cf5 x \cf4 ++;\par
+\cf1 The same could be used with minus.\cf5\par
+x \cf4 -=\cf5  1\cf4 ;\cf5\par
+x \cf4 --;\par
+\par
+\cf1 Just use it in a function like this:\cf5\par
+\cf2 var \cf5 main_font \cf4 =\cf5  GetSystemFont\cf4 ();\cf5\par
+\cf2 var\cf5  x \cf4 =\cf5  \cf6 90\cf4 ;\cf5\par
+\par
+\cf2 function\cf5  game\cf4 ()\cf5\par
+\cf4\{\cf5\par
+  main_font\cf4 .\cf5 drawText \cf4 (\cf6 0\cf4 ,\cf5  \cf6 0\cf4 ,\cf5  x\cf4 );\cf5   \cf3 // Before is increased by 100.\cf5\par
+  x \cf4 +=\cf5  \cf6 100\cf4 ;\cf5      \cf3 // x now equals 190.\par
+\cf5   main_font\cf4 .\cf5 drawText \cf4 (\cf6 0\cf4 ,\cf5  \cf6 10\cf4 ,\cf5  x\cf4 );\cf5   \cf3 // After it is increased by 100.\cf5\par
+  FlipScreen\cf4 ();\cf5\par
+  GetKey\cf4 ();\cf5\par
+\cf4\}\par
+\par
+\cf1 Basically it all works the same:\cf5\par
+x \cf4 *=\cf5  \cf6 10\cf4 ;\cf5   would be the same as x \cf4 =\cf5  x \cf4 *\cf5  \cf6 10\cf4 ;\cf5            \cf3 //  * means times\par
+\cf5 x \cf4 /=\cf5  \cf6 10\cf4 ;\cf5  would be the same as x \cf4 =\cf5  x  \cf4 /\cf5  \cf6 10\cf4 ;\cf5            \cf3   // / means divided\par
+\cf5 x \cf4 %=\cf5  \cf6 10\cf4 ;\cf5  would be the same as x \cf4 =\cf5  x  \cf4 %\cf5  \cf6 10\cf4 ;\cf5        \cf3 // % means remainder.\par
+\cf5\par
+\cf1 eg:\cf5\par
+\cf2 var\cf5  x \cf4 =\cf5  \cf6 10\cf4 ;\cf5\par
+\cf0 x \cf4 %=\cf0  \cf6 10\cf4 ;\cf0           \cf3 // Would return 0.\cf0\par
+\par
+Basically that means x was 10, then it was set to remainder of 10 / 10 which equals 0.\par
+\par
+Another operator, although you may know what it does by now is the = operator.\par
+\par
+x \cf4 =\cf0  \cf6 10\cf4 ;\cf0      \cf3 // That makes x equal to 10.\cf0\par
+\par
+\cf1 Other operators\par
+\cf5 These operators test for truth, and based on that return true or false.\cf1\par
+\cf0\par
+\cf1 && : \cf5 And                             \cf1 eg.    \par
+         \cf4 (\cf6 0\cf1  \cf4 &&\cf1  \cf6 1\cf4 )\cf1       \cf5 returns false.\cf1\par
+         \cf4 (\cf6 1\cf1  \cf4 &&\cf1  \cf6 1\cf4 )\cf1       \cf5 returns true.\cf1\par
+== : \cf5 Equal to                      \cf1 eg.\par
+         \cf4 (\cf6 1 == 10\cf4 )\cf1      \cf5 returns false.\cf1\par
+         \cf4 (\cf6 1 == 1\cf4 )\cf1        \cf5 returns true.\cf1  \par
+|| : \cf5 Or                                    \cf1\par
+         \cf5 This returns true if one side \b or \b0 the other are true. \par
+\cf1 != : \cf5 Not equal to                \cf1\par
+         \cf5 This returns true if the \b right \b0 side is false\par
+\cf1     eg.\cf5\par
+\pard\nowidctlpar\tx6570    \cf2  var\cf5  x \cf4 =\cf5  \cf6 1\cf4 ;\cf5\par
+\pard\nowidctlpar     \cf2 var\cf5  y \cf4 =\cf5  \cf6 2\cf4 ;\cf5\par
+    \cf4 (\cf5 x \cf4 !=\cf5  y\cf4 )\cf5      \cf3 // Returns true, as 1 doesn't equal 2. So, this returns true.\par
+    \cf4 (!\cf5 x\cf4 )      \cf3 /* Means "not x",   so it's asking if x doesn't equal 1, return true. This returns false, as x is \par
+                   of course 1. */\par
+\cf1\par
+And some more operators...\cf5\par
+\par
+\cf1 < : \cf5 Under                            \cf1 eg.\cf5               \par
+            \cf4 (\cf6 0\cf5  \cf4 <\cf5  \cf6 10\cf4 )\cf5       returns true.\par
+            \cf4 (\cf6 11\cf5  \cf4 <\cf5  \cf6 10\cf4 )\cf5     returns false.                  \cf1\par
+> : \cf5 Over                               \cf1 eg.\par
+\cf5             \cf4 (\cf6 10\cf5  \cf4 >\cf5  0\cf4 )\cf5       returns true.\par
+            \cf4 (\cf6 9\cf5  \cf4 >\cf5  \cf6 10\cf4 )  \cf5     returns false.      \cf1\par
+<= : \cf5 Under or equal to    \cf1 eg.\par
+\cf5             \cf4 (\cf6 0\cf5  \cf4 <=\cf5  \cf6 10\cf4 )\cf5       returns true.\par
+            \cf4 (\cf6 10\cf5  \cf4 <=\cf5  \cf6 10\cf4 )\cf5  returns true.\par
+            \cf4 (\cf6 11\cf5  \cf4 <=\cf5  \cf6 10\cf4 )\cf5     returns false.                      \cf1\par
+>= : \cf5 Over or equal to       \cf1 eg.\par
+\cf5             \cf4 (\cf6 10\cf5  \cf4 >=\cf5  0\cf4 )\cf5       returns true.\par
+\cf4             (\cf6 10\cf5  \cf4 >=\cf5  \cf6 10\cf4 )\cf5  returns true.\par
+            \cf4 (\cf6 9\cf5  \cf4 >=\cf5  \cf6 10\cf4 )  \cf5     returns false. \cf1\par
+\par
+\cf5 ---------------------------------------------------------------------------------------------------------------------------------\par
+\par
+Phew, that's over! Let's move to loops now!\par
+\par
+There are basically two types of loops:    for loop and while loop.\par
+\par
+\cf1 While loop:\par
+\par
+\cf5 The while loop continues performing the action until the condition is false.\cf1\par
+\par
+\cf5 while \cf4 (\cf5 condition\cf4 )\par
+\{\par
+\cf5   \cf3 // What it does if returned true.\cf5\par
+\cf4\}\cf5\par
+\cf2\par
+\cf5 There is also a one liner:\par
+ \par
+\cf2 while \cf4 (\cf5 condition\cf4 )\cf5  \cf3 //what it does if returned true.\par
+\cf4\par
+\cf1 While loop example:\par
+\par
+\cf2 var \cf5 main_font \cf4 =\cf1  \cf5 GetSystemFont\cf4 ();\cf1\par
+\par
+\cf2 function\cf5  game\cf4 ()\cf5\par
+\cf4\{\cf5\par
+  \cf2 var \cf5 a \cf4 =\cf5  \cf6 0\cf4 ;\par
+  \cf2 var\cf4  \cf5 y\cf4  = \cf6 0\cf4 ;\cf5\par
+  \par
+  while\cf2  \cf4 (\cf5 a < 10\cf4 )\cf3\par
+\cf4   \{\cf5\par
+    main_font\cf4 .\cf5 drawText \cf4 (\cf6 0\cf4 ,\cf5  y\cf4 ,\cf5  a\cf4 );\par
+    \cf5 a\cf4  ++;\par
+    \cf5 y\cf4  +=\cf6  10\cf4 ;\cf5\par
+\cf4   \}\par
+  \cf5 FlipScreen(); \par
+  GetKey();\par
+\cf4\}\par
+\par
+\cf1 For loop:\par
+\par
+\cf5 This loop is a little tricky. You define a variable, use a condition and increment the variable.\par
+\par
+for \cf4 (\cf5 variable\cf4 ; \cf5 condition; increment\cf4 )\par
+\{\par
+\cf5   \cf3 // What it does if returned true.\cf5\par
+\cf4\}\cf5\par
+\cf2\par
+\cf5 There is also a one liner:\par
+ \par
+for \cf4 (\cf5 variable\cf4 ; \cf5 condition; increment\cf4 ) \cf5  \cf3 //what it does if returned true.\par
+\cf4\par
+\cf1 For loop example:\par
+\par
+\cf2 var \cf5 main_font \cf4 =\cf1  \cf5 GetSystemFont\cf4 ();\cf1\par
+\par
+\cf2 function\cf5  game\cf4 ()\cf5\par
+\cf4\{\par
+\cf5   \cf2 for \cf4 (\cf2 var\cf4  \cf5 i\cf4  =\cf2  \cf6 0\cf4 ;\cf2  \cf5 i\cf2  \cf4 <=\cf2  \cf5 10\cf4 ;\cf2  \cf5 i\cf4 ++)\cf2     \cf3 // variable i is equal to 0. while i is under or equal to 10 , add one to i.\par
+\cf4   \{\par
+    \cf5 main_font\cf4 .\cf5 drawText \cf4 (\cf6 0\cf4 ,  \cf5 i*10\cf4 , \cf5 i\cf4 );  \cf3 // i times 10  (So i doesn't actually \b equal \b0 i times 10.)\par
+\cf4   \}\par
+  \cf5 FlipScreen(); \par
+  GetKey();\par
+\cf4\}\par
+\par
+\cf5 ---------------------------------------------------------------------------------------------------------------------------------\par
+\par
+Let's do conditionals now, they're important.\par
+\par
+\cf1 If:\cf5\par
+  The if loops is quite easy to understand. It works like this:\par
+   \cf2 if \cf4 (\cf5 condition\cf4 )\cf5   \cf3 // Example, if (a == b)\par
+\cf5    \cf4\{\cf5\par
+     \cf3 // Add what it needs to do.\cf5\par
+\cf4    \}\cf5\par
+\par
+  There is also an else command, which means if the condition returns false, then something else will happen.\par
+\par
+  \cf2 if\cf5  \cf4 (\cf5 condition\cf4 )\par
+  \{\par
+\cf5     \cf3 // What it does if returned true.\cf5\par
+\cf4   \}\cf5\par
+\cf2   else\cf5\par
+\cf4   \{\cf5\par
+    \cf3 // What it does if returned false.\cf5\par
+\cf4   \}\par
+\par
+\cf1 Or you can do...\cf5\par
+\par
+  \cf2 if\cf5  \cf4 (\cf5 condition\cf4 )\par
+  \{\par
+\cf5     \cf3 // What it does if returned true.\cf5\par
+\cf4   \}\cf5\par
+\cf2   else if \cf4 (\cf5 condition\cf4 )\cf5\par
+\cf4   \{\cf5\par
+    \cf3 // What it does if returned false.\cf5\par
+\cf4   \}\par
+\cf2   else if \cf4 (\cf5 condition\cf4 )\cf5\par
+\cf4   \{\cf5\par
+    \cf3 // What it does if above returned false.\cf5\par
+\cf4   \}\par
+\par
+\cf5 Else ifs can pretty much continue as long as you need.\cf4  \par
+\par
+\cf5 Basically, if the condition is true, it'll perform the action \b once\b0 . If it's false it'll either do a different action if there's an "else" command, and continues checking until there isn't any possible reactions.\cf4\par
+\par
+\cf5 There is also a one liner:\par
+ \par
+\cf2  if \cf4 (\cf5 condition\cf4 )\cf5  \cf3 //what it does if returned true.\par
+\cf1  And if you need else...\cf5\par
+ \cf2 if \cf4 (\cf5 condition\cf4 )\cf5  \cf3 //what it does if returned true.\par
+ \cf2 else\cf3  // What it does if returned false.\cf5\lang2057  \par
+\lang1033\par
+\cf1 If example:\par
+\cf5\par
+\cf2 var\cf5  main_font \cf4 =\cf5  GetSystemFont\cf4 ();\cf5\par
+\par
+\cf2 function\cf5  game\cf4 ()\cf5\par
+\cf4\{\cf5\par
+  \cf2 var \cf5 a \cf4 =\cf5  \cf6 0\cf4 ;\cf5\par
+  \cf2 var\cf5  b \cf4 =\cf5  \cf6 1\cf4 ;\cf5\par
+\par
+  \cf2 if \cf4 (\cf5 a \cf4 !=\cf5  \cf6 1\cf4 )\cf5  main_font\cf4 .\cf5 drawText \cf4 (\cf6 0\cf4 ,\cf5  \cf6 0\cf4 ,\cf5  \cf3 "a doesn't equal 1!"\cf4 );\cf5\par
+  \cf2 else\cf5  main_font\cf4 .\cf5 drawText \cf4 (\cf6 0\cf4 ,\cf5  \cf6 0\cf4 ,\cf5  \cf3 "a does equal 1!"\cf4 );\cf5\par
+\par
+  \cf2 if \cf4 (\cf5 b \cf4 ==\cf5  \cf6 0\cf4 )\cf5    \cf3 // If b is equal to 0...\par
+\cf4   \{\cf5\par
+    main_font\cf4 .\cf5 drawText \cf4 (\cf6 0\cf4 ,\cf5  \cf6 10\cf4 ,\cf5  \cf3 "b is equal to 0!"\cf4 );\cf3\par
+    // More lines can be added if it's not a one liner. (Duh)\cf5\par
+\cf4   \}\cf5\par
+\cf2   else\cf5   \cf3 // Else, if it's anything other than 0...\cf5\par
+\cf4   \{\cf5\par
+    main_font\cf4 .\cf5 drawText \cf4 (\cf6 0\cf4 ,\cf5  \cf6 10\cf4 ,\cf5  \cf3 "b isn't equal to 0!"\cf4 );\cf5\par
+\cf4   \}\cf5\par
+  \par
+  FlipScreen(); \par
+  GetKey();\par
+\cf4\}\par
+\par
+\cf1 Switches:\par
+\par
+\cf5 A good substitute for "else if" is a switch.\par
+\par
+\cf2 switch \cf4 (\cf5 condition\cf4 )\cf5\par
+\cf4\{\par
+  \cf2 case\cf4  (\cf5 possible answer\cf4 ):   \cf3 // if condition equals "possible answer"...\cf4\par
+  \{\par
+    \cf3 // What it does...\cf4\par
+    \cf2 break\cf4 ;\par
+  \}\par
+  \cf2 case\cf4  (\cf5 another possible answer\cf4 ):  \cf3 // if condition equals "another possible answer"...\cf4\par
+  \{\par
+    \cf3 // What it does...\cf4\par
+    \cf2 break\cf4 ;\par
+  \}\par
+\}\cf5\par
+\par
+Now this \b has \b0 to have a break after every case, or else it'll continue down the list, even if the condition isn't true.\par
+\par
+\cf1 Switch example:\par
+\par
+\cf2 var \cf5 main_font \cf4 =\cf1  \cf5 GetSystemFont\cf4 ();\cf1\par
+\par
+\cf2 function\cf5  game\cf4 ()\cf5\par
+\cf4\{\par
+  \cf2 var \cf5 what \cf4 = \cf6 0\cf4 ;\par
+\cf5\par
+  \cf2 switch \cf4 (\cf5 what\cf4 )\cf5\par
+\cf4   \{\par
+    \cf2 case\cf4  (\cf5 0\cf4 ):\par
+    \{\par
+      \cf5 main_font\cf4 .\cf5 drawText \cf4 (\cf6 0\cf4 ,\cf5  \cf6 0\cf4 ,\cf5  \cf3 "What is equal to 0"\cf4 );\par
+      \cf2 break\cf4 ;\par
+    \}\par
+    \cf2 case\cf4  (\cf5 1\cf4 ):\par
+    \{\par
+      \cf5 main_font\cf4 .\cf5 drawText \cf4 (\cf6 0\cf4 ,\cf5  \cf6 0\cf4 ,\cf5  \cf3 "What is equal to 1"\cf4 );\par
+      \cf2 break\cf4 ;\par
+    \}\par
+  \}\cf5\par
+\par
+\cf4    \cf5 FlipScreen(); \par
+  GetKey();\par
+\cf4\}\cf5\par
+\par
+What could even be a string, like \cf2 var \cf5 what \cf4 = \cf3 "Hello"\cf4 ; \cf5 , then it could have case (\cf3 "Hello"\cf5 )\cf4 :\cf5\par
+\par
+---------------------------------------------------------------------------------------------------------------------------------\par
+\par
+I know, you're probably dying to dive into map making and making cool things like Battle Systems and Menus and such. But you have to wait. None of these things will work if you don't know how to use the basics! I\rquote ll tell you how to do harder things later. For now, let's work with Arrays.\par
+\par
+Okay, say you want to store player names, \b without\b0  having to make a variable for \b each \b0 one.\par
+\cf1 Instead of doing this:\par
+\cf4   \cf2 var\cf4  \cf5 player_1 \cf4 = \cf3 "Bob"\cf4 ;\par
+  \cf2 var\cf4  \cf5 player_2 \cf4 = \cf3 "Fred"\cf4 ;\cf5\par
+\cf1\par
+You could just do this:\cf5\par
+\cf2 var \cf5 Players \cf4 =\cf5  \cf2 new\cf5  Array\cf4 ();\cf5    \cf3 // Create a new Array.\par
+\cf5 Players\cf4 [\cf6 0\cf4 ]\cf5  \cf4 =\cf5  \cf3 "Bob"\cf4 ;\par
+\cf5 Players\cf4 [\cf6 1\cf4 ]\cf5  \cf4 =\cf5  \cf3 "Fred"\cf4 ;\par
+\cf5 Players\cf4 [\cf6 2\cf4 ]\cf5  \cf4 =\cf5  \cf3 "George"\cf4 ;\par
+\cf5 Players\cf4 [\cf6 3\cf4 ]\cf5  \cf4 =\cf5  \cf3 "Tim"\cf4 ;\par
+\cf5\par
+\cf1 Don't want to write the numbers? Sure!\cf5\par
+\cf2 var \cf5 Players \cf4 =\cf5  \cf2 new\cf5  Array\cf4 ();\cf5    \cf3 // Create a new Array.\par
+\cf5 Players\cf4 .\cf5 push\cf4  (\cf3 "Bob"\cf4 );\par
+\cf5 Players\cf4 .\cf5 push\cf4  (\cf3 "Fred"\cf4 );\cf5\par
+Players\cf4 .\cf5 push\cf4  (\cf3 "George"\cf4 );\cf5\par
+Players\cf4 .\cf5 push\cf4  (\cf3 "Tim"\cf4 );\par
+\par
+\cf5 Players.push really just means that it adds what's specified in the Brackets \cf4 ( \cf5  and  \cf4 )  \cf5 to the front of the end of the array list as a new number.\par
+\par
+\cf1 You can also do it this way:\par
+\par
+\cf2 var \cf5 our_array \cf4 = \cf2 new \cf5 Array \cf4 (\cf3 "Item 1"\cf4 ,\cf5  \cf3 "Item 2"\cf4 ,\cf5  \cf3 "Item 3"\cf4 );\cf5   \cf3 // You can do as many as you want, and you can also use numbers\cf5\par
+                                           \tab\tab\tab\cf3\tab           // Rather than strings.\par
+\cf5 Basically, our_array[0] would be "Item 1", our_array[1] would be "Item 2" and our_array[2] would be "Item 3".\par
+\par
+\cf1 To draw an array, just do this:\cf5\par
+\par
+\cf2 var\cf5  main_font \cf4 =\cf5  GetSystemFont\cf4 ();\cf5\par
+\par
+\cf2 var \cf5 Players \cf4 =\cf5  \cf2 new\cf5  Array\cf4 ();\cf5    \cf3 // Create a new Array.\par
+\cf5 Players\cf4 .\cf5 push\cf4  (\cf3 "Bob"\cf4 );\par
+\cf5 Players\cf4 .\cf5 push\cf4  (\cf3 "Fred"\cf4 );\cf5\par
+Players\cf4 .\cf5 push\cf4  (\cf3 "George"\cf4 );\cf5\par
+Players\cf4 .\cf5 push\cf4  (\cf3 "Tim"\cf4 );\par
+\cf5\par
+\cf2 function \cf5 game\cf4 ()\cf5\par
+\cf4\{\cf5\par
+  \cf2 for\cf5  \cf4 (\cf5 i\cf4  = \cf6 0\cf4 ; \cf5 i\cf4  < \cf5 Players.length\cf4 ; \cf5 i\cf4 ++)\par
+  \{\par
+    \cf5 main_font.drawText\cf4 (\cf6 0\cf4 , \cf5 i\cf4 *\cf6 10\cf4 , \cf5 Players\cf4 [\cf5 i\cf4 ])\par
+  \}\par
+\cf5\par
+  FlipScreen\cf4 ();\cf5\par
+  GetKey\cf4 ();  \cf5\par
+\cf4\}\par
+\par
+\cf5 Woah! What's Players.length?? That's just how many "Players" there is: \cf4 [\cf5 0\cf4 ]\cf5  (Bob) , \cf4 [\cf5 1\cf4 ]\cf5  (Fred), \cf4 [\cf5 2\cf4 ]\cf5  (George) and \cf4 [\cf5 3\cf4 ]\cf5  (Tim).\par
+I suppose this is a good time to say that an Array \b always \b0 starts from 0. \par
+\par
+\cf1 Now, what does:\cf5\par
+  \cf2 for\cf5  \cf4 (\cf5 i\cf4  = \cf6 0\cf4 ; \cf5 i\cf4  < \cf5 Players.length\cf4 ; \cf5 i\cf4 ++)\par
+  \{\par
+    \cf5 main_font.drawText\cf4 (\cf6 0\cf4 , \cf5 i\cf4 *\cf6 10\cf4 , \cf5 Players\cf4 [\cf5 i\cf4 ])\par
+  \}\par
+\cf1 mean?\cf5\par
+\par
+Simple. It just continues adding one to i until it reaches the players length, which is in this case is 3. Then it'll draw Player\cf4 [\cf5 i\cf4 ]  \cf5 (i being the current number). So it'll start at Players\cf4 [\cf5 0\cf4 ]\cf5 ...Players\cf4 [\cf5 1\cf4 ]\cf5  and so on until it goes through them all.\par
+\pard\brdrb\brdrs\brdrw20\brsp20 \nowidctlpar\par
+---------------------------------------------------------------------------------------------------------------------------------\par
+\par
+Phew. We made it through the basics! Well I hope \b you \b0 did. If you didn't you may find everything else hard. Anyway, let's make things happen. Oh and by the way, don't expect to make that perfect game you've been dreaming up in two days. It takes a lot of practice and knowledge of sphere and javascript to get you that far! I can't even do it yet ;_; But I\rquote m in the middle of one, so hey, not too bad, eh? Let's make a map and do stuff!! Wooo!\par
+\par
+Well, before we start you need to have a map and a spriteset ready. Now I\rquote m not going to give you one because the maps too big for this kind of tutorial (trying to keep it small in size) so just scout around other games and see what you can use, or if you want, play around with "import" under file.\par
+\par
+Just make sure your spriteset is in the spriteset folder, and your map is in the map folder.\par
+\par
+Okay, make our map work shall we? How? Like this:\par
+\par
+\cf2 function\cf5  game\cf4 ()\cf5\par
+\cf4\{\cf5\par
+    CreatePerson\cf4  (\cf3 "Player"\cf4 ,\cf5  \cf3 "guy.rss"\cf4 ,\cf5  false\cf4 );     \cf3 // The false part just means that the player wont be destroyed after every time\cf4\par
+\cf5     AttachCamera \cf4 (\cf3 "Player"\cf4 );\cf5                                     \cf3 // the map's changed.\cf5\par
+    AttachInput \cf4 (\cf3 "Player"\cf4 );\cf5\par
+    SetTalkActivationKey \cf4 (\cf5 KEY_ENTER\cf4 );\cf3             // When you talk to a person, you have to press enter!\cf5\par
+    MapEngine \cf4 (\cf3 "Map.rmp"\cf4 ,\cf5  \cf6 80\cf4 );                              \cf3  // Starts up your map.\cf5\par
+\cf4\}\par
+\par
+\cf5 Just change the above how you like. If you want to change the main player's name from "Player" (Though this really has nothing to do with the actually hero, it's just what you call if you want the spriteset you're controlling to do something, like move in a scene for instance. Guy.rss should be changed to your spriteset's name, and Map.rmp should be changed to the name of your map.\par
+\par
+From here you can probably walk around like an idiot! Woohoo! \par
+\par
+Okay, let's make a player that you can talk to. Open up the map, right-click where you want to put this person and then Insert Entity | Person...\par
+Okay, now, type in a name for this person... let's call him Bob.        \cf1 (\b Don't\b0  put "" on either side of Bob's name)          \cf5 Now click the little box with "..." in it and find your spriteset. Once found, press okay. Now, click okay again, then close the map after saving it.\par
+Now we need to make a text box function.\par
+\par
+Okay, go to your main script \cf1 (In my case, game.js) \cf5 Make sure you keep the above game function there. Underneath it, make a \b new\b0  function, like so:\par
+\par
+\cf2 var \cf5 main_font \cf4 =\cf1  \cf5 GetSystemFont\cf4 ();\par
+\cf2 var \cf5 main_window \cf4 =\cf1  \cf5 GetSystemWindowStyle\cf4 ();\cf5\par
+\par
+\cf2 function\cf5  game\cf4 ()\cf5\par
+\cf4\{\cf5\par
+    CreatePerson\cf4  (\cf3 "Player"\cf4 ,\cf5  \cf3 "guy.rss"\cf4 ,\cf5  false\cf4 );  \par
+\cf5     AttachCamera \cf4 (\cf3 "Player"\cf4 );\cf5\par
+    AttachInput \cf4 (\cf3 "Player"\cf4 );\cf5\par
+    SetTalkActivationKey \cf4 (\cf5 KEY_ENTER\cf4 );\cf5\par
+    MapEngine \cf4 (\cf3 "Map.rmp"\cf4 ,\cf5  \cf6 80\cf4 );\cf5\par
+\cf4\}\cf5\par
+\par
+\cf2 function\cf5  Text_Box \cf4 (\cf5 txt\cf4 )\cf5\par
+\cf4\{\cf5\par
+  main_window.drawWindow\cf4 (\cf6 16\cf4 ,\cf5  \cf6 16\cf4 ,\cf5 GetScreenWidth\cf4 ()-\cf6 32\cf4 ,\cf5 GetScreenHeight\cf4 ()-\cf6 192\cf4 );\cf5\par
+  main_font.drawTextBox\cf4 (\cf6 20\cf4 ,\cf5  \cf6 22\cf4 ,\cf5 GetScreenWidth\cf4 ()-\cf6 34\cf5 ,GetScreenHeight\cf4 ()-\cf6 202\cf4 ,\cf5  \cf6 0\cf4 ,\cf5  txt\cf4 );\cf5     \par
+  FlipScreen\cf4 ();\cf5   \par
+  RenderMap\cf4 ();\cf5\par
+\par
+  \cf2 while\cf5  \cf4 (\cf5 GetKey\cf4 ()\cf5  \cf4 !=\cf5  KEY_ENTER\cf4 );    \cf5\par
+\cf4\}\par
+\par
+\cf5 Some new stuff! Okay, I\rquote ll explain them.\par
+\cf1 GetSystemWindowStyle() : \cf5 Well, this gets the system's window style. If you like, you can use LoadWindowStyle \cf4 (\cf3 "name.rws"\cf4 );\cf5\par
+name.rws being the name of your window style.\cf4\par
+\par
+\cf1 RenderMap() : \cf5 Alright, this'll make the map show while the text box is on, as FlipScreen\cf4 ()\cf5  pretty much just makes the whole thing black. Try taking out RenderMap\cf4 ()\cf5  and see what happens.\par
+\par
+\cf1 while (GetKey() != KEY_ENTER) : \cf5 All this means, is while GetKey (any key) \b isn't \b0 pressed, then wait until GetKey() is pressed.\par
+\par
+\cf1 .drawWindow (x, y, width, height) : \cf5 Basically makes a box at x, y, with the size of width and height. GetScreenWidth() and GetScreenHeight() basically just return the size of the game screen. So, if we minus something it'll shrink.\par
+\par
+\cf1 .drawTextBox (x, y, width, height, offset, text) : \cf5 Makes a text box, so that it continues until it hits the side of the box with writing, then it'll go down to the next line, so that it doesn't go off the screen.\par
+\par
+Hope that made sense. Okay, save that, and go back to the map. Right click on the player and click edit entity. Now, goto "On Activate Talk" in the little selection bar. Underneath that, type Text_Box ("Hello world!"); Now click okay. Save the map and run the game. Now all you have to do is walk up to the guy, talk to him (usually enter or space bar) and he'll say \cf3 "Hello world"\cf5 . Simple.\cf4\par
+\par
+\cf5 ---------------------------------------------------------------------------------------------------------------------------------\par
+\par
+Let's add a menu!\par
+\par
+Okay, before we start I\rquote ll get you acquainted with EvaluateSystemScript() and EvaluateScript(). Well basically, if you had a game with just one -huge- script files there'd be utter chaos. Trying to find a certain piece of code would take ages. That's why we split them up, and call them. EvaluateSystemScript () Calls a certain script from the System folder of sphere. Use it like: EvaluateSystemScript \cf4 (\cf3 "menu.js"\cf4 );\par
+\cf5 To call a script that's -in- your game, use EvaluateScript \cf4 (\cf3 "name.js"\cf4 );\par
+\par
+\cf5 Okay, let's make a menu! Add this in to your game:\par
+\par
+EvaluateSystemScript \cf4 (\cf3 "menu.js"\cf4 );  \b  \cf3\b0 // \b This has to be called to use a menu!!!\cf5\b0\par
+\par
+\cf2 function\cf5  Game_Menu\cf4 ()\par
+\{ \cf5  \par
+  RenderMap\cf4 ();\par
+\cf5\par
+\cf2   var \cf5 menu \cf4 =\cf5  \cf2 new\cf5  Menu\cf4 ();\par
+\cf5   menu\cf4 .\cf5 addItem \cf4 (\cf3 "Items"\cf4 ,\cf5  Items_Menu\cf4 );\cf5  \par
+  menu.execute \cf4 (\cf6 10\cf4 ,\cf5  \cf6 40\cf4 ,\cf5  \cf6 110\cf4 ,\cf5  \cf6 64\cf4 );     \cf3 // x, y, width, height\cf4\par
+\}\cf5\par
+\pard\nowidctlpar\par
+\cf2 function\cf5  Items_Menu\cf4 ()\par
+\{\par
+  \cf3 // This is empty!\cf4\par
+\}\par
+\cf5\par
+\cf2 function\cf5  t\cf4 ()\cf5  \cf4\{ \} \cf5   \cf3 // This does nothing, it's just so you can put something in the menu item so it makes more sense.\par
+\par
+\cf5 Woah! menu.addItem? menu is now defined, and anything with menu\cf4 .\cf5 addItem will add onto that list (as long as it's in the function, remember \cf2 var\cf5  menu \cf4 =\cf5  \cf2 new \cf5 Menu\cf4 ()\cf5  \b isn't \b0 a global. Execute makes a box for all the menu items to go into.\par
+\par
+Okay, so how do we get this to open when we press a key? Simple. BindKey(). Go up to the game function, and \cf1 change\cf5 ...\par
+\par
+\pard\brdrb\brdrs\brdrw20\brsp20 \nowidctlpar\cf2 function\cf5  game\cf4 ()\cf5\par
+\cf4\{\cf5\par
+    CreatePerson\cf4  (\cf3 "Player"\cf4 ,\cf5  \cf3 "guy.rss"\cf4 ,\cf5  false\cf4 );  \par
+\cf5     AttachCamera \cf4 (\cf3 "Player"\cf4 );\cf5\par
+    AttachInput \cf4 (\cf3 "Player"\cf4 );\cf5\par
+    SetTalkActivationKey \cf4 (\cf5 KEY_ENTER\cf4 );\cf5\par
+    MapEngine \cf4 (\cf3 "Map.rmp"\cf4 ,\cf5  \cf6 80\cf4 );\cf5\par
+\pard\nowidctlpar\cf4\}\par
+\par
+\cf1 to this...\par
+\par
+\pard\brdrb\brdrs\brdrw20\brsp20 \nowidctlpar\cf2 function\cf5  game\cf4 ()\cf5\par
+\cf4\{\par
+    \cf5 BindKey\cf4  (\cf5 KEY_ESCAPE\cf4 ,\cf3  'Game_Menu()'\cf4 , \cf3 't()'\cf4 );\cf5\par
+    CreatePerson\cf4  (\cf3 "Player"\cf4 ,\cf5  \cf3 "guy.rss"\cf4 ,\cf5  false\cf4 );  \par
+\cf5     AttachCamera \cf4 (\cf3 "Player"\cf4 );\cf5\par
+    AttachInput \cf4 (\cf3 "Player"\cf4 );\cf5\par
+    SetTalkActivationKey \cf4 (\cf5 KEY_ENTER\cf4 );\cf5\par
+    MapEngine \cf4 (\cf3 "Map.rmp"\cf4 ,\cf5  \cf6 80\cf4 );\par
+    \cf5 UnbindKey \cf4 (\cf5 KEY_ESCAPE\cf4 );\cf5\par
+\pard\nowidctlpar\cf4\}\par
+\cf5\par
+How does bind key work? Well basically you have the open key.... KEY ESCAPE, what it opens... our Game_Menu() and when you press escape again what does it do? t(), which does nothing. So it just closes. Okay, save and try that. Usually pressing escape quits the game, but not anymore! How do you quit now? Well until you make an Exit (just do menu\cf4 .\cf5 addItem \cf4 (\cf3 "Exit"\cf4 ,\cf5  Exit\cf4 );\cf5  ) item in the menu, just press Alt + F4. Even with the exit item, Alt + F4 is faster.\par
+\par
+---------------------------------------------------------------------------------------------------------------------------------\par
+\par
+Phew, hope I haven't confused you so far? Well, now that we've figure out how to make a menu...how about we'll make some items for it, hey? Just to make sure, before you can rush into a game you have to make every little bit in it, items..equipment...etc...sphere is much more complex than RPG Maker 2k, if you use that and will require a lot more work. It'll need teams of people and months of work (Well, depends what your making) and if your by yourself, you'll need a lot more time \cf1 ;)\cf5  Duh. Anyway, I suppose you should learn about Objects first!\par
+\par
+I must admit, I really have no idea how to explain them, because hey, I\rquote m quite new to sphere myself...well sorta. I know enough to use it. :) How about I\rquote ll give you an example?\par
+\par
+\cf2 function \cf5 Item \cf4 (\cf5 name\cf4 , \cf5 amount\cf4 )\cf5\par
+\cf4\{\cf5\par
+  \cf2 this\cf5 .name \cf4 = \cf5 name\cf4 ;\cf5\par
+  \cf2 this\cf5 .amount \cf4 = \cf5 amount\cf4 ;\cf5\par
+\cf4\}\cf5\par
+\cf4\par
+\cf5 So what does this mean? Well first you're making an object, called \cf3 "Item"\cf5 . Secondly, Item has two parameters, name and amount. Thirdly, the name and amount property are direct links to the function parameter. That'll mean \cf2 this\cf4 .\cf5 name \cf4 =\cf5  \cf3 the name you give it\cf5 . Eg, \cf2 new \cf5 Item \cf4 (\cf3 "Potion"\cf4 ,\cf5  \cf6 10\cf4 );\cf5  which would mean \cf2 this\cf4 .\cf5 name \cf4 =\cf5  \cf3 "Potion"\cf5  and \cf2 this\cf4 .\cf5 amount \cf4 =\cf5  \cf6 10\cf5 . To call "this" outside of the function, you'd have to have an Object name. You could do this: \par
+\par
+\cf2 var \cf5 potion \cf4 = \cf2 new \cf5 Item \cf4 (\cf3 "Potion"\cf4 , \cf6 10\cf5 );\par
+\par
+\cf1 And to call \cf3 "Potion"\cf5  \cf1 or \cf6 10\cf5  \cf1 you'd do this:\cf5\par
+\par
+potion\cf4 .\cf5 name  or  potion\cf4 .\cf5 amount\par
+\par
+\cf1 And to draw it to the screen you would do this:\par
+\cf5\par
+main_font\cf4 .\cf5 drawText \cf4 (\cf6 0\cf4 ,\cf5  \cf6 0\cf4 ,\cf5  potion.name\cf4 );\par
+\par
+\cf5 There are other ways other than \cf3 "var potion" \cf5 for the Object name, but before showing you that, just incase you don't understand and want a working Item Object, I\rquote ll write it out for you all together, just so you can look it over and try to understand it:\par
+\par
+\cf2 var \cf5 main_font \cf4 = \cf5 GetSystemFont\cf4 ();\par
+\par
+\cf2 function \cf5 Item \cf4 (\cf5 name\cf4 , \cf5 amount\cf4 )\par
+\{\par
+  \cf2 this\cf4 .\cf5 name \cf4 =\cf5  name\cf4 ;\par
+  \cf2 this\cf4 .\cf5 amount \cf4 = \cf5 amount\cf4 ;\par
+\}\par
+\par
+\cf2 var \cf5 Potion \cf4 = \cf2 new \cf5 Item \cf4 (\cf3 "Potion"\cf4 , \cf6 10\cf4 );\par
+\par
+\cf2 function \cf5 game\cf4 ()\par
+\{\par
+  \cf5 main_font\cf4 .\cf5 drawText\cf4  (\cf6 0\cf4 ,\cf6  0\cf4 , \cf3 "Name: "\cf4  + \cf5 Potion\cf4 .\cf5 name\cf4 );   \cf3 // Would come out as "Name: Potion" \par
+\cf4   \cf5 main_font\cf4 .\cf5 drawText\cf4  (\cf6 0\cf4 , \cf6 10\cf4 , \cf3 "Amount: "\cf4  + \cf5 Potion.amount\cf4 );\cf3     // Would come out as "Amount: 10"\cf4\par
+  \cf5 FlipScreen\cf4 ();\par
+  \cf5 GetKey\cf4 (); \par
+\}\par
+\par
+\cf5 ---------------------------------------------------------------------------------------------------------------------------------\par
+\par
+Well, now I\rquote ll show you how -I'd- make the items. Rather than making a variable for -each- item, i'd put it in an Array. This way, you can list them using the numbers in the square brackets [  and  ]. Okay, first off, let's call the array.\par
+\par
+\cf2 var \cf5 Items \cf4 = \cf2 new \cf5 Array\cf4 ();\cf5\par
+\par
+\cf1 Now, let's add in our Item function:\cf5\par
+\par
+\cf2 function \cf5 Item \cf4 ()  \cf3  // This should be blank, rather than this.name = name.\cf4\par
+\{\par
+  \cf2 this\cf4 .\cf5 name \cf4 =\cf5  ""\cf4 ;    \cf3 // See how I made these blank? That's so I can set them inside our array, rather than list them on one line.\par
+\cf4   \cf2 this\cf4 .\cf5 amount \cf4 = \cf5 0\cf4 ;  \par
+\}\par
+\par
+\cf1 Okay, now let's make the first part of our array...number \cf6 0\cf1 .\cf5\par
+\par
+Items\cf4 [\cf6 0\cf4 ]\cf5  = \cf2 new \cf5 Item\cf4  () \cf5   \cf3  // \b First, let's declare the first Item in our array a new Item.\b0\par
+\cf5 Items\cf4 [\cf6 0\cf4 ].\cf5 name \cf4 =\cf5  \cf3 "Potion"\cf4 ;\cf5   \cf3 // Next, let's make the empty "this.name" become "Potion".\cf5\par
+Items\cf4 [\cf6 0\cf4 ].\cf5 amount \cf4 =\cf5  \cf6 10\cf4 ;\cf5    \cf3 // And now for the empty amount...\par
+\par
+\cf1 See how this is working? Basically it's making a new "this.name" for each variable..array or whatever you want to call it. This basically means you can make many more items, with the same function. Let's make some more items!\cf4\par
+\cf5\par
+Items\cf4 [\cf6 1\cf4 ]\cf5  = \cf2 new \cf5 Item\cf4  () \cf5   \cf3  // Second in the array..\par
+\cf5 Items\cf4 [\cf6 1\cf4 ].\cf5 name \cf4 =\cf5  \cf3 "Ether"\cf4 ;\cf5  \par
+Items\cf4 [\cf6 1\cf4 ].\cf5 amount \cf4 =\cf5  \cf6 5\cf4 ;\cf5  \par
+\par
+Items\cf4 [\cf6 2\cf4 ]\cf5  = \cf2 new \cf5 Item\cf4  () \cf5   \cf3  // Third in the array..\par
+\cf5 Items\cf4 [\cf6 2\cf4 ].\cf5 name \cf4 =\cf5  \cf3 "High Potion"\cf4 ;\cf5  \par
+Items\cf4 [\cf6 2\cf4 ].\cf5 amount \cf4 =\cf5  \cf6 2\cf4 ;\cf5  \par
+\par
+This means you can call the names like this main_font\cf4 .\cf5 drawText\cf4  (\cf6 0\cf4 ,\cf6  0\cf4 , \cf5 Items\cf4 [\cf6 0\cf4 ].\cf5 name\cf4 );  \cf5 or if you want to change them after you've created them (Why you would want to change the name of an item is beyond me...so let's just change the amount, because it'll have to increase and decrease as you buy and sell items in your game):\par
+\par
+Items\cf4 [\cf6 0\cf4 ].\cf5 amount \cf4 ++;\cf5   \cf3 // This'll make Items[0].amount increase by one!\par
+\par
+\cf5 Okay...now...let's make this into a menu, so that it will list all the items. I\rquote m not sure if I\rquote ll get a fully working items menu in this tutorial...we'll see how I feel. Let's just make it say "Item used" without doing anything else other than that when you press it, okay?\par
+Let's make this open up on your map, because it looks better there. Make sure you have a map ready. I\rquote ll call my map just "Map.rmp".\par
+\par
+EvaluateSystemScript \cf4 (\cf3 "menu.js"\cf4 );\par
+\cf2 var \cf5 main_font \cf4 = \cf5 GetSystemFont\cf4 ();\cf5\par
+\par
+\cf2 function \cf5 Item \cf4 ()  \cf3  \cf4\par
+\{\par
+  \cf2 this\cf4 .\cf5 name \cf4 =\cf5  ""\cf4 ; \cf3\par
+\cf4   \cf2 this\cf4 .\cf5 amount \cf4 = \cf5 0\cf4 ;  \par
+\}\par
+\par
+\cf2 var \cf5 Items \cf4 = \cf2 new \cf5 Array\cf4 ();\par
+\cf5 Items\cf4 [\cf6 0\cf4 ]\cf5  = \cf2 new \cf5 Item\cf4  ()\cf3\par
+\cf5 Items\cf4 [\cf6 0\cf4 ].\cf5 name \cf4 =\cf5  \cf3 "Potion"\cf4 ;\cf5  \par
+Items\cf4 [\cf6 0\cf4 ].\cf5 amount \cf4 =\cf5  \cf6 10\cf4 ;\par
+\par
+\cf5 Items\cf4 [\cf6 1\cf4 ]\cf5  = \cf2 new \cf5 Item\cf4  ()\cf3\par
+\cf5 Items\cf4 [\cf6 1\cf4 ].\cf5 name \cf4 =\cf5  \cf3 "Ether"\cf4 ;\cf5  \par
+Items\cf4 [\cf6 1\cf4 ].\cf5 amount \cf4 =\cf5  \cf6 5\cf4 ;\cf5  \par
+\par
+Items\cf4 [\cf6 2\cf4 ]\cf5  = \cf2 new \cf5 Item\cf4  ()\cf3\par
+\cf5 Items\cf4 [\cf6 2\cf4 ].\cf5 name \cf4 =\cf5  \cf3 "High Potion"\cf4 ;\cf5  \par
+Items\cf4 [\cf6 2\cf4 ].\cf5 amount \cf4 =\cf5  \cf6 2\cf4 ;\cf5  \par
+\cf4\par
+\pard\brdrb\brdrs\brdrw20\brsp20 \nowidctlpar\cf2 function\cf5  game\cf4 ()\cf5\par
+\cf4\{\par
+    \cf5 BindKey\cf4  (\cf5 KEY_ESCAPE\cf4 ,\cf3  'Game_Menu()'\cf4 , \cf3 't()'\cf4 );             \cf3  // If you want to try it out without a map, just remove everything\par
+\cf5     CreatePerson\cf4  (\cf3 "Player"\cf4 ,\cf5  \cf3 "guy.rss"\cf4 ,\cf5  false\cf4 );                        \cf3 // inside this function, and \b replace \b0 it with Game_Menu();\cf4\par
+\cf5     AttachCamera \cf4 (\cf3 "Player"\cf4 );\cf5\par
+    AttachInput \cf4 (\cf3 "Player"\cf4 );\cf5\par
+    SetTalkActivationKey \cf4 (\cf5 KEY_ENTER\cf4 );\cf5\par
+    MapEngine \cf4 (\cf3 "Map.rmp"\cf4 ,\cf5  \cf6 80\cf4 );\par
+    \cf5 UnbindKey \cf4 (\cf5 KEY_ESCAPE\cf4 );\cf5\par
+\pard\nowidctlpar\cf4\}\par
+\par
+\pard\brdrb\brdrs\brdrw20\brsp20 \nowidctlpar\cf2 function\cf5  Game_Menu\cf4 ()\par
+\{ \cf5  \par
+  RenderMap\cf4 ();\cf3                                                                                // Make sure to \b remove \b0 this if you're not using a map.\cf4\par
+\cf5\par
+\cf2   var \cf5 menu \cf4 =\cf5  \cf2 new\cf5  Menu\cf4 ();\par
+  \cf2 for \cf4 (\cf2 var \cf5 i\cf4  = \cf6 0\cf4 ; \cf5 i\cf4  < \cf5 Items\cf4 .\cf5 length\cf4 ; \cf5 i\cf4 ++)\par
+  \{\par
+    \cf2 if \cf4 (\cf5 Items\cf4 [\cf5 i\cf4 ].\cf5 amount\cf4  > \cf6 0\cf4 )\par
+    \{\par
+\cf5       menu\cf4 .\cf5 addItem \cf4 (\cf5 Items\cf4 [\cf5 i\cf4 ].\cf5 name \cf4 +\cf5  \cf3 ": "\cf5  \cf4 +\cf5  Items\cf4 [\cf5 i\cf4 ].\cf5 amount\cf4 ,\cf5  useItem\cf4 );\cf5  \cf4\par
+\pard\nowidctlpar     \}\par
+  \}\par
+  \cf5 menu.execute \cf4 (\cf6 10\cf4 ,\cf5  \cf6 40\cf4 ,\cf5  \cf6 110\cf4 ,\cf5  \cf6 64\cf4 ); \par
+\}\par
+\par
+\pard\brdrb\brdrs\brdrw20\brsp20 \nowidctlpar\cf2 function\cf5  useItem\cf4 ()\par
+\pard\nowidctlpar\{\par
+  \cf5 main_font\cf4 .\cf5 drawText\cf4  (\cf6 0\cf4 , \cf6 10\cf4 , \cf3 "Item used"\cf4 );\par
+  \cf5 FlipScreen\cf4 ();\par
+  \cf5 GetKey\cf4 (); \par
+\}\par
+\par
+\cf5 Woah...what does:\par
+\par
+\pard\brdrb\brdrs\brdrw20\brsp20 \nowidctlpar\cf2 for \cf4 (\cf2 var \cf5 i\cf4  = \cf6 0\cf4 ; \cf5 i\cf4  < \cf5 Items\cf4 .\cf5 length\cf4 ; \cf5 i\cf4 ++)\par
+  \{\par
+    \cf2 if \cf4 (\cf5 Items\cf4 [\cf5 i\cf4 ].\cf5 amount\cf4  > \cf6 0\cf4 )\par
+    \{\par
+\cf5       menu\cf4 .\cf5 addItem \cf4 (\cf5 Items\cf4 [\cf5 i\cf4 ].\cf5 name \cf4 +\cf5  \cf3 ": "\cf5  \cf4 +\cf5  Items\cf4 [\cf5 i\cf4 ].\cf5 amount\cf4 ,\cf5  useItem\cf4 );\cf5  \cf4\par
+\pard\nowidctlpar     \}\par
+  \}\par
+\par
+\cf5 mean? Basically, it'll go through the length of Items (Items[0], Items[1], Items[2]....that's 3 items!) and then it'll check if the current item's amount is over 0 before adding it. If it does equal to 0, it won't show up in the menu, but if it does it'll show up with the name and amount of the item, and useItem will show \cf3 "Item used"\cf5 . Try changing one of the amount for one of the items. Go on. It won't be there anymore if it's a 0!\cf4\par
+\par
+\cf5 ---------------------------------------------------------------------------------------------------------------------------------\par
+\par
+I know.. let's make a stat's menu. This is easier to do, and I can make this work without too much coding. I'll actualy make this one work. \cf1 :D \cf5 First of, let's make an object, shall we?\par
+\par
+\cf2 function \cf5 Stats \cf4 (\cf5 name\cf4 ,\cf5  hp\cf4 ,\cf5  mp\cf4 )\cf5\par
+\cf4\{\cf5\par
+  \cf2 this\cf4 .\cf5 name \cf4 = \cf5 name\cf4 ;\cf5    \cf3  // The name of your player \par
+\cf5   \cf2 this\cf4 .\cf5 hp \cf4 = \cf5 hp\cf4 ; \cf5     \cf3  // The health points\par
+\cf5   \cf2 this\cf4 .\cf5 maxhp \cf4 = \cf5 hp\cf4 ;\cf5  \cf3  // The \b max\b0  health points (eg, 10 out of 50 hp. The 50 would be the max, and hp above would be current.\par
+\cf5   \cf2 this\cf4 .\cf5 mp\cf4  = \cf5 mp\cf4 ; \cf5   \cf3 // Ditto for the above, except magic points\par
+\cf5   \cf2 this\cf4 .\cf5 maxmp \cf4 =\cf5  mp;  \par
+  \cf2 this\cf4 .\cf5 atk \cf4 = \cf6 0\cf4 ;  \cf3 // The player's attack \par
+\cf5   \cf2 this\cf4 .\cf5 def \cf4 = \cf6 0\cf4 ;  \cf3 // The player's defence\par
+\cf5   \cf2 this\cf4 .\cf5 level \cf4 = \cf6 0\cf4 ;  \cf3 // The players current level\par
+\cf2   this\cf4 .\cf5 alive \cf4 = \cf5 true\cf4 ;  \cf3 // Is the player alive or not?\par
+\cf4\}\cf5\par
+\par
+\cf1 By the way, when I have this.maxhp = hp, it \b doesn't \b0 mean that it'll always be the same as hp all the time. It just sets it to the max at the start. So, basically it'll start off as 10 out of 10 hp, and if you minus PlayerObject.hp, it'd minus only the current hp, but max would be the same. (5/10 for example)\cf5\par
+Okay, this'll make our object. This is basically a mix of the two types we can make, one liner and seperate lines:\par
+\par
+\cf2 var \cf5 main_font\cf2  \cf4 =\cf2  \cf5 GetSystemFont\cf4 ();  \cf3 // Load the font\par
+\cf5 EvaluateSystemScript \cf4 (\cf3 "menu.js"\cf4 );  \cf3 // For our menu\par
+\cf5\par
+\cf2 var \cf5 Members \cf4 = \cf2 new \cf5 Array\cf4 ();\par
+\cf5 Members\cf4 [\cf6 0\cf4 ] =\cf5  \cf2 new \cf5 Stats\cf4  (\cf3 "Bob",\cf5  \cf6 10\cf4 ,\cf5  \cf6 0\cf4 );\cf5           \cf3 // Name is bob, hp is 10 and mp is 0.\par
+\cf5 Members\cf4 [\cf6 0\cf4 ].\cf5 atk \cf4 =\cf5  \cf6 5\cf4 ;\cf5   \cf3 // Sets player 0's attack to 5.\cf5\par
+Members\cf4 [\cf6 0\cf4 ].\cf5 def \cf4 = \cf6 3\cf4 ;\cf5   \cf3 // Sets player 0's defence to 3. \cf5\par
+Members\cf4 [\cf6 0\cf4 ].\cf5 level \cf4 =\cf5  \cf6 1\cf4 ;\cf5  \cf3  // Sets player 0's level to 1.\par
+\par
+\cf5 Members\cf4 [\cf6 1\cf4 ] =\cf5  \cf2 new \cf5 Stats\cf4  (\cf3 "Fred",\cf5  \cf6 5\cf4 ,\cf5  \cf6 5\cf4 );\cf5           \cf3\par
+\cf5 Members\cf4 [\cf6 1\cf4 ].\cf5 atk \cf4 =\cf5  \cf6 2\cf4 ;\cf5   \par
+Members\cf4 [\cf6 1\cf4 ].\cf5 def \cf4 = \cf6 9\cf4 ;\cf5  \par
+Members\cf4 [\cf6 1\cf4 ].\cf5 level \cf4 =\cf5  \cf6 1\cf4 ;\cf3\par
+\par
+\cf5 Members\cf4 [\cf6 2\cf4 ] =\cf5  \cf2 new \cf5 Stats\cf4  (\cf3 "George",\cf5  \cf6 5\cf4 ,\cf5  \cf6 10\cf4 );\cf3\par
+\cf5 Members\cf4 [\cf6 2\cf4 ].\cf5 atk \cf4 =\cf5  \cf6 6\cf4 ;\cf5   \par
+Members\cf4 [\cf6 2\cf4 ].\cf5 def \cf4 = \cf6 1\cf4 ;\cf5  \par
+Members\cf4 [\cf6 2\cf4 ].\cf5 level \cf4 =\cf5  \cf6 1\cf4 ;\cf5  \cf3  \cf4\par
+\par
+\cf1 Let's make a stats function!\par
+\par
+\cf2 function \cf5 Show_Stats \cf4 (\cf5 who\cf4 )\par
+\{\par
+  \cf5 main_font\cf4 .\cf5 drawText \cf4 (\cf6 0\cf4 ,\cf6  0\cf4 ,   \cf3 "Name: " \cf4 + \cf5 Members\cf4 [\cf5 who\cf4 ].\cf5 name\cf4 );\par
+  \cf5 main_font\cf4 .\cf5 drawText \cf4 (\cf6 0\cf4 , \cf6 10\cf4 , \cf3 "HP: "\cf4  + \cf5 Members\cf4 [\cf5 who\cf4 ].\cf5 hp \cf4 + \cf3 " / " \cf4 + \cf5 Members\cf4 [\cf5 who\cf4 ].\cf5 maxhp\cf4 );\par
+  \cf5 main_font\cf4 .\cf5 drawText \cf4 (\cf6 0\cf4 , \cf6 20\cf4 , \cf3 "MP: "\cf4  + \cf5 Members\cf4 [\cf5 who\cf4 ].\cf5 mp \cf4 +\cf3  " / " \cf4 + \cf5 Members\cf4 [\cf5 who\cf4 ].\cf5 maxmp\cf4 );\par
+  \cf5 main_font\cf4 .\cf5 drawText \cf4 (\cf6 0\cf4 , \cf6 30\cf4 ,  \cf3 "Atk: "\cf4  + \cf5 Members\cf4 [\cf5 who\cf4 ].\cf5 atk\cf4 );\par
+  \cf5 main_font\cf4 .\cf5 drawText \cf4 (\cf6 0\cf4 , \cf6 40\cf4 , \cf3 "Def: "\cf4  + \cf5 Members\cf4 [\cf5 who\cf4 ].\cf5 def\cf4 );\par
+  \cf5 main_font\cf4 .\cf5 drawText \cf4 (\cf6 0\cf4 ,\cf6  50\cf4 , \cf3 "Level: "\cf4  + \cf5 Members\cf4 [\cf5 who\cf4 ].\cf5 level\cf4 );\par
+  \cf5 FlipScreen\cf4 ();\par
+  \cf5 GetKey\cf4 ();\par
+  \cf5 Stats_Menu\cf4 (); \cf3 // Go back to the stats menu after you've looked at the player.\cf4\par
+\}\cf1\par
+\par
+Now for the status menu!\cf4\par
+\par
+\pard\brdrb\brdrs\brdrw20\brsp20 \nowidctlpar\cf2 function\cf5  Stats_Menu\cf4 ()\par
+\{ \cf5  \par
+  RenderMap\cf4 (); \cf3  // Make sure to \b remove \b0 this if you're not using a map.\cf4\par
+\cf5\par
+\cf2   var \cf5 menu \cf4 =\cf5  \cf2 new\cf5  Menu\cf4 ();\par
+  \cf2 for \cf4 (\cf2 var \cf5 i\cf4  = \cf6 0\cf4 ; \cf5 i\cf4  < \cf5 Members\cf4 .\cf5 length\cf4 ; \cf5 i\cf4 ++)\par
+  \{\par
+    \cf2 if \cf4 (\cf5 Members\cf4 [\cf5 i\cf4 ].\cf5 alive\cf4  == \cf5 true\cf4 )  \cf3 // Checks if the player is alive or not.\cf4\par
+    \{\par
+\cf5       menu\cf4 .\cf5 addItem \cf4 (\cf5 Members\cf4 [\cf5 i\cf4 ].\cf5 name\cf4 ,\cf5  \cf2 new \cf5 Function\cf4 (\cf3 "Show_Stats("\cf4 +\cf5 i\cf4 +\cf3 ");"\cf5 ) \cf4 );\cf5  \cf4\par
+\pard\nowidctlpar     \}\par
+  \}\par
+  \cf5 menu\cf4 .\cf5 execute \cf4 (\cf6 10\cf4 ,\cf5  \cf6 40\cf4 ,\cf5  \cf6 110\cf4 ,\cf5  \cf6 64\cf4 ); \par
+\}\cf1\par
+\par
+\cf5 So what's "new Function ("");"  ? Well, it's another hard one to explain, I don't know it to well, but that's the only way I know how to make the menu open up "i" from the for loop. You could do new function() \{  ShowStats (i);  \}  But that doesn't like to work for some reason... I suppose i'll just tell you it's the same thing, except what you write is in the "" of the Function, and to add the "i" you -have- to have the "+i+" bit.  So it's like this:    \cf2 new \cf5 Function\cf4 (\cf3 " ShowStats ("\cf5  \cf4 +\cf5  i \cf4 +\cf5  \cf3 "); "\cf4 );  \par
+\par
+\cf5 What that does is Show the stats of the current member it's up to. So if Member[0] is created, and you press Member[0] it has to open ShowStats(0); Which then in turn would open what it needs for that player.\cf4\par
+\cf1\par
+Now, let's run it!\par
+\par
+\cf2 function \cf5 game\cf4 ()\par
+\{\par
+  \cf5 Stats_Menu\cf4 ();\par
+\}\cf1\par
+\par
+-- http://a-extreme.homeip.net/downloads/ to get an updated version, just download this again.\cf0\par
+}
+

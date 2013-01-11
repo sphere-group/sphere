@@ -1,0 +1,31 @@
+SS_FUNCTION(Exit, 0)
+SS_FUNCTION(Abort, 1)
+
+SS_FUNCTION(GetTime, 0)
+
+SS_FUNCTION(SetTile, 4)
+SS_FUNCTION(GetTile, 3)
+
+SS_FUNCTION(GetMouseX, 0)
+SS_FUNCTION(GetMouseY, 0)
+
+SS_FUNCTION(GetLayerScaleFactorX, 1)
+SS_FUNCTION(GetLayerScaleFactorY, 1)
+
+SS_FUNCTION(GetTileWidth,  0)
+SS_FUNCTION(GetTileHeight, 0)
+SS_FUNCTION(GetNumTiles, 0)
+
+SS_FUNCTION(GetLayerWidth,  1)
+SS_FUNCTION(GetLayerHeight, 1)
+SS_FUNCTION(GetNumLayers, 0)
+
+SS_FUNCTION(MapToScreenX, 2)
+SS_FUNCTION(MapToScreenY, 2)
+SS_FUNCTION(ScreenToMapX, 2)
+SS_FUNCTION(ScreenToMapY, 2)
+
+SS_FUNCTION(IsMouseButtonPressed, 1)
+
+SS_FUNCTION(GetScreenWidth,  0)
+SS_FUNCTION(GetScreenHeight, 0)

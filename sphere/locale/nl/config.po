@@ -1,0 +1,288 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Config\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2008-06-25 23:44+0100\n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: Spherical\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-Language: Dutch\n"
+"X-Poedit-Country: NETHERLANDS\n"
+"X-Poedit-SearchPath-0: ../../source/config\n"
+
+#: ../../source/config/ConfigApp.cpp:17
+#: ../../source/config/ConfigFrame.cpp:222
+#: ../../source/config/ConfigFrame.cpp:276
+#: ../../source/config/ConfigFrame.cpp:515
+#: ../../source/config/ConfigFrame.cpp:661
+msgid "Sphere Configuration"
+msgstr "Sphere Configuratie"
+
+#: ../../source/config/ConfigFrame.cpp:220
+#: ../../source/config/ConfigFrame.cpp:659
+msgid ""
+"No video driver selected.\n"
+"Please select one from the list."
+msgstr ""
+"Geen video driver geselecteerd.\n"
+"Selecteer er een van de lijst."
+
+#: ../../source/config/ConfigFrame.cpp:275
+msgid "is not supported by the system."
+msgstr "is niet ondersteund door het systeem."
+
+#: ../../source/config/ConfigFrame.cpp:517
+msgid "Configuration"
+msgstr "Configuratie"
+
+#: ../../source/config/ConfigFrame.cpp:518
+msgid "Language"
+msgstr "Taal"
+
+#: ../../source/config/ConfigFrame.cpp:520
+msgid "Restore Defaults"
+msgstr "Standaard Herstellen"
+
+#: ../../source/config/ConfigFrame.cpp:522
+msgid "English"
+msgstr "English"
+
+#: ../../source/config/ConfigFrame.cpp:523
+msgid "German"
+msgstr "Deutsch"
+
+#: ../../source/config/ConfigFrame.cpp:524
+msgid "French"
+msgstr "Français"
+
+#: ../../source/config/ConfigFrame.cpp:525
+msgid "Dutch"
+msgstr "Nederlands"
+
+#: ../../source/config/ConfigFrame.cpp:526
+msgid "Japanese"
+msgstr "日本語"
+
+#: ../../source/config/ConfigFrame.cpp:527
+msgid "Chinese"
+msgstr "中文"
+
+#: ../../source/config/ConfigFrame.cpp:528
+msgid "Russian"
+msgstr "Русский"
+
+#: ../../source/config/ConfigFrame.cpp:529
+msgid "Spanish"
+msgstr "Español"
+
+#: ../../source/config/ConfigFrame.cpp:530
+msgid "Indonesian"
+msgstr "Bahasa Indonesia"
+
+#: ../../source/config/ConfigFrame.cpp:532
+#: ../../source/config/DialogSphere32.cpp:66
+#: ../../source/config/DialogSphere8.cpp:24
+#: ../../source/config/DialogSphereGL.cpp:39
+msgid "OK"
+msgstr "OK"
+
+#: ../../source/config/ConfigFrame.cpp:533
+#: ../../source/config/DialogSphere32.cpp:67
+#: ../../source/config/DialogSphere8.cpp:25
+#: ../../source/config/DialogSphereGL.cpp:40
+msgid "Cancel"
+msgstr "Annuleren"
+
+#: ../../source/config/ConfigFrame.cpp:536
+msgid "Video"
+msgstr "Video"
+
+#: ../../source/config/ConfigFrame.cpp:537
+msgid "Audio"
+msgstr "Audio"
+
+#: ../../source/config/ConfigFrame.cpp:538
+msgid "Input"
+msgstr "Besturing"
+
+#: ../../source/config/ConfigFrame.cpp:539
+msgid "Network"
+msgstr "Netwerk"
+
+#: ../../source/config/ConfigFrame.cpp:674
+#: ../../source/config/ConfigFrame.cpp:680
+#: ../../source/config/ConfigFrame.cpp:686
+#, c-format
+msgid "Configure %s"
+msgstr "Configureren %s"
+
+#: ../../source/config/ConfigFrame.cpp:828
+msgid ""
+"Could not enter <sphere>/system/video.\n"
+"This probably means Sphere was installed incorrectly.\n"
+"Sphere Configuration cannot continue."
+msgstr ""
+"Kan <sphere>/system/video niet openen.\n"
+"Dit betekent waarschijnlijk dat Sphere niet goed was geïnstalleerd.\n"
+"De configuratie van Sphere kan niet worden voortgezet."
+
+#: ../../source/config/ConfigFrame.cpp:852
+msgid ""
+"No video drivers found in <sphere>/system/video/.\n"
+"This probably means Sphere was installed incorrectly.\n"
+"Sphere Configuration cannot continue."
+msgstr ""
+"Geen video drivers gevonden in <sphere>/system/video/.\n"
+"Dit betekent waarschijnlijk dat Sphere niet goed was geïnstalleerd.\n"
+"De configuratie van Sphere kan niet worden voortgezet."
+
+#: ../../source/config/ConfigFrame.cpp:865
+msgid "Video Settings"
+msgstr "Video-instellingen"
+
+#: ../../source/config/ConfigFrame.cpp:867
+msgid "Configure Driver"
+msgstr "Configureren Driver"
+
+#: ../../source/config/ConfigFrame.cpp:970
+msgid "Audio Settings"
+msgstr "Audio-instellingen"
+
+#: ../../source/config/ConfigFrame.cpp:972
+msgid "Driver"
+msgstr "Driver"
+
+#: ../../source/config/ConfigFrame.cpp:974
+msgid "Use sound if possible"
+msgstr "Geluid aan indien mogelijk"
+
+#: ../../source/config/ConfigFrame.cpp:975
+msgid "Always use sound"
+msgstr "Geluid altijd aan"
+
+#: ../../source/config/ConfigFrame.cpp:976
+msgid "No sound"
+msgstr "Geen geluid"
+
+#: ../../source/config/ConfigFrame.cpp:1231
+msgid "Input Settings"
+msgstr "Besturingsinstellingen"
+
+#: ../../source/config/ConfigFrame.cpp:1233
+msgid "Player"
+msgstr "Speler"
+
+#: ../../source/config/ConfigFrame.cpp:1234
+msgid "Menu"
+msgstr "Menu"
+
+#: ../../source/config/ConfigFrame.cpp:1235
+msgid "Up"
+msgstr "Omhoog"
+
+#: ../../source/config/ConfigFrame.cpp:1236
+msgid "Down"
+msgstr "Omlaag"
+
+#: ../../source/config/ConfigFrame.cpp:1237
+msgid "Left"
+msgstr "Links"
+
+#: ../../source/config/ConfigFrame.cpp:1238
+msgid "Right"
+msgstr "Rechts"
+
+#: ../../source/config/ConfigFrame.cpp:1239
+msgid "A"
+msgstr "A"
+
+#: ../../source/config/ConfigFrame.cpp:1240
+msgid "B"
+msgstr "B"
+
+#: ../../source/config/ConfigFrame.cpp:1241
+msgid "X"
+msgstr "X"
+
+#: ../../source/config/ConfigFrame.cpp:1242
+msgid "Y"
+msgstr "Y"
+
+#: ../../source/config/ConfigFrame.cpp:1243
+msgid "Allow Keyboard Input"
+msgstr "Sta Toetsenbordinput toe"
+
+#: ../../source/config/ConfigFrame.cpp:1244
+msgid "Allow Joypad Input"
+msgstr "Sta joypadinput toe"
+
+#: ../../source/config/ConfigFrame.cpp:1291
+msgid "Network Settings"
+msgstr "Netwerkinstellingen"
+
+#: ../../source/config/ConfigFrame.cpp:1293
+msgid "Allow Networking"
+msgstr "Netwerken Toestaan"
+
+#: ../../source/config/ConfigFrame.cpp:1473
+#, c-format
+msgid "Waiting for keypress... (%dsec left)"
+msgstr "Wacht op toetsindruk... (%dsec resterend)"
+
+#: ../../source/config/DialogSphere32.cpp:33
+msgid "No"
+msgstr "Nee"
+
+#: ../../source/config/DialogSphere32.cpp:42
+msgid "None"
+msgstr "Geen"
+
+#: ../../source/config/DialogSphere32.cpp:63
+msgid "Expand Resolution"
+msgstr "Breid Resolutie Uit"
+
+#: ../../source/config/DialogSphere32.cpp:69
+#: ../../source/config/DialogSphere8.cpp:26
+#: ../../source/config/DialogSphereGL.cpp:44
+msgid "Fullscreen"
+msgstr "Volledig Scherm"
+
+#: ../../source/config/DialogSphere32.cpp:70
+#: ../../source/config/DialogSphere8.cpp:27
+#: ../../source/config/DialogSphereGL.cpp:45
+msgid "VSync"
+msgstr "VSync"
+
+#: ../../source/config/DialogSphere32.cpp:72
+msgid "pixels vertically"
+msgstr "pixels verticaal"
+
+#: ../../source/config/DialogSphere32.cpp:75
+msgid "pixels horizontally"
+msgstr "pixels horizontaal"
+
+#: ../../source/config/DialogSphere32.cpp:79
+#: ../../source/config/DialogSphereGL.cpp:42
+msgid "Scale"
+msgstr "Schaal"
+
+#: ../../source/config/DialogSphere32.cpp:80
+msgid "Filter"
+msgstr "Filter"
+
+#: ../../source/config/DialogSphere8.cpp:22
+msgid "Palette"
+msgstr "Palet"
+
+#: ../../source/config/DialogSphereGL.cpp:41
+msgid "Bit Depth"
+msgstr "Bitdiepte"
+
+#: ../../source/config/DialogSphereGL.cpp:43
+msgid "Bilinear Filter"
+msgstr "Bilineare Filter"
+

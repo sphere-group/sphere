@@ -1,0 +1,221 @@
+There are several ways to optimize your JavaScript in Sphere.  As I
+think of them or people suggest new optimization techniques, I'll add
+them to here.
+
+
+==== OPTIMIZING SPHERE ====
+
+
+-- Fewer Layers in your Maps --
+
+The fewer layers you use in your maps, the faster they draw.  Beaker
+says:
+
+Also, reducing the number of layers used in a map is always a good
+thing. Sometimes you can get of a layer of a map by making new tiles
+which are overlays of several other ones and then place them in some
+other layer. Or if there arn't that many tiles being used in that
+layer, you might be able to manually blit the tiles using a layer
+rendering script. If there's only five tiles in the layer, then a
+script that only blits those five tiles might be better than making a
+layer for them in which sphere would have to go through all the blank
+tiles in that layer as well.
+
+
+
+-- Efficient Resource Management --
+
+
+Only load Sphere objects once as few times as you can.  For example,
+this is sure to be REALLY slow:
+
+for (some loop) {
+  LoadImage("blah.png").blit(10, 10);
+  FlipScreen()
+}
+
+This trivial example is pretty easy to optimize:
+
+image = LoadImage("blah.png")
+for (some loop) {
+  image.blit(10, 10);
+  FlipScreen();
+}
+
+However, let's say you don't want to load EVERY object your game uses
+at load time, making it take forever to load...  You can do something
+called "lazy instantiation".
+
+var gImageList = {}
+function GetImage(filename) {
+  if (!(filename in gImageList)) {
+    gImageList[filename] = LoadImage(filename);    
+  }
+  return gImageList[filename];
+}
+
+var image = GetImage('image.png')  # this actually loads the image
+var image = GetImage('image.png')  # this returns the one already loaded
+
+
+==== OPTIMIZING JAVASCRIPT ====
+
+
+-- Common Subexpression Removal --
+
+
+If you do something like:
+
+var x = Math.sin(something)
+
+The JS engine has to find the 'Math' object, then find the 'sin'
+object as a member of 'Math' and then call it. You can make it
+slightly faster with:
+
+var sin = Math.sin; // only do this once at the top of your program
+var x = sin(something);
+
+This is a general case of "common subexpression removal". If you find
+yourself typing the same expressions multiple times, try storing
+temporary results in a variable that you can reuse.
+
+
+Also, if you can find a simpler way to represent your mathematical
+equations, do so:
+
+var y = (320 * x) - 2 * (120 * x);
+
+--->
+
+var y = 320 * x - 240 * x;
+
+--->
+
+var y = 80 * x;  // MUCH simpler!
+
+
+Sure, it's a contrived example, but I'm sure you can find some ways to
+algebraicly manipulate your scripts to make them faster.
+
+
+-- Removing Small Functions --
+
+
+Apparently, function calls in SpiderMonkey have significant overhead.
+If you have a small function that only does a few things, try moving
+it out of the function, like such:
+
+function mac(n, coeff, scalar) {
+  return n * coeff + scalar;
+}
+
+sum = 0;
+for (var i = 0; i < 1000; ++i) {
+  sum += mac(n, coeff_vec[i], scalar_vec[i]);
+}
+
+--> becomes -->
+
+sum = 0;
+for (var i = 0; i < 1000; ++i) {
+  sum += n * coeff_vec[i] + scalar_vec[i];
+}
+
+
+-- Run-time Code Generation --
+
+The nice thing about interpreted languages like JavaScript, Python,
+and Scheme is that it's very easy to generate code while your program
+is running and compile it into a new function.  Let's say you have
+several functions which all do something like this:
+
+if (mode == BLEND) {
+  // blend my image
+} else {
+  // draw my image without transparency
+}
+
+Comparing in your functions all of the time can be awfully slow.
+Let's say that 'mode' is only set once, or at least rarely.  A faster,
+but more complex, way to write your code is like this:
+
+if (mode == BLEND) {
+  funcstr = "/* put image blending code here */";
+} else {
+  funcstr = "/* put normal drawing code here */";
+}
+
+func = new Function(funcstr);
+
+// ...
+
+func()
+
+This way your 'mode' comparison only happens once, and after that you
+call a customized function that does what you want as quickly as
+possible.
+
+
+-- Avoid Using Eval Repeatedly --
+
+'eval' (and related things such as creating new Functions from
+strings) while a very convenient and powerful JavaScript feature,
+should not be overused, especially in loops.  Because it's so
+flexible, you pay the price in performance.  eval actually has to do
+two things:  Compile the string you are evaluating into run-time byte
+codes, and then interpret those byte codes.  Compiling is not a quick
+process, so you should do it as few times as you can.
+
+
+
+-- Use Look-Up-Tables (LUTs) --
+
+If you are doing a repeated transformation equation on a limited range
+of inputs (such as 0-255 for colors) you can store the results of your
+operation into a table and then reuse them.
+
+Old code:
+
+// vec can only have integral values between 0 and 255, inclusive
+for (var i = 0; i < n; ++i) {
+  vec[i] = Math.max(Math.min(2 * vec[i] * vec[i] - 3 * vec[i], 255), 0);
+}
+
+
+New code:
+
+lut = []
+for (var i = 0; i < 256; ++i) {
+  lut[i] = Math.max(Math.min(2 * i * i - 3 * i, 255), 0);
+}
+
+// looking up from a table is faster than doing the same operation
+// over and over again
+for (var i = 0; i < n; ++i) {
+  vec[i] = lut[vec[i]];
+}
+
+
+-- Give up and disable features --
+
+One way to help lower end pc's run your game might be to simply disable some features.
+Such as:
+
+EvaluateSystemScript("layers.js");
+
+var g_pc_speed = 5;
+
+function OnEnterMap()
+{
+  var layer = GetLayerIndex("clouds");
+  if (layer != -1) {
+    if (g_pc_speed < 3) {
+      SetLayerVisible(layer, false);
+    }
+    else {
+      SetLayerVisible(layer, true);    
+    }
+  }
+}
+
+Then the clouds layer will be hidden if the pc speed variable is lower than three.

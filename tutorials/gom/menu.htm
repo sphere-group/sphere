@@ -1,0 +1,52 @@
+<HTML>
+<HEAD>
+<link rel="stylesheet" type="text/css" href="style.css">
+<script language="JavaScript" type="text/javascript">
+<!--
+/*I DID THIS ALL! Not FLIKKY!
+  >_>
+  <_<
+  not at all  ;_;
+*/
+var SubMenuIds = new Array("Main", "Characters", "Other", "Creators");
+
+function ShowMenu(id){
+  for (var i = 0; i < SubMenuIds.length; ++i)
+    if (id != SubMenuIds[i])
+      HideId(SubMenuIds[i]);
+    else
+      ShowId(id);
+}
+
+function HideId(id){
+  if (document.getElementById)
+    document.getElementById(id).style.display = "none";
+}
+
+function ShowId(id){
+  if (document.getElementById)
+    document.getElementById(id).style.display = "block";
+}
+//-->
+</script>
+</HEAD>
+<BODY>
+<a href="sde01.htm" target = "main">Beginning a Project</A>
+<BR>
+<a href="sde02.htm" target = "main">Menu Explanations</A>
+<BR>
+<div style="cursor: hand"><div onClick="JavaScript:ShowMenu('Parts')">Separate Parts</div></div>
+<BR>
+    <div id="Main" style="display: hide">
+         <LI><a href="sde03.htm" target = "main">Game Settings</A><BR>
+         <LI><a href="sde04.htm" target = "main">Maps</A><BR>
+         <LI><a href="sde05.htm" target = "main">Spritesets</A><BR>
+         <LI><a href="sde06.htm" target = "main">Scripts</A><BR>
+         <LI><a href="sde07.htm" target = "main">Sounds</A><BR>
+         <LI><a href="sde08.htm" target = "main">Fonts</A><BR>
+         <LI><a href="sde09.htm" target = "main">Window Styles</A><BR>
+         <LI><a href="sde10.htm" target = "main">Images</A><BR>
+         <LI><a href="sde11.htm" target = "main">Animations</A><BR>
+
+</BODY>
+</HTML>

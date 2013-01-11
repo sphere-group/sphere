@@ -1,0 +1,26 @@
+How to use the wintro.js System Script
+
+1: Create a new introduction object
+
+var intro = new introObject("None", "font_you_want.rfn");
+
+
+2: Customize the introduction object
+
+intro.background = LoadImage("background.png");
+intro.endColor = CreateColor(255, 255, 255);
+
+3: Add text
+
+intro.addText("text", x, y, delay, x_to_move_to, y_to_move_to);
+// delay, x_to_move_to, and y_to_move_to are optional
+
+4: Add images
+
+intro.addImage("image.png", time_to_display, x, y, delay);
+// x, y, and delay are optional
+// x, y are defaulted to the center of the screen if not supplied
+
+5: Play the intro!
+
+intro.play();

@@ -1,0 +1,288 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Config\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2008-06-25 23:44+0100\n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: Spherical\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-Language: Japanese\n"
+"X-Poedit-Country: JAPAN\n"
+"X-Poedit-SearchPath-0: ../../source/config\n"
+
+#: ../../source/config/ConfigApp.cpp:17
+#: ../../source/config/ConfigFrame.cpp:222
+#: ../../source/config/ConfigFrame.cpp:276
+#: ../../source/config/ConfigFrame.cpp:515
+#: ../../source/config/ConfigFrame.cpp:661
+msgid "Sphere Configuration"
+msgstr "スフィールのコンフィグレーション"
+
+#: ../../source/config/ConfigFrame.cpp:220
+#: ../../source/config/ConfigFrame.cpp:659
+msgid ""
+"No video driver selected.\n"
+"Please select one from the list."
+msgstr ""
+"ビデオのセレクションがありません.\n"
+"えらんで、ください。."
+
+#: ../../source/config/ConfigFrame.cpp:275
+msgid "is not supported by the system."
+msgstr "はスポーテドじゃありません。"
+
+#: ../../source/config/ConfigFrame.cpp:517
+msgid "Configuration"
+msgstr "コンフィグレーション"
+
+#: ../../source/config/ConfigFrame.cpp:518
+msgid "Language"
+msgstr "言語"
+
+#: ../../source/config/ConfigFrame.cpp:520
+msgid "Restore Defaults"
+msgstr "デフォルトひきもどす"
+
+#: ../../source/config/ConfigFrame.cpp:522
+msgid "English"
+msgstr "English"
+
+#: ../../source/config/ConfigFrame.cpp:523
+msgid "German"
+msgstr "Deutsch"
+
+#: ../../source/config/ConfigFrame.cpp:524
+msgid "French"
+msgstr "Français"
+
+#: ../../source/config/ConfigFrame.cpp:525
+msgid "Dutch"
+msgstr "Nederlands"
+
+#: ../../source/config/ConfigFrame.cpp:526
+msgid "Japanese"
+msgstr "日本語"
+
+#: ../../source/config/ConfigFrame.cpp:527
+msgid "Chinese"
+msgstr "中文"
+
+#: ../../source/config/ConfigFrame.cpp:528
+msgid "Russian"
+msgstr "Русский"
+
+#: ../../source/config/ConfigFrame.cpp:529
+msgid "Spanish"
+msgstr "Español"
+
+#: ../../source/config/ConfigFrame.cpp:530
+msgid "Indonesian"
+msgstr "Bahasa Indonesia"
+
+#: ../../source/config/ConfigFrame.cpp:532
+#: ../../source/config/DialogSphere32.cpp:66
+#: ../../source/config/DialogSphere8.cpp:24
+#: ../../source/config/DialogSphereGL.cpp:39
+msgid "OK"
+msgstr "OK"
+
+#: ../../source/config/ConfigFrame.cpp:533
+#: ../../source/config/DialogSphere32.cpp:67
+#: ../../source/config/DialogSphere8.cpp:25
+#: ../../source/config/DialogSphereGL.cpp:40
+msgid "Cancel"
+msgstr "キャンセル"
+
+#: ../../source/config/ConfigFrame.cpp:536
+msgid "Video"
+msgstr "ビデオ"
+
+#: ../../source/config/ConfigFrame.cpp:537
+msgid "Audio"
+msgstr "オーヂオ"
+
+#: ../../source/config/ConfigFrame.cpp:538
+msgid "Input"
+msgstr "インプット"
+
+#: ../../source/config/ConfigFrame.cpp:539
+msgid "Network"
+msgstr "ネットオワーク"
+
+#: ../../source/config/ConfigFrame.cpp:674
+#: ../../source/config/ConfigFrame.cpp:680
+#: ../../source/config/ConfigFrame.cpp:686
+#, c-format
+msgid "Configure %s"
+msgstr "%sのコンフィグレーション"
+
+#: ../../source/config/ConfigFrame.cpp:828
+msgid ""
+"Could not enter <sphere>/system/video.\n"
+"This probably means Sphere was installed incorrectly.\n"
+"Sphere Configuration cannot continue."
+msgstr ""
+"\"<sphere>/system/video/\" ははんどくしがたいです。\n"
+"インストレーションはきつじゃありません。\n"
+"すみません。"
+
+#: ../../source/config/ConfigFrame.cpp:852
+msgid ""
+"No video drivers found in <sphere>/system/video/.\n"
+"This probably means Sphere was installed incorrectly.\n"
+"Sphere Configuration cannot continue."
+msgstr ""
+"\"<sphere>/system/video/\" にビデオのヅライバーがありません\n"
+"インストレーションはきつじゃありません。\n"
+"すみません。"
+
+#: ../../source/config/ConfigFrame.cpp:865
+msgid "Video Settings"
+msgstr "ビデオのコンフィギュレーション"
+
+#: ../../source/config/ConfigFrame.cpp:867
+msgid "Configure Driver"
+msgstr "ヅライバのコンフィグレーション"
+
+#: ../../source/config/ConfigFrame.cpp:970
+msgid "Audio Settings"
+msgstr "オーヂオのコンフィギュレーション"
+
+#: ../../source/config/ConfigFrame.cpp:972
+msgid "Driver"
+msgstr "ヅライバ"
+
+#: ../../source/config/ConfigFrame.cpp:974
+msgid "Use sound if possible"
+msgstr "オーヂオをときどきします"
+
+#: ../../source/config/ConfigFrame.cpp:975
+msgid "Always use sound"
+msgstr "オーヂオをいつもします"
+
+#: ../../source/config/ConfigFrame.cpp:976
+msgid "No sound"
+msgstr "オーヂオをぜんぜんします"
+
+#: ../../source/config/ConfigFrame.cpp:1231
+msgid "Input Settings"
+msgstr "インプットのコンフィギュレーション"
+
+#: ../../source/config/ConfigFrame.cpp:1233
+msgid "Player"
+msgstr "プレーヤ"
+
+#: ../../source/config/ConfigFrame.cpp:1234
+msgid "Menu"
+msgstr "Menu"
+
+#: ../../source/config/ConfigFrame.cpp:1235
+msgid "Up"
+msgstr "上"
+
+#: ../../source/config/ConfigFrame.cpp:1236
+msgid "Down"
+msgstr "下"
+
+#: ../../source/config/ConfigFrame.cpp:1237
+msgid "Left"
+msgstr "左"
+
+#: ../../source/config/ConfigFrame.cpp:1238
+msgid "Right"
+msgstr "右"
+
+#: ../../source/config/ConfigFrame.cpp:1239
+msgid "A"
+msgstr "A"
+
+#: ../../source/config/ConfigFrame.cpp:1240
+msgid "B"
+msgstr "B"
+
+#: ../../source/config/ConfigFrame.cpp:1241
+msgid "X"
+msgstr "X"
+
+#: ../../source/config/ConfigFrame.cpp:1242
+msgid "Y"
+msgstr "Y"
+
+#: ../../source/config/ConfigFrame.cpp:1243
+msgid "Allow Keyboard Input"
+msgstr "インプットのキーボードをゆるします"
+
+#: ../../source/config/ConfigFrame.cpp:1244
+msgid "Allow Joypad Input"
+msgstr "キーボードのインプットをゆるします"
+
+#: ../../source/config/ConfigFrame.cpp:1291
+msgid "Network Settings"
+msgstr "ネットワークのコンフィギュレーション"
+
+#: ../../source/config/ConfigFrame.cpp:1293
+msgid "Allow Networking"
+msgstr "ネットワークをゆるします"
+
+#: ../../source/config/ConfigFrame.cpp:1473
+#, c-format
+msgid "Waiting for keypress... (%dsec left)"
+msgstr "キーをおしいまって ください... (%d秒 )"
+
+#: ../../source/config/DialogSphere32.cpp:33
+msgid "No"
+msgstr "いいえ"
+
+#: ../../source/config/DialogSphere32.cpp:42
+msgid "None"
+msgstr "きほんてき"
+
+#: ../../source/config/DialogSphere32.cpp:63
+msgid "Expand Resolution"
+msgstr "レソルーションをふくらます"
+
+#: ../../source/config/DialogSphere32.cpp:69
+#: ../../source/config/DialogSphere8.cpp:26
+#: ../../source/config/DialogSphereGL.cpp:44
+msgid "Fullscreen"
+msgstr "フールスクリーノ"
+
+#: ../../source/config/DialogSphere32.cpp:70
+#: ../../source/config/DialogSphere8.cpp:27
+#: ../../source/config/DialogSphereGL.cpp:45
+msgid "VSync"
+msgstr "ビーシンコ"
+
+#: ../../source/config/DialogSphere32.cpp:72
+msgid "pixels vertically"
+msgstr "プクセルス (上/下)"
+
+#: ../../source/config/DialogSphere32.cpp:75
+msgid "pixels horizontally"
+msgstr "プクセルス (右/左)"
+
+#: ../../source/config/DialogSphere32.cpp:79
+#: ../../source/config/DialogSphereGL.cpp:42
+msgid "Scale"
+msgstr "スケール"
+
+#: ../../source/config/DialogSphere32.cpp:80
+msgid "Filter"
+msgstr "フィルテール"
+
+#: ../../source/config/DialogSphere8.cpp:22
+msgid "Palette"
+msgstr "パレット"
+
+#: ../../source/config/DialogSphereGL.cpp:41
+msgid "Bit Depth"
+msgstr "ビットのしんど"
+
+#: ../../source/config/DialogSphereGL.cpp:43
+msgid "Bilinear Filter"
+msgstr "2リニアルフィルテル"
+

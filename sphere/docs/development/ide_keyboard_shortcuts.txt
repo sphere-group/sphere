@@ -1,0 +1,27 @@
+Sphere IDE Keyboard Shortcuts
+--------
+
+This is a list of keyboard shortcut keys for use in the editor.
+
+Editor:
+  General:
+    CTRL + C = Copy
+    CTRL + V = Paste
+    CTRL + + = Zoom In
+    CTRL + - = Zoom Out
+    CTRL + S = Save
+
+    CTRL + F5 = Run engine
+
+  Spriteset:
+    CTRL + 1 = Zoom 1X
+    CTRL + 2 = Zoom 2X
+
+  Script:
+    CTRL + F = Find Text
+    F7       = Check Syntax
+  
+  Shift + Left Click = Select Current Tile/Pixel
+  Shift + Space      = Select Current Tile/Pixel
+  Left/Up/Down/Right = Move Cursor
+  Space              = Place current Tile/Pixel

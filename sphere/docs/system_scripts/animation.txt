@@ -1,0 +1,14 @@
+System Script 'animation.js'
+Courtesy of Sufian Rhazi (fenix)
+
+
+animation system script, very easy to use, basically it works like this:
+ 
+var anim = new Animation();
+anim.addImage(filename, delay);
+var image = LoadImage("blah2.png");
+anim.addImage(image, delay); // this works too
+anim.reset(); // this starts the animation over (from the beginning)
+anim.blit(x, y); // this automatically calculates the frame based upon time and blits it at (x, y) (duh)
+ 
+*note* the animation goes on forever

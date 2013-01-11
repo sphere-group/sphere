@@ -1,0 +1,48 @@
+How to use the Menu object (provided by the system script menu.js).
+
+
+Step 1:
+
+Include the menu.js system script.
+
+EvaluateSystemScript("menu.js");
+
+
+
+Step 2:
+
+Create a menu object.
+
+var menu = new Menu();
+
+
+Step 3:
+
+Set any special menu properties.
+
+menu.escape_function = my_function;  // this function is called when escape is pressed
+menu.font = LoadFont("whatever");
+menu.arrow = LoadImage("whatever_else");
+// you can also change the 'window_style', 'up_arrow', and 'down_arrow' properties
+
+
+Step 4:
+
+Add the menu items.
+
+menu.addItem("name", callback_function, color);
+
+"name" is the name of the item (duh!)
+callback_function is called when the item is selected.
+color is the color of the item when it's displayed in the menu.  If you don't specify one, it uses white.
+
+
+Step 5:
+
+Execute the menu.
+
+menu.execute(x, y, w, h);
+
+This displays the menu and gives the user a chance to select something.  The menu
+appears in the rectangle defined by (x, y, w, h).  The function returns when
+escape is pressed or when an item is selected.

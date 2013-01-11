@@ -1,0 +1,15 @@
+Chatting with other Sphere users on IRC
+--------
+
+IRC is a technology that... it's a chatroom, okay? Speak with other
+Sphere users.
+
+1. Get XChat at http://www.xchat.org/
+   OR
+   Get Gaim at http://gaim.sourceforge.net/
+2. Connect to server irc.esper.net, port 6667.
+3. Join channel #sphere.
+4. Say hello. :)
+
+The occupants like to idle (read: stay silent), but don't let that
+fool you, they'll spring up to answer even the smallest questions.

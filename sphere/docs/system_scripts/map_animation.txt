@@ -1,0 +1,36 @@
+Name: Spiro Floropoulos (Daroth)
+E-Mail: kefkastories@hotmail.com
+
+The map_animation.js file is made to support many animations on the screen at once while allowing a user to customize how many times an animation should be played and where on the x,y grids should it be played. This script should save a lot of time when it comes to animations and should make it relatively easy to create animation effects that you want.
+
+Firstly, let's talk about the script itself. What I've done is create a variable array (g_map_animations) where all the animations are kept. A user calls on PlayAnimation() and enters in the appropriate data and the animation gets added to the array. This is accomplished using the MapAnimation object where each animation will get its own set of information. This information is then pushed into the g_map_animations array.
+
+After the array has been filled, UpdateMapAnimation() draws the animations. The function loops through each array element in g_map_animations and appropriately calls the information needed to play each animation.
+
+So, how do you use this script for your game? It's pretty simple. Anytime you want to start a new set of animations, simply write this in one of your scripts:
+
+PlayAnimation("filename.flc", 50, 50, 3, false);
+OR
+PlayAnimation("filename.flc", 50, 50, 0, true);
+PlayAnimation("filename.flc", x, y, repeat(times), forever[true/false])
+
+The first one will play the animation 3 times. The second one will play the animation forever. Everytime you make a call to this function (PlayAnimation()), it adds the animation to the array. After you're done calling all the PlayAnimations you want, you should have this somewhere in your script too:
+
+SetRenderScript("UpdateMapAnimation()");
+
+which will then play the animations. I usually call this AFTER I call all the PlayAnimations I want. However, let's say you've already created a set of animations and now you want a new set, what do you do? Simple. Write this:
+
+ClearMapAnimationArray();
+
+and a new set of animations can be inserted into the array. You can then call PlayAnimation() and SetRenderScript() appropriately.
+
+Why would someone want to use this script? Well, for one thing, it's good for playing at least one animation on the screen easily. A simple call to PlayAnimation is all you need. Secondly, if you want to play more than one animation at the same time on the screen (maybe having a game scene where there's fire on a building in different places or something like that), this is a great and easy way to do it.
+
+
+That's all there is to it! Have fun animating your game!
+
+
+*It should be noted that this script hasn't been tested under ALL circumstances. If anyone has a problem with the script, please contact me and I'll try and get it fixed.
+
+
+I'd like to thank Flik for his massive amount of help in creating this script.

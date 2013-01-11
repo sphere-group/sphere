@@ -1,0 +1,16 @@
+Some Information About Packages
+
+Sphere supports building packaged versions of games, where all of the
+game's data is contained in one SPK file.  To build a package, look in
+the editor's Project menu while a game project is open.
+
+Anyone who has installed Sphere can run packages by double-clicking on
+them within Windows Explorer.  Sphere creates a "packages" directory
+which contains a list of package names.  If Sphere tries to write a
+file, it goes in that directory.  Also, "override" files can be put
+there if you wish to later override them.
+
+You can also run a package using the command line,
+with a command like:
+
+engine -package package.spk

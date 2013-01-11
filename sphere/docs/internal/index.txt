@@ -1,0 +1,27 @@
+= Index of files in this directory =
+
+All documentation directories have this file. It describes the
+contents of all files in the same directory so that they can be
+seen from a bird's-eye view.
+
+* coding-style.txt - Recommended coding style to use when modifying
+  the Sphere source.
+
+* font.rfn.txt - Sphere font (*.rfn) format.
+
+* game.sgm.txt - Sphere game information file (*.sgm) format.
+
+* index.txt - This file.
+
+* map.rmp.txt - Sphere map (*.rmp) format.
+
+* package.spk.txt - Sphere package (*.spk) format.
+
+* spriteset.rss.txt - Sphere spriteset (*.rss) format.
+
+* tileset.rts.txt - Sphere tileset (*.rts) format.
+
+* videodriver-specs.txt - Information on how to write video driver
+  DLLs for Sphere.
+
+* windowstyle.rws.txt - Sphere window style (*.rws) format.

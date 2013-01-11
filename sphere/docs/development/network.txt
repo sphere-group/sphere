@@ -1,0 +1,89 @@
+Networking "Tutorial"
+
+
+[21:55] <Goku> I'm hoping to make a simple little chat program in Sphere. How would I do that using the network stuff? I think I know how to set up the listening port and openning the adddress and stuff. It's the read and write bytes stuff that I don't know how to use.
+[21:55] <aegis> hmmm
+[21:55] *** God is now known as Khross
+[21:55] <aegis> That's not a quick question.  :)
+[21:55] <aegis> But seriously...
+[21:55] <Goku> Doh.
+[21:55] <aegis> Do you understand the concept of a socket?
+[21:56] <Goku> Probably not.
+[21:56] <aegis> okay
+[21:56] <Goku> I never really read up on it.
+[21:56] <aegis> Imagine you're on one side of a wall and I'm on the other.
+[21:56] *** Hatchet (hatchvcc@cr375743-a.slnt1.on.wave.home.com) Quit (Press any key to confirm. Press any other key to abort.)
+[21:56] <aegis> The wall has a bunch of numbered holes.
+[21:56] <aegis> They represent the ports.
+[21:57] <aegis> When you listen on a port, you stick a rubber tube up to that hole.
+[21:57] <aegis> The other person wants to connect to you, so he/she puts his/her tube up against that hole too.
+[21:57] <aegis> And pushes potatoes (tee hee, this is fun) through.  :)
+[21:57] <hypoluxa> hehehheheheh
+[21:57] <aegis> Oh yeah, sockets are full-duplex
+[21:57] <Goku> ^^>
+[21:57] <aegis> Once you establish a connection, both people can push data through.
+[21:58] <hypoluxa> damnit, i hate being a pervert, I'm imagining some sick fetish pr0n right now :o
+[21:58] <aegis> fenix:  hah
+[21:58] <aegis> oops
+[21:58] <aegis> o_O
+[21:58] <aegis> anyway
+[21:58] <God_of_Mischief> ?? I think AK's lost it ^^
+[21:58] <hypoluxa> yeah
+[21:58] <aegis> There is a difference between synchronous and asynchronous I/O.
+[21:58] <Goku> Okay. I think I understand. That was pretty much how I was thinking they worked but I wasn't sure.
+[21:58] <hypoluxa> we've finally burned a hole in his brain
+[21:59] <aegis> synchronous means the functions don't return until they do what you want.
+[21:59] <aegis> (i.e. read 30 bytes or whatever)
+[21:59] <aegis> asynchronous (god that sucks to type) means they return immediately with what data they can.
+[21:59] <aegis> All of Sphere's network I/O functions are asynchronous.
+[21:59] <Goku> Okay.
+[21:59] <aegis> But!  You still have to take time in account.  So one side has to do:
+[22:00] <aegis> var socket = ListenOnSocket(99);
+[22:00] <aegis> while (!socket.isConnected()) {
+[22:00] <aegis>   // you may want to draw on the screen or something
+[22:00] <aegis> }
+[22:00] <aegis> While the other side does:
+[22:00] <aegis> var socket = OpenAddress("address.of.other.computer", 99);
+[22:00] <aegis> while (!socket.isConnected()) {
+[22:00] <aegis> }
+[22:00] <aegis> You'll want to handle timeouts too.
+[22:01] <aegis> So if it doesn't connect for 30 seconds or so, show an error.
+[22:01] <aegis> Or allow the user to cancel.
+[22:01] * Goku nods.
+[22:01] <aegis> Sockets can read and write.
+[22:01] <aegis> socket.read(num_bytes) returns a byte array of what it can read (maybe smaller than what you want)
+[22:02] <hypoluxa> on a side note: aegis, sphere can handle two keys being pressed at once, right?
+[22:02] <aegis> socket.write(byte_array) takes a byte array
+[22:02] <aegis> hypoluxa:  Yes.
+[22:02] <hypoluxa> k, thought so
+[22:02] <aegis> Goku:  Hmmmm.  Any more questions?
+[22:02] <Goku> Hmm..
+[22:02] <hypoluxa> Goku: have fun ^_^
+[22:02] <aegis> Yeah.
+[22:02] <aegis> Oh wait.
+[22:02] <Goku> Hehe. ^^
+[22:02] <aegis> There is socket.getPendingReadSize() too.
+[22:02] <aegis> That returns the number of bytes that can definitely be read.
+[22:03] <aegis> (they are already received, so the next read will just grab them out)
+[22:03] <hypoluxa> oh, if i leave suddenly, its because eitehr WinAmp or Napster is raping my computer, and causing it to freeze
+[22:03] <aegis> heh, k
+[22:03] <Goku> So.. how do you think I should go about sending and getting a line of text?
+[22:03] *** Kyleasdf (kylegayla@twhou-207-218-208-56.ev1.net) has joined #sphere
+[22:03] <God_of_Mischief> hypo: I have both running too ^_^
+[22:03] <hypoluxa> Goku: just input the text into a byte array
+[22:03] <hypoluxa> and send it
+[22:03] <aegis> socket.write(CreateByteArrayFromString("this is a line of text"));
+[22:03] <Goku> Hypo: Aww.. my version of Napster's frigid.
+[22:04] <hypoluxa> yeah
+[22:04] <aegis> To read, you'll have to do:
+[22:04] <hypoluxa> or that  ^_^ I'm really just talking out of my ass....
+[22:04] <Kyleasdf> howdy
+[22:04] <aegis> var b = socket.read(100);  // and somehow parse the line of text for commands and stuff
+[22:04] <Goku> And then I get the length of the array being sent and keep reading until I get it, or something?
+[22:05] <aegis> Yeah, good idea.  Before you send the string, send a byte array that is the length of the string.
+[22:05] <aegis> Hey Kyle.
+[22:05] <Kyleasdf> howdy aeg
+[22:05] <Goku> Oh. Hehe. That's not what I meant. I meant get the size using the socket.getPendingReadSize().
+[22:06] <aegis> Oh.
+[22:06] <aegis> Sure, that too.
+[22:06] <aegis> I'm going to save this little log as a "tutorial" for network stuff.  :)

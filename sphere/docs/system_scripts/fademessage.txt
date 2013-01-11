@@ -1,0 +1,41 @@
+** fademessage.js **
+
+I made this script so you can easily make nice dialogs and stuff, it's still in beta, expect
+more later. This version is functional, it allows:
+- Gradient bg
+- Scroll effects
+- Line skip
+- Multiple lines
+- 1 Character fade (each character has it's own Alpha)
+- Textcolour changeable
+- Center screen draw
+- Auto size the textbox
+
+USING
+
+- EvaluateSystemScript("fademessage.js");
+	Add the script to your game
+
+- setWindowBehevior("RM2000.rfn", "menu.rws");
+	Change the font and the window style you want to use
+
+- setColours(c1, c2, c3, c4, tcol);
+	Change the colour of bg and text
+	c1 - c4 : the cornors of the bg
+	tcol : colour of the text(do not use alpha, you wont see a dif)
+
+- drawCenter(strings, speed, props);
+	Draw a dialog in the center of the screen
+	strings : the string array, if you use a normal string, you will
+		  get chinese dialog ^^
+	speed 	: speed in fps (5 = really slow, 10 = slow, 15 = med, 20 = normall, 100 = skip! duh)
+	props	: propeties
+			"ScrollUp" : Wrap the dialog to the above when done
+			"ScrollDown" : Duh
+			ps: more to come here!!!
+
+- drawMessage(x,y,strings,speed,prop);
+	Idem to drawCenter
+
+I am still working on a sphere site, but I guess it will be up in more then 2
+weeks. So for support, dragonumber7@hotmail.com

@@ -1,0 +1,84 @@
+RPG Spriteset File Format
+Chad Austin
+12.25.1999
+
+
+---- 128 byte header ----
+
+byte signature[4];   // Must be ".rss"
+word version;        // Must be 1 or 2 or 3
+word num_images;     // only valid if version = 1 or version = 3
+word frame_width;    //
+word frame_height;   //
+word num_directions; // only valid if version = 2 or version = 3
+word base_x1;
+word base_y1;
+word base_x2;
+word base_y2;
+byte reserved[106];
+
+
+== VERSION 1 ==
+
+---- Start spriteset data ----
+The spriteset is just a series of RGBA frames, each of which is frame_width *
+frame_height * 4 bytes long.
+
+Eight directions of eight frames each:
+north
+northeast
+east
+southeast
+south
+southwest
+west
+northwest
+
+
+== VERSION 2 ==
+
+There are num_direction directions stored in the file.  A direction is just a row of sprites.
+The first eight directions actually represent directions that the character can walk, in
+the following order:
+
+north
+northeast
+east
+southeast
+south
+southwest
+west
+northwest
+
+The rest of the directions can represent anything, including emotions or special movement such
+as jumping or running.
+
+---- direction header (64 bytes) ----
+word num_frames;
+byte reserved[62];
+
+---- frame header (32 bytes) ----
+word width;  // obsolete
+word height; // obsolete
+word delay;
+byte reserved[26];
+
+
+== VERSION 3 ==
+
+There are num_images images stored.  Each image is 4 * frame_width * frame_height bytes.
+Simple RGBA arrays, folks.  :)
+
+After the frames, num_directions 'directions' are stored.  Each direction is organized as
+follows:
+
+word num_frames;
+byte reserved[6];
+
+string name;  // see rmp.txt for description of strings
+
+After each direction, num_frames 'frames' are stored.  Each frame is organized as follows:
+
+word frame_index;  // index into frame array
+word delay;        // delay value (in map engine frames)
+byte reserved[4];

@@ -1,0 +1,25 @@
+= Index of files in this directory =
+
+All documentation directories have this file. It describes the
+contents of all files in the same directory so that they can be
+seen from a bird's-eye view.
+
+* api.txt - Sphere API (function) reference. Very useful. Used to be
+  doc_functions.txt; this is the preferred document.
+
+* ide_keyboard_shortcuts.txt - Common keyboard shortcuts to use in
+  the Sphere IDE. They increase productivity!
+
+* index.txt - This file.
+
+* keys.txt - Names of key code constants, usable by Sphere keyboard
+  functions, and in the engine.ini configuration.
+
+* network.txt - An IRC log, describing the basics of using the
+  powerful network functions of Sphere.
+
+* optimization.txt - Tips to make your Sphere JavaScript run faster.
+
+* tutorial.txt - Formerly sphere_tutorial.txt. An essential guide
+  from a blank workspace to a working game. Acts as an intro to
+  working with Sphere.

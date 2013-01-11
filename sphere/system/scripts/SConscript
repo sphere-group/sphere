@@ -1,0 +1,31 @@
+import os
+
+Import('base_env BUILD_DIR')
+
+base_env.Install(os.path.join(BUILD_DIR, 'system/scripts'), Split("""
+    animation.js
+    audio.js
+    circles.js
+    clock.js
+    colors.js
+    colorspace.js
+    convert.js
+    fademessage.js
+    graphics.js
+    input.js
+    intro.js
+    joysticks.js
+    layers.js
+    map_animation.js
+    math.js
+    menu.js
+    named_parameters.js
+    old_spriteset.js
+    oldsphere.js
+    playlist.js
+    screen.js
+    time.js
+    timed_animation.js
+    timer.js
+    wintro.js
+    """))
