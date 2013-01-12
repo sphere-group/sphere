@@ -7,7 +7,8 @@ Building Sphere
 To build Sphere visit the wiki: <site is temporarily down>
 
 You will need the third party msvc which can be found here:
-http://rpgmaker.net/media/content/users/6429/locker/thirdpartymsvc.zip
+Mirror 1: http://rpgmaker.net/media/content/users/6429/locker/thirdpartymsvc.zip
+Mirror 2: http://www.radnen.tengudev.com/thirdpartymsvc.zip
 
 Note: MSVC 2010 and up have been proven to work when building Sphere.
 
