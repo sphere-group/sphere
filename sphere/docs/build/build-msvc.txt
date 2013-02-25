@@ -1,0 +1,146 @@
+Building Sphere in Windows (MSVC++ 2005 Express Edition)
+--------
+
+Chad Austin (aegis@aegisknight.org)
+Spherical (http://www.spheredev.org/)
+2008.01.08 (Version 1.4)
+
+
+Note
+--------
+
+Precise steps with helpful screenshots are available at Spheriki:
+
+ http://www.spheredev.org/wiki/Compiling_Sphere
+
+
+Requirements
+--------
+
+Microsoft Visual C++ 2005 Express Edition
+Windows Platform SDK (the more recent the better)
+Third-party headers, libs, DLLs (see below)
+SCons
+
+
+Installing and setting up the PSDK
+--------
+
+By virtue of generosity, MSVC++ 2005 Express Edition isn't meant to
+support compiling Windows apps out of the box (boo hiss).
+
+The instructions here are courtesy of the following URL:
+ http://msdn.microsoft.com/vstudio/express/visualc/usingpsdk/
+
+Before or after setting the paths in the next section, you will need
+to edit corewin_express.vsprops. This can be found in C:\Program
+Files\Microsoft Visual Studio 8\VC\VCProjectDefaults\.
+
+Change this line:
+
+ AdditionalDependencies="kernel32.lib"
+
+to:
+
+ AdditionalDependencies="kernel32.lib user32.lib gdi32.lib
+ winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib
+ oleaut32.lib uuid.lib"
+
+That all goes on the one line.
+
+
+Preparing the build environment
+--------
+
+Open up MSVC++, and go to Tools > Options > Projects. This is where
+we set the essential paths, so try to get used to this funny little
+dialog box.
+
+Add the following under VC++ Directories > Executables
+
+<path to your Platform SDK>\Bin
+
+Add the following under VC++ Directories > Include
+
+<path to your Platform SDK>\Include
+<path to your Platform SDK>\Include\mfc
+<path to your Platform SDK>\Include\atl
+
+Add the following under VC++ Directories > Libraries
+
+<path to your Platform SDK>\Lib
+
+
+Getting the Source Code
+--------
+
+Using your favorite CVS client, download the sphere module from CVS.
+Instructions are at <https://sourceforge.net/cvs/?group_id=1551>.
+
+
+Getting Third-party Headers, Libraries, and DLLs
+--------
+
+Sphere depends on a lot of external code.  You can download them all
+individually, or get prebuilt libraries and headers for VC on the
+community website, Spheriki:
+
+ http://www.spheredev.org/files/third-party-msvc.zip
+
+After you have all of the headers and libraries, put them in
+SPHERE_ROOT/third-party-msvc.  The third-party-msvc directory should
+have two subdirectories inside of it: include and lib.
+
+
+Compiling
+--------
+
+Open sphere.sln, and compile away (F7). If you'd rather build from the
+command line (which has scripts to generate the installer), run the
+'scons' command inside of the sphere directory.
+
+
+Preparing Sphere for running
+--------
+
+You'll find your freshly-compiled version of Sphere in
+<base dir>\Sphere, along with the editor and configuration utility.
+
+Copy the DLLs from third-party-msvc\dll directly to
+<base dir>\Sphere directory, so they're in the same place
+as the EXE files.
+
+Create a blank <base dir>\Sphere\games directory.
+
+If a <base dir>\Sphere\startup directory does not exist, copy it from
+<base dir>\startup.
+
+If there is no <base dir>\Sphere\system, or it is empty, copy that
+too from <base dir>\system.
+
+Include the docs\ directory too, from <base dir>\docs.
+
+You may have to track down "msvcr71.dll" from within your system
+(use Windows Explorer's search capability), and copy it to the same
+place as where you put the other DLLs as well.
+
+
+Running Sphere
+--------
+
+Go into <base dir>\Sphere and double-click engine.exe for the Sphere
+engine, editor.exe for the IDE, or config.exe for the configuration
+utility.
+
+If they complain about missing DLLs, you probably forgot to copy in
+the DLLs from third-party-msvc\dll to the EXE folder.
+
+
+Getting help
+--------
+
+If you have problems, send me an e-mail (address at the top of the
+document). NB: Chad has passed the Sphere project onto Brian Robb
+(a.k.a. Flikky), but since he's not been around as of late, queries
+are best directed to the Spherical community
+(http://www.spheredev.org/). Just visit the forums.
