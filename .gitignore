@@ -160,3 +160,7 @@ pip-log.txt
 
 # Mac crap
 .DS_Store
+
+# CVS crap
+CVSROOT
+.cvsignore
