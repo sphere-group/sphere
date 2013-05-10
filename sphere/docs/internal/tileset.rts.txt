@@ -34,9 +34,11 @@ struct TILE_INFORMATION_BLOCK
   byte obsolete2_;
   byte blocked;       // 0 = no obstruction data, 1 = old obstruction data, 2 = new obstruction data
   word num_segments;
-  byte reserved[22];
+  word name_length;   // see the name below the header segment
+  byte reserved[20];
 end struct
 
+string name;          // strings are stored after the data block has name_length size
 
 ---- Obstruction data (OBSOLETE) ----
 
