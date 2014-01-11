@@ -1,4 +1,3 @@
-
 #ifdef _MSC_VER
 #pragma warning(disable : 4786)
 #endif
@@ -780,10 +779,13 @@ CScript::InitializeSphereConstants()
                       KEY_CONSTANT(JOYSTICK_AXIS_Y)
                       KEY_CONSTANT(JOYSTICK_AXIS_Z)
                       KEY_CONSTANT(JOYSTICK_AXIS_R)
-					  //KEY_CONSTANT(JOYSTICK_AXIS_U)
-					  //KEY_CONSTANT(JOYSTICK_AXIS_V)
-					  //KEY_CONSTANT(JOYSTICK_MAX_AXIS)
-
+                      
+                      #ifdef WIN32
+                        KEY_CONSTANT(JOYSTICK_AXIS_U)
+                        KEY_CONSTANT(JOYSTICK_AXIS_V)
+		        KEY_CONSTANT(JOYSTICK_MAX_AXIS)
+                      #endif
+                      
                       KEY_CONSTANT(PLAYER_1)
                       KEY_CONSTANT(PLAYER_2)
                       KEY_CONSTANT(PLAYER_3)
