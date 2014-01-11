@@ -182,7 +182,7 @@ bool IsConnected (NSOCKET socket) {
 
       /* switch out the port listener for a client handling socket */
       struct sockaddr_in client;
-      size_t size;
+      unsigned int size;
       int new_client = accept(socket->socket, (struct sockaddr *)&client, &size);
       if (new_client == -1) {
         PRINT_STANDARD_ERROR(IsConnected, accept);
@@ -205,7 +205,7 @@ bool IsConnected (NSOCKET socket) {
         close(socket->socket);
         socket->is_connected = false;
       }
-      
+
     } else if (sock_evs.revents & (POLLERR | POLLHUP)) {
       /* some sort of failure */
 

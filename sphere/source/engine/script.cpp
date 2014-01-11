@@ -1,4 +1,3 @@
-
 #ifdef _MSC_VER
 #pragma warning(disable : 4786)
 #endif
@@ -780,10 +779,13 @@ CScript::InitializeSphereConstants()
                       KEY_CONSTANT(JOYSTICK_AXIS_Y)
                       KEY_CONSTANT(JOYSTICK_AXIS_Z)
                       KEY_CONSTANT(JOYSTICK_AXIS_R)
-					  KEY_CONSTANT(JOYSTICK_AXIS_U)
-					  KEY_CONSTANT(JOYSTICK_AXIS_V)
-					  KEY_CONSTANT(JOYSTICK_MAX_AXIS)
-
+                      
+                      #ifdef WIN32
+                        KEY_CONSTANT(JOYSTICK_AXIS_U)
+                        KEY_CONSTANT(JOYSTICK_AXIS_V)
+		        KEY_CONSTANT(JOYSTICK_MAX_AXIS)
+                      #endif
+                      
                       KEY_CONSTANT(PLAYER_1)
                       KEY_CONSTANT(PLAYER_2)
                       KEY_CONSTANT(PLAYER_3)
@@ -1480,7 +1482,7 @@ sSpriteset* argSpriteset(JSContext* cx, jsval arg)
         return NULL;
     }
 
-    
+
     JSObject* directions_object = argArray(cx, directions_array);
     if (!directions_object || !JS_AddRoot(cx, &directions_object))
     {
@@ -2615,7 +2617,7 @@ end_func()
 ////////////////////////////////////////////////////////////////////////////////
 /**
     - Determines if two polygons are colliding
-      It returns 0 when there is no collision, a positive number if a vertex of A 
+      It returns 0 when there is no collision, a positive number if a vertex of A
       collides with B and a negative number is a vertex of B collides with A.
       1 and -1 is the first point in the array, and so on. Because the first element
       in an array is zero, you need to substract or add 1 to get the element number.
@@ -2627,7 +2629,7 @@ begin_func(PolygonCollision, 2)
 	int offsetAy = 0;
 	int offsetBx = 0;
 	int offsetBy = 0;
-	if (argc > 2) 
+	if (argc > 2)
 	{
 		offsetAx = argInt(cx, argv[2]);
 	}
@@ -5098,7 +5100,7 @@ for(unsigned int i=0; i<names.size(); i++) {
 */
 }
 
-return_object(arg_array); //*rval = OBJECT_TO_JSVAL(result); 
+return_object(arg_array); //*rval = OBJECT_TO_JSVAL(result);
 JS_RemoveRoot(cx, &arg_array);
 end_func()
 
@@ -5740,7 +5742,7 @@ end_func()
 ////////////////////////////////////////////////////////////////////////////////
 /**
     - gets the unitarian directional vector as a single number: x+(y<<2)
-      The directional vector is 0 when the person is not moving, use 
+      The directional vector is 0 when the person is not moving, use
       historical to retrieve the previous value
       Convert Vector to direction:
       function V2D(v){
@@ -5755,8 +5757,8 @@ end_func()
             case 5: return 'southeast'; break;
             default: return '';
         }
-      }      
-      Convert Vector to coordinates:    
+      }
+      Convert Vector to coordinates:
       function V2C(v){var y=(1+v>>2)&-1;return {x:v-(y<<2),y:y};}
 */
 begin_func(GetPersonVector, 2)
@@ -5823,7 +5825,7 @@ end_func()
       height - the height of the spriteset's current frame
       leader - the person that this person is following, or "" if no-one...
       destroy_with_map - if the person is destroyed with the map or not
-      obs_person - obstructed person index (-1 if not obstructed) 
+      obs_person - obstructed person index (-1 if not obstructed)
       Any other properties are free for you to fill with values
       e.g. var data = GetPersonData("Jimmy");
       var num_frames = data["num_frames"];
@@ -6773,7 +6775,7 @@ end_func()
 ////////////////////////////////////////////////////////////////////////////////
 /**
     - returns an Sfxr object. The parameters are optional and can be set later on.
-      bitrate, samplerate, soundvolume, wavetype, basefrequency, minfrequency, 
+      bitrate, samplerate, soundvolume, wavetype, basefrequency, minfrequency,
       frequencyslide, frequencyslidedelta, squareduty, squaredutysweep, vibratodepth,
       vibratospeed, attack, sustain, detay, release, filter, lowpassfiltercutoff,
       lowpassfiltercutoffsweep, filterresonance, highpassfiltercutoff, highpassfiltercutoffsweep,
@@ -7802,7 +7804,7 @@ if (maxsize < engine.compressBound2(ba->size) )
     {
         delete[] buffer;
         return_null();
-    } else 
+    } else
     {
         JSObject* array_object = CreateByteArrayObject(cx, outputsize, (byte *) buffer);
         delete[] buffer; // unsigned char* buffer = new unsigned char[maxsize];
@@ -7835,7 +7837,7 @@ if (argc > 1)
 if (maxsize < engine.compressBound2(ba->size) )
 {
     return_null();
-} else 
+} else
 {
 
     unsigned char* buffer = new unsigned char[maxsize];
@@ -10230,7 +10232,7 @@ CScript::CreateSpritesetObject(JSContext* cx, SSPRITESET* spriteset)
     JSObject* local_roots = JS_NewArrayObject(cx, 0, 0);
     if (!local_roots || !JS_AddRoot(cx, &local_roots))
         return NULL;
-    
+
     // CREATE SPRITESET OBJECT
     JSObject* object = JS_NewObject(cx, &clasp, NULL, NULL);
     if (!object)
@@ -11954,7 +11956,7 @@ end_method()
 /**
     - draws 'text' at x, y with the font.
       You can use octal notation to write characters that can not be written.
-      for example: \222 for right single quotation mark. Sphere Font is CP1252. 
+      for example: \222 for right single quotation mark. Sphere Font is CP1252.
 */
 begin_method(SS_FONT, ssFontDrawText, 3)
 if (This->ShouldRender())
@@ -13267,8 +13269,8 @@ if (object->surface->FindColor(aColor,x,y))
 
     return_object(a_obj);
 	JS_RemoveRoot(cx, &a_obj);
-} 
-else 
+}
+else
 {
 	return_null();
 }
