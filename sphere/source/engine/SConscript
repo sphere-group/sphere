@@ -4,7 +4,8 @@ import autocons
 Import('base_env BUILD_DIR COMPILER')
 
 env = base_env.Clone()
-base_env.Prepend(LIBS = ['z'])
+if (COMPILER.is_unix()):
+	base_env.Prepend(LIBS = ['z'])
 COMPILER.SetupSphereCommon(env)
 COMPILER.SetupAudiere(env)
 COMPILER.SetupCorona(env)
@@ -42,7 +43,8 @@ if (COMPILER.is_unix()):
 
 print "Using subsystem: " + md
 
-env.Append(LIBS = ['dl', 'js'])
+if (COMPILER.is_unix()):
+	env.Append(LIBS = ['dl', 'js'])
 
 engine = env.Program('engine', engine_sources)
 env.Install(BUILD_DIR, engine)
