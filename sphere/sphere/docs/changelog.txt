@@ -1,0 +1,1066 @@
+YYYY.MM.DD
+
+2009.04.04
+  - Added mask blendmodes for image blitting.
+
+2009.03.12
+  - Parent and child particle systems now first call the standard renderer
+    and then the 'on_render' callback function, if one has been previously set.
+    
+2009.03.08
+  - Changes to the particle system:
+      - Remapped descendants- and swarm-specific methods
+        to their appropriate names 'descendants' and 'swarm'.
+      - Added unique(), sort(), apply(), extract(), extractGroup(),
+        getGroup(), contains(), containsGroup() to 'descendants'
+        and renamed find() to get().
+      - Added the 'type' property, the constants PS_PARENT
+        and PS_CHILD and renamed the other particle system
+        constants appropriately.
+      - Particle systems are now initialized with full life, instead of
+        zero life, for convenience.
+      - Renderers now have the 'disabled' property, which is false by default
+        and can be set to true in order to disable the standard renderer,
+        e.g. to handle the rendering manually in an on_render callback.
+        Their setters also root now a previously set image object, so it
+        can be returned by the getter instead of always creating new image objects.
+        This also enables to access renderer.texture just like an ordinary image
+        object, as e.g. with 'renderer.texture.blit(x, y)'.
+      - Rewrote particle initializer's JSAPI implementation. It features now the
+        explicit setter and getter methods: getAgingParams(), setAgingParams(),
+        getPosParams(), setPosParams(), getVelParams() and setVelParams().        
+
+2009.02.26
+  - Added sfxr
+  - Added person base functions
+  - Added WindowStyle border functions
+  - Added Map background music functions
+  - Added CreateSoundEffect(byte_array)
+  - Updated libmng functions for animations
+  - New Zlib for Engine (not yet for Editor)
+
+2009.02.23
+  - Added the particle engine and additional image blitting
+    blend modes ADD, SUBTRACT and MULTIPLY
+
+2008.07.07
+  - Fixed a bug in the ExecuteTriggerScript() function, which caused
+    crashes with newer compilers than VC6.
+
+2008.07.05
+  - Fixed the bug, which didn't allow any calls to Sphere functions
+    from within a default map exit script if Exit() was called.
+  - Fixed a bug in the resolution expansion configuration of the 
+    software based video drivers.
+  - Tile animations, which do not loop, will now stop at the last
+    tile in the animation row, instead of the first tile in the tileset.
+  - Font and windowstyle dialogs in the editor now have correct
+    startup colors selected in the palette.
+
+2008.07.03
+  - Fixed the *_gl video drivers to transform images correctly
+    up to the given coordinates.
+  - It is now possible to change the base, as well as index
+    and delay of frames in spritesets from within scripts.
+
+2008.07.01
+  - Changed text controls in the editor to use Courier as the font
+    and changed the font size from 8 to 10.
+
+2008.06.29
+  - Fixed Linux network code: sockets correctly detect connections,
+    sockets with disconnected peers mark themselves as not connected.
+
+2008.06.26
+  - Added Rhuan's network code to the Mac and Linux subsystems.
+  - sound.getPosition() will no longer lock up the engine if
+    the sound is not seekable.
+
+2008.06.25
+  - Extended the player input configuration by adding
+    new configurable keys: Menu, A, B, X and Y.
+  - Player input configuration is now available for script
+    via GetPlayerKey(player, key)
+  - Fixed a bug in the color interpolation of gradient lines,
+    which caused flipped gradients on vertical and horizontal lines.
+  - Removed backface culling from sphere_gl, because it didn't
+    allow anymore for flipped images.
+    
+2008.06.23
+  - Added missing documentation for CreateSpriteset().
+
+2008.06.22
+  - Engine no longer crashes when a layer renderer is
+    set within a "on leave map" script.
+
+2008.06.18
+  - Fixed sound.pause() to pause MIDIs instead of stopping them.
+  - Made the 'repeat' parameter in sound.play(repeat) to be optional.
+    This allows for resuming the playback of a paused sound from it's 
+    current position if sound.play() is called without any parameters.
+    If 'repeat' is defined, the sound is set to the beginning and then played.
+  - Added: sound.reset(), sound.getRepeat() and sound.setRepeat(repeat)
+  - Added the new object SoundEffect with the following methods:
+    sound_effect.play(), sound_effect.stop(), sound_effect.getVolume(),
+    sound_effect.setVolume(), sound_effect.getPan(), sound_effect.setPan(),
+    sound_effect.getPitch() and sound_effect.setPitch()
+  - Added notes to some methods of the Sound object, which have no effect on MIDIs.
+
+2008.06.17
+  - Added multilanguage support to the Config tool.
+  - Added resolution compatibility mode (fullscreen)
+    to the software based drivers.
+  - Fixed the scaling filters in the software based
+    drivers to work correctly on NVIDIA graphics cards.
+
+2008.06.01
+  - Replaced the old and win-only Config tool with
+    a new one based on wxWidgets.
+
+2008.05.15
+  - Fixed the bug in the editor which displaced entities
+    after copying & pasting them.
+  - Added backface culling and line and polygon smoothing
+    (if "biliner filtering" is on) to the OpenGL drivers and
+    removed the sphere_bla_to_opengl_bla() functions
+    replacing them effectively with a one-time call to 
+    glTranslate*() at the beginning.
+  - Added missing documentation for file_object.close() to api.txt
+
+2008.04.27
+  - Added the Mac subsystem based on the Unix subsystem.
+
+2008.04.20
+  - Improved the surface blitting algorithm in the software
+    based video drivers. It is now much faster to blit surfaces.
+  - Removed the built-in video driver from the unix subsystem
+    and added sdl32 and sdl_gl as stand-alone video drivers.
+
+2008.04.03
+  - Added CreateDirectory(), RemoveDirectory, RemoveFile()
+    and Rename().
+  - It is now possible for OpenFile() and OpenRawFile()
+    to access /common.
+
+2008.03.24
+  - Fixed the tiled-screen issue in the sphere_gl video driver,
+    which occured with the "Bilinear Filtering" option on,
+    and added proper viewport initialization.
+  - For sphere_gl and standard8 it's now possible to toggle
+    from/to fullscreen as well.
+  - Fixed a bug in the standard16 and standard32 video drivers,
+    where the clipping rectangle was not initialized properly
+    after executing a game with a different resolution.
+
+2008.03.16
+  - Fixed a bug in the video drivers standard16 and standard32,
+    which caused the engine to crash if e.g. spritesets were 
+    changed frequently.
+
+2008.03.15
+  - Lots of changes to editor's person, trigger, entity list
+    and map properties dialogs, including bugfixes, rearranging
+    controls, changing the dialogs to be resizeable, etc.
+
+2008.03.14
+  - Fixed editor bug, where a tile image kept being unchanged 
+    after drawing on it, if "show tile obstructions" was active.
+  - The person edit dialog in the editor will now keep the
+    subdirectory in the filename for the spriteset.
+  - Entity copy&pasting code uses now a built-in entity clipboard,
+    instead of the Windows clipboard (no crashes related to this anymore).
+  - Pasting a person from the clipboard will now generate a unique
+    name for it, based on the spriteset and on the existing persons names.
+
+2008.03.01
+  - Added the possibility to export/replace spriteset images 
+    palette to/from image in the spriteset editor.
+  - Exporting the spriteset itself will now use the REPLACE 
+    blend mode, which ensures a 1:1 copy.
+  - Clicking on a already selected frame image in the spriteset
+    images palette won't make the spriteset dirty anymore.
+
+2008.02.28
+  - Fixed the bug where entities, who were ignoring entity obstructions
+    did obstruct other entities.
+
+2008.02.27
+  - The audio driver combobox in Config.exe will now initialize
+    with the current audio driver selected, instead of always
+    "directsound".
+  - Fixed the bug, where bounded keys didn't work, if e.g. a function
+    like IsKeyPressed() was called within an update script.
+  - The standard movement will now also be disabled for joysticks
+    if the appropriate key has been bound within a script.
+
+2008.02.26
+  - Non-fullscreen Linux Sphere engine window will now start at the
+    center of the desktop.
+
+2008.02.25
+  - Entities/Zones will now remain on their original layers 
+    after inserting a new layer.
+  - All Entities/Zones on a layer will now be deleted if the layer
+    has been deleted, but the entry point will go down to the base layer.
+  - Placing the mouse cursor on the entry point will now show it's layer
+    in the status bar.
+
+2008.02.24
+  - Merged video drivers scale16/32 with standard16/32.
+  - For standard16 its now possible to toggle from/to fullscreen.
+  - Removed video drivers scale16/32.
+
+2008.02.22
+  - Added missing documentation for Sound.clone(),
+    GetTalkActivationButton() and SetTalkActivationButton().
+  - Fixed the Move Entity code in the editor.
+  - Changed Talk Activation code to accept all directions
+    which include a needed substring like "north".
+  - Added GetPersonOffsetX(name), SetPersonOffsetX(name, x), 
+    GetPersonOffsetY(name) and SetPersonOffsetY(name, y).
+
+2008.02.07
+  - Added video drivers scale16, scale32 to replace interpolate*.
+  - Optimized video drivers standard8, standard16, standard32.
+  - Removed video drivers harddraw, sphere_dx8, greyscale,
+    interpolate16, interpolate32.
+
+2008.01.19
+  - Sphere 1.4 released.
+
+2008.01.12
+  - New blend modes added to the image editor.
+  - Drawing can now begin/occur/end outside the image region.
+  - Holding CTRL in the image editor changes the starting point of
+    drawing.
+  - Replaced map and image editor toolbar icons and tooltips with
+    clearer ones.
+  - Entities can now be copied and pasted. The toolbar buttons for
+    these have been moved into the map menu.
+  - Hovering the mouse over a person shows its name/layer/spriteset
+    in the status bar, showing current layer otherwise.
+  - Moved map editor zooming from the context menu to toolbar buttons.
+  - Map editor grid function covers the full map rather than just
+    the bottom layer.
+  - Added the fill layer button to the map toolbar and removed the
+    "Fill" menu item from the map menu.
+
+2008.01.08
+  - GetMouseX/Y() in a loop without other input polling no longer lags.
+
+2008.01.03
+  - Applied Kyuu's input patch; removing GetJoystickX(), GetJoystickY();
+    adding GetToggleState(), GetJoystickAxis(), GetNumJoystickAxes(),
+    GetMouseWheelEvent(), GetNumMouseWheelEvents().
+  - Joystick support enhanced to support up to 16 joysticks, 32 buttons
+    each and 4 axes each.
+  - Mouse wheel support added.
+  - KEY_CAPSLOCK, KEY_NUMLOCK, KEY_SCROLLOCK (yes, two Ls) key constants
+    added. They can be treated like normal keys, but can also have their
+    toggle state detected.
+
+2007.12.11
+  - Script editor replace hot-key changed from Ctrl+R to Ctrl+H
+    to match the same binding in other applications.
+
+2007.12.10
+  - Script editor autocomplete updated to include missing functions
+    and key code constants.
+  - Removed doc_functions.txt, made obsolete by development/api.txt.
+
+2007.12.09
+  - Image editor no longer crashes when attempting to draw circles
+    and ellipses.
+  - Drawing circles and ellipses is now affected by the selection.
+
+2007.12.06
+  - Switched mismatched map fill and fill rectangle toolbar icons.
+  - Map editor now detects when fill and fill rectangle change the
+    map, prompting the user to save before closing.
+  - Fixed F5 so that it refreshes the project window like it should.
+
+2007.12.05
+  - Made map background music continue between maps if the file
+    path is the same.
+
+2007.12.02
+  - Fixed script editor Replace All bug, where a replace string
+    containing an occurrence of the search string would be
+    replaced multiple times.
+
+2007.11.17
+  - Added missing documentation for Surface.gradientLine(),
+    Surface.gradientRectangle() and Surface.gradientTriangle().
+  - Made Kyuu's new primitive methods available to surfaces.
+  - Added Image's transformation and masking blit functions available
+    to the Surface object.
+  - The following now return the surface, so they can be chained:
+    Surface.resize(), Surface.rescale(), Surface.rotate().
+  - Added new blend modes for Surface.setBlendMode():
+    RGB_ONLY, ALPHA_ONLY, ADD, SUBTRACT, MULTIPLY, AVERAGE, INVERT.
+
+2007.11.06
+  - Added wordWrapString(string, width) method to Font object.
+
+2007.11.04
+  - Person obstruction checking now checks for persons before
+    obstructions, so FindObstructingPerson() will now detect
+    persons within obstructions.
+  - Increased JavaScript runtime memory from 256KB to 1MB.
+
+2007.10.28
+  - Applied Kyuu's GetDirectoryList() patch, adding said function
+    to the Sphere API. Works like GetFileList(), but lists
+    directories also.
+
+2007.10.22
+  - Applied Kyuu's primitives patch, adding: CreatePoint2D,
+    PointSeries(), LineSeries(), BezierCurve(), Polygon(),
+    OutlinedRectangle(), OutlinedEllipse(), FilledEllipse(),
+    OutlinedCircle(), FilledCircle(), GradientCircle(),
+    OutlinedComplex(), FilledComplex(), GradientComplex().
+
+2007.01.19
+  - Linux engine will now create a sensible default engine.ini if
+    one is not found. In particular, player keys are preconfigured.
+
+2007.01.04
+  - Player 2's default controls are now WASD instead of WASF.
+  - named_parameters.js system script added.
+
+2006.12.21
+  - Fixed: switching between very high and average frame rates using
+    SetMapEngineFrameRate() and SetFrameRate() caused engine lock-up.
+  - circles.js fixed to not throw exceptions for 0 radius arguments.
+  - Sphere 1.13 released.
+
+2006.09.03
+  - Online help links updated and improved, plus link to local
+    tutorial added.
+  - More redundant directories cleaned up from source tree.
+  - All warnings officially cleaned up in MSVC 8.0! Yay!
+  - Linux SDL scaled rendering slightly optimised.
+  - Linux config options now documented.
+  - Sphere 1.12 officially released.
+  - Fixed bug: extra forward slash added to game directories returned
+    by GetGameList() under Linux.
+
+2006.08.27
+  - docs/ directory reorganised. Compile/build instructions now in
+    docs/build/, and have been updated.
+
+2006.08.26
+  - Sphere source now compiles out of the box on Windows without
+    hacking. Changes yet to be reflected on Sourceforge. Thanks rjt
+    and auulia/L_O_J!
+
+2006.08.19
+  - Support for 16-bit SDL video output.
+  - Linux: Added [Video] Driver sdl16 and sdl32 colour depth options.
+  - Optimised SDL scalers.
+  - Adapted default player key config to US104-Key keyboards.
+  - Changed startup game to tunginobi's competition entry.
+  - MSVC++ project file updated to version 8.0 (2005 Express Edition).
+
+2006.08.18
+  - Sphere source now compiles out of the box on Linux without
+    hacking. Changes yet to be reflected on Sourceforge. (tunginobi)
+  - Updated source to reflect new location of SpiderMonkey JS headers.
+    You can now use the most recent SpiderMonkey dev libs! :)
+  - Fixed keyboard input bugs under Linux.
+  - Implemented scale2x and scale3x [Video] Render options for Linux.
+  - F10 to switch screen res in Linux finally toggles like it should.
+  - Games obtained from GetGameList() under Linux now no longer have
+    trailing forward slash, to conform with Windows version.
+  - wxEditor removed from MSVC++ workspace (was a steaming pile
+    anyway).
+
+2005.08.12
+  - Added support for numpad keys... KEY_NUM_0 to KEY_NUM_9
+
+2005.08.08
+  - RequireScript/RequireSystemScript now work with RestartGame()
+  - Added Tileset->Move->Other...
+
+2005.07.26
+  - Made Line() more accurate.
+  - Added Tileset->View->Grid
+  - Made the file dialog in browse for background music / tilesets
+    on map properties dialog start in the sounds/maps folder.
+  - Made deleting zones that are inside of other zones better by deleting based
+    on zone area rather than the order the zones were placed on the map.
+    (i.e. smallest zone gets removed...)
+
+2005.05.22
+  - Added 3d support to sphere_gl.dll and 3d map blitting.
+
+2005.05.08
+  - Fix the F10-and-autodetect-bug
+
+2005.05.07
+  - File-Save now defaults into <project_directory>/<file type>/ if a project is open.
+
+2005.05.06
+  - File->Open->Project now looks for game.sgm even if you select a different file...
+  - Project->Run Game will now show a message box if you have no game script set.
+  - Project->Package Game now mandates that game.sgm and the game script
+    must be included in the package you create. 
+
+2005.01.12
+  - Added ~/ and /common/ for things like:
+    LoadImage("~/maps/test.png");
+    or:
+    ChangeMap("/common/Flikky/maps/test.rmp");
+
+2004.12.23
+  - Fixed Line(0, 0, 0, 0, CreateColor(255, 255, 255)); crashes bug.
+
+2004.12.22
+  - Fixed GetPersonData bug.
+  - sound.setVolume(vol) now clamps vol in the range 0 to 255
+
+2004.12.20
+  - A person who has a base obstruction of only one pixel can now be blocked by tiles.
+    (Only draw vertical or horizontal obstruction lines on the tiles...
+     If you draw diagonal lines, Mr. pixel will be able to pass through obstructions...)
+  - Made ping work in the irc client... :)
+
+2004.12.05
+  - Binding the talk key now disables talking to people.
+
+2004.11.21
+  - Added IsPersonVisible(person) and SetPersonVisible(person, visible)
+
+2004.09.25
+  - GetPersonList now does not return unnamed persons (like doc_functions said it would)
+
+2004.09.02
+  - Added CTRL + G shortcut for Goto Line
+
+2004.08.28
+  - Now switching from one window to another window while maximized
+    will not show a normal window for a moment before showing
+    the maximized window
+  - The script window's List window will now show itself when it's been
+    covered up by making another window active and then going back to it.
+
+2004.07.??
+  - Added MIDI support for the engine/editor
+  - Started to work on CD player support for the editor
+  - At some point I added an irc client that still isn't that useful yet.
+
+2004.07.02
+  - It is now safe to call UpdateMapEngine from an update script
+   (or CallPersonScript or CallDefaultMapScript)
+
+2004.05.18
+  - Fixed package game image loading problems
+  - You can now drag and drop spk files onto the engine.exe to play them
+  - Added more details about file save errors
+
+2004.05.16
+  - Fixed bug that made the engine crash when creating
+    people in a person's on generate commands script
+  - added -version and -help commands to engine.exe
+
+2004.05.12
+  - Added Tools->Javascript Console and Tools->Images To MNG...
+
+2004.05.06
+  - Added GetLayerAngle/SetLayerAngle (thanks to K9)
+  - Added code-folding to the script editor
+    (Use CTRL + SHIFT + Left Click on the +/-'s in the margin to show/hide all folds
+  - Started to attempt adding a spell checker
+  - Made the script's list sidebar hideable
+
+2004.04.14
+  - Moved statusbar text like map tile x, y and line/position into
+    a seperate pane on the statusbar
+  - Added Image/Font Change Borders for adding/removing pixels to the sides of images
+
+2004.04.07
+  - Added a clipboard history pane for scripts
+  - Added a line sort tool for scripts
+
+2004.03.24
+  - Added autocomplete list to the script editor
+  - Added drag and drop support to sounds in the editor to make playlists
+
+2004.03.09
+  - You can now change the pitch/pan of a sound in the editor
+  - You can now change the position of a sound in the editor
+    (if the sound is seekable, try it with an ogg file)
+  - added sound.getPosition(), sound.setPosition(pos), sound.getLength()
+    and sound.isSeekable() to the engine
+
+2004.03.06
+  - Abort can now be done like Abort("Some error") or Abort("Some message\n");
+    The \n on the end means no file/line info is drawn to the screen
+  - Added File->Options->General File Types page
+    where there's a Open Unknown File Types As Text option
+  - Added AttachPlayerInput/DetachPlayerInput
+
+2004.03.03
+  - Added surface.gradientLine surface.gradientRectangle and surface.gradientTriangle functions
+  - GradientLine now draws the colors in the correct order in standard32/16/8 etc
+  - Added Get/SetPersonIgnoreList for telling a certain person to ignore certain other persons
+
+2004.02.29
+  - Added Get/SetPersonData
+    (useful for finding out the number of frames in the person's current direction)
+    and storing various data about a person.
+
+2004.02.27
+  - Added keyboard tile/image pixel editing keys (Up/Down/Left/Right space for move/place pixel)
+
+2004.02.25
+  - Added Get/SetTileSurface
+  - if there's only one game in the games directory, execute that upon startup
+    (so if you want to distibute your game with sphere, you can just not put any other games there)
+  - Added SetLayerScaleFactorX/Y functions
+
+2004.02.16
+  - Fix Import Spritesets from RM2K Charset (it was missing the last frame of each direction)
+  
+2004.02.11
+  - Zoom in/out shortcuts CTRL and + for zoom in and CTRL and - for zoom out
+  - You can now paste into the main window and
+    it'll create a document based on the clipboard type  
+  - The script editor now highlight's good and bad braces (green for good, red for bad)
+    If a brace is red, your script has a problem.
+  - Shift + left click selects the current color in the image editor
+
+2004.02.06
+  - Added Redo to image editor
+  - Added an options dialog
+
+2004.02.02
+  - Font preview palette added
+  - Added preview to imageview's custom filter dialog
+  - Added Map->Edit Entities to allow you to edit multiple entities at once
+
+2004.01.30
+  - You can now select multiple tiles in the tileset palette,
+  and edit them as one single image in the tileset tab.
+
+2004.01.27
+  - Added tabbed windows
+
+2004.01.17
+  - Added a COMMAND_ANIMATE person command
+  - Made rawfile_object.write produce a nicer error message if the rawfile wasn't writeable
+
+2004.01.07
+  - Added a multi-tile tool, just select the tiles you want to place by holding down the
+    left mouse button in the Tiles window and drag until you have what you want to place on the map
+
+2003.12.28
+  - Made Sound player in editor better (it now requests an audio-device if needed)
+  - Made "Package Game!" show a percentage complete message in the status bar
+
+2003.12.25
+  - Made Project View support multiple folders e.g. maps/towns/freddys.rmp and such
+    (Currently this breaks Package Game (subfolders wont be included within the package)
+    You also have to make the folders within explorer,
+    I don't think this is that big of a problem though.
+
+2003.12.24
+  - Replaced Image/Map Tools palette with Image/Map toolbars
+  - Made repeat command have a tick next to it when repeating
+  - Added shortkey key combos to the menu's
+
+2003.12.14
+  - Added Import Direction From Animation and Export Direction To Animation
+
+2003.12.09
+  - Made Resample better (or more correct) - gau_veldt
+  - Added Resample Spriteset
+
+2003.08.31
+  - Added shortcuts for Copy and Paste in ImageView and SpritesetView - Tim Enderling
+
+2003.08.20
+  - Palettes can be dockable now - Tim Enderling
+  - Added File->Browse
+
+2003.08.14
+  - Added a Spriteset Animation pallete
+  (so you can preview what the spriteset's animation will look like) - Tim Enderling
+
+2003.08.11
+  - SetLayerAlpha/GetLayerAlpha became SetLayerMask/GetLayerMask
+    (Just as fast as LayerAlpha's, but can do per layer color tinting much like ApplyColorMask)
+  - Added a freehand selection tool for the image editor (doesn't fully work yet)
+
+2003.07.05
+  - Added move entity maptool
+  - You can now paste images from the clipboard onto the map using the Paste Area tool.
+
+2003.07.03
+  - Don't allow Image->View At Original Size when image is maximized...
+  - wxeditor now uses wxNotebook (and is now known to compile in linux using wxGTK-2.4.1)
+  - copy map tool now also copies the map as an image too
+  - Added File->Import->RM2K charset to spritesets...
+  - Added File->Import->RM2K chipset to tileset.
+  - Added Custom Filters for images (currently you can't define your own though)
+
+2003.07.31
+  - MapView "Fill Area" became "Fill Rectanglar Area"
+  - And added a "Fill Area" which behaves like ImageView's "Fill Area" but for tiles.
+  - Made clicking on the spriteset images palette only
+    change the spriteset indexes if you were viewing the Frames.
+  - Added the ability to reorder the tileset by moving tiles back or forward :)
+  - Added Image->Rotate (so you can freely rotate images in the editor)
+  - Made Image->Rotate, Image->Resize, Image->Rescale, Image->Rescale undo-able
+  - Errors inside a person's OnCreate script were crashing the engine, fixed.
+  - Made Copy Map Area tool more reliable
+  - Fix ImageView Fill bug when using ALPHA/RGB ONLY blend modes
+  
+2003.07.23
+  - Fix linux input bug (now BindKey works :))
+
+2003.07.20
+  - Added ability to change layer in person dialog via dropdown list
+  - Adding View->Persons As->Icons, Mini-images, Images to mapview
+
+2003.07.19
+  - Added GetTileName(tile_index)
+  - Updated editor for janusfury's windowstyle changes
+  - Spritesets are now validated when loaded in the editor
+
+2003.07.17
+  - Windowstyle changes (edge offsets, more background modes) - janusfury
+
+2003.07.12
+  - Added GetLayerIndex(name) to layers.js
+
+2003.07.07
+  - Added BindJoystickButton/UnbindJoystickButton
+  - No longer allow things like LoadSound('music.ogg', [false]) or SetPersonX('Bob', new Object())...
+
+
+2003.07.06
+  - Made QueuePersonScript actually abort upon errors
+    and not fail if you destroy the person within the script
+
+2003.06.30
+  - spriteset.clone() added.
+  - better filename/path checking
+  
+2003.06.29
+  - extended ASCII characters support in fonts
+
+2003.06.??
+  - SetPersonSpriteset added.
+
+2003.06.17
+  - Made the editor's image renderer faster
+  - Added surface.applyLookup()
+
+2003.06.14
+  - Added GetMapEngine().save(filename)
+
+2003.06.13
+  - made AttachInput work with the joystick aswell as the keyboard
+
+2003.06.11
+  - fixed bug where maps smaller than the screen would repeat themselves
+  - added option for repeating maps
+
+2003.06.10
+  - added flatten all visible layers to the editor
+
+2003.06.08
+  - Flik added
+    spriteset.filename
+    spriteset.save(filename)
+    RestartGame()
+  - Gau added
+    HashByteArray(byte_array)
+    HashFromFile(filename)
+
+2003.05.14
+  - adding drawText/drawZoomedText/drawTextBox surface methods
+  - added surface.save(filename)
+
+2003.05.12
+  - adding support for joysticks in linux/unix
+
+2003.05.11
+  - engine title now says the game name that you're playing instead of "Sphere"
+
+2003.05.06
+  - added ability to view tile obstructions from within editor
+  - added font.getColorMask(), windowstyle.setColorMask(color) and windowstyle.getColorMask()
+
+2003.05.04
+  - fixes so that the SDL subsystem sort of compiles
+  - fixed SetTileImage blend-mode bug
+
+2003.05.01
+  - added a linux doc for compiling sphere on linux
+  - fixes so scons compiles in linux
+  
+2003.04.25
+  - fixed MapView->View Grid so it takes into account zoom factors
+  - fixed bug where map editor would crash if you used "Select Tile" on out of range tiles
+
+2003.04.21
+  - added playlist system script
+  - added more menu items to the Edit Range menu in tile-view and spriteset-view
+  - changed version number to 1.1
+
+2003.04.17
+  - added SetPersonAngle and GetPersonAngle
+  
+2003.04.16
+  - added GetPersonBase (cheap alternative to GetPersonSpriteset(name).base)
+
+2003.03.17
+  - added surface_object.triangle(x1, y1, x2, y2, x3, y3, color)
+
+2003.03.10
+  - rearranged imageview paste menu items into a paste submenu
+  - added paste->Into Selection
+  - added SetDefaultMapScript and CallDefaultMapScript
+
+2003.03.08
+  - added a selection tool to the image editor
+  - Fill->RGB/Alpha/Both, Replace->RGB/Alpha and Scale Alpha all work within the selection now
+  - added an ellipse tool
+
+2003.03.07
+  - added a adjust brightness to the image editor
+
+2003.03.06
+  - added a resample image to the image editor
+  - added an "other" slide menu option (so you can specify how much to slide by)
+  - triggers/persons and zones are now also slided
+
+2003.02.23
+  - fixed ExecuteZones so that it reported errors if there no zones to execute
+
+2003.02.22
+  - made tileset view->zoom simplier and made it update the scrollbar when zooming
+
+2003.02.20
+  - added CallMapScript(SCRIPT)
+  - clarified documentation for QueuePersonCommand
+  - it now just does nothing when you resize images/fonts/tile sizes
+    to zero width or height (instead of crashing)
+
+2003.02.18
+  - show the version number in the engine and editor windows as well
+    as the start menu
+  - integrated SDHawk's startup game
+  - include all files in packages, including files without dots in
+    their name
+
+2003.02.17
+  - you can no longer add zones that have a width and height of zero
+
+2003.02.11
+  - added help menu to take you to the sphere.sf.net FAQ
+  - removed the reference to MIDI files from the editor...
+  (you can't add them to your projects, because they are unsupported)
+
+2003.02.09
+  - removed "Alternate DirectBlit method" from sphere_gl's
+    configuration, since it is never used.
+
+2003.02.07
+  - fixed a stack overflow bug when using the fill tool on large images
+  - removed the options dialog box from the editor
+  - fix trigger activation so you can activate a trigger more than
+    once on a map
+  - make rawfile.read return a ByteArray object
+  - redraw the map after ResizeAllLayers
+  - when resizing or rescaling the tileset, move entities, the
+    start point, and zones appropriately as well
+  - changed the Paste Area tool's tooltip to "Paste Area" instead of
+    "Paste"
+  - clarified documentation for ExitMapEngine()
+  - added a 1000 millisecond delay before error messages go away
+  - when zone scripts fail, the map engine stops (just like triggers
+    and person scripts)
+  - calling Exit() in a bound script or person script or trigger
+    (etc.) no longer gives an error
+  - added Eric Duvic's circles.js system script
+  - made Clock.getTime() return an array if you pass true to it.
+    (August Bigelow)
+
+2003.02.05
+  - fixed GrabImage crash bug in standard16 and interpolate16
+  - fixed: GrabImage in sphere_gl grabbed the wrong pixels (and
+    inverted them too)
+
+2003.02.04
+  - fixed bug where phantom buttons would appear in tool palettes while
+    resizing them
+  - fixed bug where drawing gradient window styles in sphere_gl would
+    leave a gap along the edge of the center
+  - fixed bug where drawing a gradient rectangle before drawing any
+    images would cause the gradient to not show up
+  - open sounds in the editor as a stream so huge files don't take
+    forever to load
+  - moving between two adjacent triggers now activates the new one
+    (this may be a regression from when I fixed the trigger detection
+    to be pixel-perfect)
+  - added IsLayerReflective and SetLayerReflective (Brian Robb)
+  - fix GetCurrentMap() in map entry scripts
+  - don't crash when loading a corrupt spriteset
+  - added file_object.flush()
+  - added links to web sites and documentation from the editor's help menu
+  - beta 3 released
+
+2003.01.29
+  - make ExecuteGame work no matter where the game calling it is
+    located on the filesystem
+  - fix bug where OpenRawFile('blah', true) wouldn't actually create
+    the file
+  - Added new functions to joysticks.js system script and improved old
+    functions' robustness (Brian Robb)
+
+2003.01.28
+  - added Flik's joysticks.js system script
+  - fixed the "person doesn't exist inside of 'on create' script" bug
+
+2003.01.26
+  - Sphere 1.0 beta 2 released.
+
+2003.01.25
+  - upgraded JS engine to 1.5 RC 5, which should improve framerates
+    and fix a few crashes.
+  - improved GetGameList() so that it returns author and description
+    information as well
+  - the Game Settings dialog box now has author and description
+    information
+  - you no longer need to explicitly set the game script.  The first
+    script added to the project is automatically set as the game script.
+
+2003.01.24
+  - added AreZonesAt, ExecuteZones, ExecuteZoneScript, GetZoneX/Y,
+    GetZoneWidth/Height, GetNumZones (Brian Robb)
+  - made the Run Sphere button in the editor work no matter what
+    project is open.  now you can open a project file anywhere on your
+    hard drive and run the game with the lightning bolt.
+
+2003.01.23
+  - added Get/SetTileDelay and Get/SetNextAnimatedTile (Brian Robb)
+
+2003.01.22
+  - various fixes to the new SCons build system
+  - pruned source tree, getting rid of many obsolete directories and
+    files
+  - made build system convert text files from UNIX to DOS format when
+    installing them
+  - added an installer, which registers file types with Windows
+    (double-clicking on packages, finally!)
+  - updated icons to DRosen's new ones
+  - bumped version number to 1.0 beta 1 (beta release!)
+  - added GetTileImage() and SetTileImage() (BrianRobb)
+  - fixed a ton of bugs in the spriteset editor
+  - made line numbers count from 1 instead of 0 (Brian Robb)
+
+2003.01.21
+  - fixed error message in GetPersonList() and made person name error
+    checking more compact (Brian Robb)
+  - reverted convert.js to be compatible with 0.97 games (Brian Robb)
+  - support building with VC6 and SCons in Cygwin (replacing the old
+    DevStudio build environment)
+
+2003.01.17
+  - changed OpenRawFile to take an optional writeable parameter,
+    defaults to false for compatibility with old games (Brian Robb)
+
+2003.01.16
+  - added raw_file.write() (Brian Robb)
+
+2003.01.15
+  - changing the script font remembers the font size (Brian Robb)
+  - added Get/SetLayerAlpha to the docs (Brian Robb)
+  - added GetLayerName() so you can refer to layers by name (Brian Robb)
+  - added GetObstructingTile/Person(name,x,y) to the map engine (Brian Robb)
+
+2003.01.14
+  - added more script editor options (change font, tab size, toggle
+    highlighting) (Brian Robb)
+  - added RequireScript() and RequireSystemScript() (Brian Robb)
+  - added spriteset color replacer (Brian Robb)
+  - added layerview -> export all visible layers as image (Brian Robb)
+  - added Get/SetMapEngineFrameRate() (Brian Robb)
+  - added Ignore{Person,Tile}Obstructions() and
+    IsIgnoring{Person,Tile}Obstructions() (Brian Robb)
+  - fixed bug where it was possible to undo after first opening a
+    script (Brian Robb)
+  - fixed bug where it was possible to set a frame rate of 0 using
+    MapEngine(map, 0) (Brian Robb)
+  - added line numbers in script dialog (Brian Robb)
+
+2003.01.13
+  - slightly tweaked trigger locations so you cannot slip between two
+    adjacent ones
+  - cannot delete a tile if there is only one left (Brian Robb)
+  - optionally prune tileset when using Import Image To Map (Brian Robb)
+  - added map -> slide -> up/right/down/left (doesn't move entities though)
+    (Brian Robb)
+  - added layer view -> slide -> up/right/down/left (Brian Robb)
+  - replace color with new color in tileset range (Brian Robb)
+  - layers are no longer reflective by default (Brian Robb)
+  - Change Font option in the script editor (Brian Robb)
+
+2003.01.12
+  - add support for exporting spritesets as images
+  - add support for stretched window style backgrounds
+  - add a drawZoomedFrame method to animation objects
+  - fix SetFrameRate(0)
+  - add keyboard shortcuts to the font editor so you can press a
+    letter and jump to that character.  you can also use arrow keys.
+  - added left and right arrow keyboard shortcuts to the map/tileset
+    editor.
+  - added keyboard shortcuts for some of the obstruction things
+  - added ability to paste RGB or alpha into image editor (Brian Robb)
+  - added GetCurrentMap() function (Brian Robb)
+  - added an option for drawing a grid in the image editor
+  - removed BlendPaste and changed Negative Image so it can choose
+    between RGB/Alpha/Both
+  - added GetTalkDistance() and GetTalkActivationKey() (Brian Robb)
+  - added a menu option in the map editor to lock the layers in place
+    so you don't accidentally drag them around (Brian Robb)
+  - added support for joysticks
+  - added IsTriggerAt() and ExecuteTrigger() (Brian Robb)
+
+2003.01.11
+  - display the Corona and Audiere version numbers in Help | About.
+    Also update copyright to 2003
+  - partially fix resource leak when switching between editor
+    windows.  this should alleviate a few random editor crashes.
+  - document alt-f4 in keys.txt
+  - added documentation that says you shouldn't use SetFrameRate() at
+    the same time as the map engine
+  - added NegativeImage and Solarize to image editor (Brian Robb)
+  - added a GetVersion() function that returns the current version as
+    a floating point number
+  - added some documentation for packages
+  - added a surface.replaceColor method
+
+2003.01.09
+  - fix bug where Sphere would assign "north" to person entities that
+    didn't even have a "north" direction.
+  - make trigger location detection more reliable by checking one
+    extra pixel to the left and one up so people can't slip between
+    two adjacent triggers.
+  - fix bug where switching from larger map to smaller map makes
+    Sphere think smaller map is bigger than it really is
+  - when inserting person entities into a map, put them one more pixel
+    up and one more pixel left so they are aligned with tiles.
+  - animate obstructions with tiles
+  - ExecuteGame() changes so drivers don't keep images around
+    after the driver has been destroyed.  this prevents sphere_gl
+    texture corruption.
+  - fix a crash bug in the FLIC animation code. prevents some crashes
+    from invalid FLIC animation files.
+  - fix a crash bug in the MNG animation code
+  - fix memory leak in DestroyPerson()
+  - don't allow setPixel() or getPixel() to access pixels outside of
+    the surface
+  - standard32: don't crash when creating a surface from an image with
+    an alpha of 0
+
+2003.01.08
+  - sphere_gl: don't put a border around the window when running
+    fullscreen
+  - sphere_gl: fix GrabImage in sphere_gl
+
+2003.01.06
+  - fix a horrible invalid memory usage bug in config.exe
+
+2003.01.05
+  - added GetTileWidth and GetTileHeight to the docs
+  - added ReplaceTilesOnLayer function
+  - don't allow SetFrameRate() to take an fps less than 1
+
+2002.12.29
+  - Got Sphere to build in Cygwin with SCons (100% free software!)
+
+2002.12.28
+  - removed GetCurrentMap() from documentation, because it doesn't
+    actually exist
+  - fixed animation_object's width and height documentation
+  - added some documentation for animation_object's getNumFrames()
+    method
+  - documented system keypresses (F1 = toggle framerate throttle in
+    map engine, F11 = show fps, F12 = take screenshot)
+
+2002.12.24
+  - Fixed clipping in ApplyColorFX() (Lyell Embery)
+  - Bug fix:  MapToScreenX/Y() and ScreenToMapX/Y() were doing
+    something other than converting from map to screen coordinates
+    (and vice versa) (Lyell Embery)
+
+2002.12.23
+  - added ColorMatrix object and applyColorFX4 method to surface
+    objects (Lyell Embery)
+
+2002.12.21
+  - added ApplyColorFX() method to surface objects (Lyell Embery)
+  - added Flik's colorspace conversion system script
+  - added Flik's math.js system script
+
+2002.12.12
+  - added SetPersonFrameRevert(), which allows a person to revert to
+    the first frame of an animation after a given amount of frames
+    (Lyell Embery)
+  - added floating point precision on person object positions
+
+2002.12.11
+  - added Daroth's map_animation.js system script
+  - added documentation for map_animation.js script
+
+2002.11.08
+  - added support for movement speeds other than 1 (Lyell Embery)
+  - fixed potential crash when sound objects are destroyed
+
+2002.11.04
+  - added support for zones (Lyell Embery)
+  - added a wxeditor port of the old MFC editor (Lyell Embery)
+
+2002.10.14
+  - clarified GetPersonX and GetPersonY documentation
+
+2002.10.12
+  - upgraded Sphere to new audiere, allowing user to choose whether to
+    run without sound or not
+  - added panning and pitch shifting to sound objects
+
+2002.09.20
+  - fixed bug: infinite recursion of search text is in replace text
+    (Lyell Embery)
+  - switch focus to clicked scripts (Lyell Embery)
+
+2002.09.08
+  - added obstruction move tool (Lyell Embery)
+  - holding control while placing obstructions aligns the endpoints to
+    tile_width / 4 (Lyell Embery)
+  - draws an xor line when adding or moving an obstruction line (Lyell Embery)
+
+2002.08.04
+  - added Flik's layers system script
+  - fix bug where Sphere wouldn't report errors in render or update
+    scripts (by reverting to an older version of the JS engine)
+
+2002.07.28
+  - added IsLayerVisible and SetLayerVisible to the documentation
+
+2002.06.23
+  - clarified GetFrameRate() documentation
+
+2002.06.21
+  - reset map engine frame throttling if an update script takes more
+    than a second
+
+2002.06.20
+  - if an audio context can't be opened, try to open the null one
+
+2002.06.17
+  - 0.97 release

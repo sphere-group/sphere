@@ -1,0 +1,12 @@
+= Index of files in this directory =
+
+All documentation directories have this file. It describes the
+contents of all files in the same directory so that they can be
+seen from a bird's-eye view.
+
+* index.txt - This file.
+
+* irc.txt - How to chat with other Sphere users on IRC.
+
+* links.txt - Various links to resources that may be useful in
+  using and developing Sphere games.

@@ -1,0 +1,41 @@
+Import('base_env COMPILER')
+
+env = base_env.Clone()
+COMPILER.SetupAudiere(env)
+COMPILER.SetupCorona(env)
+COMPILER.SetupMNG(env)
+
+env.Library('common', Split("""
+    AnimationFactory.cpp
+    DefaultFile.cpp
+    DefaultFileSystem.cpp
+    Entities.cpp
+    FLICAnimation.cpp
+    Filters.cpp
+    Font.cpp
+    Image32.cpp
+    Layer.cpp
+    LogEvent.cpp
+    LogDispatcher.cpp
+    LogFile.cpp
+    LogNull.cpp
+    MNGAnimation.cpp
+    Map.cpp
+    ObstructionMap.cpp
+    PackageFile.cpp
+    PackageFileSystem.cpp
+    Playlist.cpp
+    Spriteset.cpp
+    str_util.cpp
+    strcmp_ci.cpp
+    system.cpp
+    Tile.cpp
+    Tileset.cpp
+    WindowStyle.cpp
+    common_palettes.cpp
+    configfile.cpp
+    resample.cpp
+    md5.c
+    write_mng.cpp
+    zlibengn.cpp
+"""))

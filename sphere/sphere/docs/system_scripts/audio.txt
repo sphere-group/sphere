@@ -1,0 +1,11 @@
+EvaluateSystemScript("audio.js");  // this one is simple
+
+
+ChangeMusic(filename);
+
+Sets background music to filename.  If filename is an empty string, stops music.
+
+
+PlaySound(filename);
+
+Plays a sound once.  Only sixteen sounds can be played simultaneously.

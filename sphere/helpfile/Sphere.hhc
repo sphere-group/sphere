@@ -1,0 +1,181 @@
+<HTML>
+<HEAD>
+<meta name="GENERATOR" content="Windows Help Designer http://www.visagesoft.com">
+<!-- Sitemap 1.0 -->
+</HEAD><BODY>
+<UL>
+	<LI><OBJECT type="text/sitemap">
+		<param name="Name" value="Introduction">
+		</OBJECT>
+	<UL>
+		<LI><OBJECT type="text/sitemap">
+			<param name="Name" value="Introduction">
+			<param name="Local" value="NewTopic1.htm">
+			</OBJECT>
+		<LI><OBJECT type="text/sitemap">
+			<param name="Name" value="About Sphere">
+			<param name="Local" value="NewTopic2.htm">
+			</OBJECT>
+		<LI><OBJECT type="text/sitemap">
+			<param name="Name" value="Legal Information">
+			<param name="Local" value="NewTopic3.htm">
+			</OBJECT>
+		<LI><OBJECT type="text/sitemap">
+			<param name="Name" value="Sphere License">
+			<param name="Local" value="NewTopic4.htm">
+			</OBJECT>
+		<LI><OBJECT type="text/sitemap">
+			<param name="Name" value="Sphere On EsperNet">
+			<param name="Local" value="NewTopic5.htm">
+			</OBJECT>
+	</UL>
+	<LI><OBJECT type="text/sitemap">
+		<param name="Name" value="The Sphere IDE">
+		</OBJECT>
+	<UL>
+		<LI><OBJECT type="text/sitemap">
+			<param name="Name" value="Working with the Sphere IDE">
+			<param name="Local" value="NewTopic7.htm">
+			</OBJECT>
+		<LI><OBJECT type="text/sitemap">
+			<param name="Name" value="The Interface">
+			<param name="Local" value="NewTopic8.htm">
+			</OBJECT>
+		<LI><OBJECT type="text/sitemap">
+			<param name="Name" value="The Toolbar">
+			<param name="Local" value="NewTopic21.htm">
+			</OBJECT>
+		<LI><OBJECT type="text/sitemap">
+			<param name="Name" value="Menus">
+			</OBJECT>
+		<UL>
+			<LI><OBJECT type="text/sitemap">
+				<param name="Name" value="The Main Menu">
+				<param name="Local" value="NewTopic9.htm">
+				</OBJECT>
+			<LI><OBJECT type="text/sitemap">
+				<param name="Name" value="The File Menu">
+				<param name="Local" value="NewTopic10.htm">
+				</OBJECT>
+			<LI><OBJECT type="text/sitemap">
+				<param name="Name" value="The Project Menu">
+				<param name="Local" value="NewTopic11.htm">
+				</OBJECT>
+			<LI><OBJECT type="text/sitemap">
+				<param name="Name" value="The View Menu">
+				<param name="Local" value="NewTopic12.htm">
+				</OBJECT>
+			<LI><OBJECT type="text/sitemap">
+				<param name="Name" value="The Map Menu">
+				<param name="Local" value="NewTopic13.htm">
+				</OBJECT>
+			<LI><OBJECT type="text/sitemap">
+				<param name="Name" value="The Script Menu">
+				<param name="Local" value="NewTopic14.htm">
+				</OBJECT>
+			<LI><OBJECT type="text/sitemap">
+				<param name="Name" value="The Spriteset Menu">
+				<param name="Local" value="NewTopic15.htm">
+				</OBJECT>
+			<LI><OBJECT type="text/sitemap">
+				<param name="Name" value="The Font Menu">
+				<param name="Local" value="NewTopic16.htm">
+				</OBJECT>
+			<LI><OBJECT type="text/sitemap">
+				<param name="Name" value="The Window Style Menu">
+				<param name="Local" value="NewTopic17.htm">
+				</OBJECT>
+			<LI><OBJECT type="text/sitemap">
+				<param name="Name" value="The Image Menu">
+				<param name="Local" value="NewTopic18.htm">
+				</OBJECT>
+			<LI><OBJECT type="text/sitemap">
+				<param name="Name" value="The Windows Menu">
+				<param name="Local" value="NewTopic19.htm">
+				</OBJECT>
+			<LI><OBJECT type="text/sitemap">
+				<param name="Name" value="The Help Menu">
+				<param name="Local" value="NewTopic20.htm">
+				</OBJECT>
+		</UL>
+		<LI><OBJECT type="text/sitemap">
+			<param name="Name" value="Windows">
+			</OBJECT>
+		<UL>
+			<LI><OBJECT type="text/sitemap">
+				<param name="Name" value="Windows">
+				<param name="Local" value="NewTopic22.htm">
+				</OBJECT>
+			<LI><OBJECT type="text/sitemap">
+				<param name="Name" value="Project Window">
+				<param name="Local" value="NewTopic23.htm">
+				</OBJECT>
+			<LI><OBJECT type="text/sitemap">
+				<param name="Name" value="Map Window">
+				<param name="Local" value="NewTopic24.htm">
+				</OBJECT>
+			<LI><OBJECT type="text/sitemap">
+				<param name="Name" value="Script Window">
+				<param name="Local" value="NewTopic25.htm">
+				</OBJECT>
+			<LI><OBJECT type="text/sitemap">
+				<param name="Name" value="Spriteset Window">
+				<param name="Local" value="NewTopic26.htm">
+				</OBJECT>
+		</UL>
+	</UL>
+	<LI><OBJECT type="text/sitemap">
+		<param name="Name" value="Tutorials">
+		</OBJECT>
+	<UL>
+		<LI><OBJECT type="text/sitemap">
+			<param name="Name" value="Tutorials">
+			<param name="Local" value="NewTopic27.htm">
+			</OBJECT>
+		<LI><OBJECT type="text/sitemap">
+			<param name="Name" value="Starting up Sphere">
+			<param name="Local" value="NewTopic38.htm">
+			</OBJECT>
+		<LI><OBJECT type="text/sitemap">
+			<param name="Name" value="Functions">
+			<param name="Local" value="NewTopic28.htm">
+			</OBJECT>
+		<LI><OBJECT type="text/sitemap">
+			<param name="Name" value="Loops">
+			<param name="Local" value="NewTopic29.htm">
+			</OBJECT>
+		<LI><OBJECT type="text/sitemap">
+			<param name="Name" value="Map Rendering">
+			<param name="Local" value="NewTopic30.htm">
+			</OBJECT>
+		<LI><OBJECT type="text/sitemap">
+			<param name="Name" value="Making Intros">
+			<param name="Local" value="NewTopic31.htm">
+			</OBJECT>
+		<LI><OBJECT type="text/sitemap">
+			<param name="Name" value="Arrays">
+			<param name="Local" value="NewTopic32.htm">
+			</OBJECT>
+		<LI><OBJECT type="text/sitemap">
+			<param name="Name" value="Random Text">
+			<param name="Local" value="NewTopic33.htm">
+			</OBJECT>
+		<LI><OBJECT type="text/sitemap">
+			<param name="Name" value="Coding Conventions">
+			<param name="Local" value="NewTopic34.htm">
+			</OBJECT>
+		<LI><OBJECT type="text/sitemap">
+			<param name="Name" value="Images">
+			<param name="Local" value="NewTopic35.htm">
+			</OBJECT>
+		<LI><OBJECT type="text/sitemap">
+			<param name="Name" value="Creating a Menu">
+			<param name="Local" value="NewTopic36.htm">
+			</OBJECT>
+		<LI><OBJECT type="text/sitemap">
+			<param name="Name" value="Networking">
+			<param name="Local" value="NewTopic37.htm">
+			</OBJECT>
+	</UL>
+</UL>
+</BODY></HTML>

@@ -1,0 +1,17 @@
+game.sgm File Definition
+Chad Austin
+2006.08.27
+
+
+The game.sgm file is a text file in a subdirectory of the Sphere engine.  It
+consists of various keys and values (key=value) that are defined in the list
+below.
+
+KEY                     DESCRIPTION
+---                     -----------
+name                    Name of the game, listed in the Sphere main menu
+script                  Startup script
+author                  Name of the creator(s) of the game
+description             Short description of the game
+screen_width            The width of the screen of the game when running
+screen_height           The height of the screen of the game when running

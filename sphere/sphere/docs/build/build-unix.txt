@@ -1,0 +1,52 @@
+Building Sphere in Unix-based systems
+--------
+
+NB: This document has been retained for historical and reference
+purposes. For more recent build instructions for Linux, please see
+build-linux.txt, also in this directory.
+
+This document is way out of date.  Whoever updates the Linux port
+should update this too.
+
+
+
+Sphere for UNIX
+
+Requirements:
+- GNU C library
+- SDL (Simple DirectMedia Library, http://www.libsdl.org/)
+- corona (http://corona.sf.net/)
+- audiere (http://audiere.sf.net/)
+- libmng (Multiple-image Network Graphics, http://www.libmng.org/)
+- zlib (compression library, http://www.gzip.org/zlib/)
+- SpiderMonkey (JavaScript-C Engine, http://www.mozilla.org/js/spidermonkey/)
+  you can get an autoconf distribution of SpiderMonkey from the files
+  section of http://sf.net/projects/sphere
+- a little-endian machine*
+
+Currently the Sphere engine is the only component being ported.  Sound
+will not be available until Audiere has been ported to UNIX also.
+
+Instructions on building Sphere from source:
+
+  1. Enter the top-level directory
+**2. ./configure --with-data=spheredatadirectory (i.e. /usr/local/games/sphere)
+  3. gmake (usually just make on most systems)
+  4. gmake install to install sphere
+  5. gmake install-data to install necessary data files (only if you specified
+     a data directory)
+  6. drop more games in the games directory and enjoy!
+
+* The creator of Sphere (Chad Austin) assumes that Sphere will not run
+correctly on big-endian machines.  From looking at the code I would
+have to agree.  If you manage to run sphere on a big-endian machine,
+please tell us!
+
+** If you choose not to specify a data directory it will default to
+the current directory.  You can override the default data directory by
+setting the environment variable SPHERE_DATA_DIR or by using the
+option -d directory from the commandline.  You may specify
+--enable-debug if you want debugging symbols (and consequently a
+massive binary).
+
+  Chris Forno                                  (jcore@geekmeet.org) 

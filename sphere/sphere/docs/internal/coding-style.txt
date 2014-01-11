@@ -1,0 +1,47 @@
+Sphere Source Code Style
+Chad Austin
+2000.01.24
+
+
+Parts of this are out of date.
+
+
+GENERAL
+  Just use common sense, these rules are a guideline, and they do not have to be strictly adhered to
+
+FILENAMES
+  Mix of capital and lowercase letters is preferred in source filenames, especially if filename consists of multiple words
+
+SPACING
+  Tabs are two spaces (not tab characters)
+  No spacing between function names and open parentheses
+  One space between control structures (if, while, switch, etc) and open parentheses
+  No space between unary operator and operand
+  One space on either side of each binary operator
+
+BRACES
+  This style is used:
+  - if (x == 0)
+  - {
+  -   // code
+  - }
+
+NAMING
+  Sphere classes have the prefix 's'
+  Other classes have the prefix 'C', especially if they are derived from MFC classes
+  Structs have the prefix 'S'
+  Local variables and parameters should be completely lowercase, with underscores separating words
+  Global variables have prefix 'g_' and should be a mix of uppercase and lowercase, i.e. g_MainWindow
+  Static variables have prefix 's_' and "
+  Member variables have prefix 'm_' and "
+  Constants are entirely uppercase with words separated by underscores
+
+VARIABLE DECLARATIONS
+  When declaring a pointer, the asterisk is adjacent to the type to show that the pointer is part of the data type
+  Only one variable per line
+
+MISCELLANEOUS
+  Dates are represented in the ISO date format (yyyy.mm.dd)
+
+COMMENTS
+  Comments are important, but do not overuse them

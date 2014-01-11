@@ -1,0 +1,11 @@
+= Index of files in this directory =
+
+All documentation directories have this file. It describes the
+contents of all files in the same directory so that they can be
+seen from a bird's-eye view.
+
+* index.txt - This file.
+
+* Everything else - The filenames correspond to the system script
+  they describe, except for the extension. Some system scripts
+  are not documented here.

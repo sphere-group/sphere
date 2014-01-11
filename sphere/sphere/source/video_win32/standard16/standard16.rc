@@ -1,0 +1,108 @@
+//Microsoft Developer Studio generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// English (U.S.) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+#ifdef _WIN32
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+#pragma code_page(1252)
+#endif //_WIN32
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_CONFIGURE DIALOG DISCARDABLE  0, 0, 148, 150
+STYLE DS_MODALFRAME | DS_CENTER | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Configure standard16"
+FONT 8, "MS Sans Serif"
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,92,8,50,14,WS_GROUP
+    PUSHBUTTON      "Cancel",IDCANCEL,92,28,50,14
+    CONTROL         "Scale (2x)",IDC_SCALE,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,8,110,48,10
+    CONTROL         "Fullscreen",IDC_FULLSCREEN,"Button",BS_AUTOCHECKBOX | WS_GROUP | WS_TABSTOP,8,122,48,10
+    CONTROL         "Smooth Animation (vsync)",IDC_VSYNC,"Button", BS_AUTOCHECKBOX | WS_TABSTOP,8,134,97,10
+    GROUPBOX        "Scaling Algorithm", IDC_STATIC, 4,4,76,100
+    CONTROL         "Direct Scale", IDC_DIRECT_SCALE, "Button", BS_AUTORADIOBUTTON | WS_GROUP,12,16,60,10
+    CONTROL         "Scale2x",      IDC_SCALE2X,      "Button", BS_AUTORADIOBUTTON,12,28,60,10
+    CONTROL         "Eagle",        IDC_EAGLE,        "Button", BS_AUTORADIOBUTTON,12,40,60,10
+    CONTROL         "hq2x",         IDC_HQ2X,         "Button", BS_AUTORADIOBUTTON,12,52,60,10
+    CONTROL         "2xSaI",        IDC_2XSAI,        "Button", BS_AUTORADIOBUTTON,12,64,60,10
+    CONTROL         "Super 2xSaI",  IDC_SUPER_2XSAI,  "Button", BS_AUTORADIOBUTTON,12,76,60,10
+    CONTROL         "Super Eagle",  IDC_SUPER_EAGLE,  "Button", BS_AUTORADIOBUTTON,12,88,60,10
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO DISCARDABLE
+BEGIN
+    IDD_CONFIGURE, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 197
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 38
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE DISCARDABLE
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE DISCARDABLE
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE DISCARDABLE
+BEGIN
+    "\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+#endif    // English (U.S.) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

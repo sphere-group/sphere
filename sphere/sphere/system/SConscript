@@ -1,0 +1,17 @@
+import os
+
+Import('base_env BUILD_DIR')
+
+base_env.Install(os.path.join(BUILD_DIR, 'system'), Split("""
+    arial.rfn
+    dauphin.rfn
+    down_arrow.png
+    mike.rfn
+    pointer.png
+    system.ini
+    system.rfn
+    system.rws
+    up_arrow.png
+    """))
+
+SConscript(dirs = ['scripts'])

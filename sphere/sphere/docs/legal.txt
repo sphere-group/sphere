@@ -1,0 +1,23 @@
+Sphere Legal Information
+Chad Austin
+2000.03.18
+
+[Modifications to legal.txt made on 2001.04.23 by James Potts (Arek)]
+
+Sphere is licensed under the GNU General Public License, either version 2 or,
+at your option, any later version.  You should have received a copy of the GPL
+with this distribution (in docs/gpl.txt).  If not, you can always find the
+latest version at http://www.fsf.org/copyleft/gpl.html.
+
+Basically what this means is that Sphere must always be free.  The source must
+always be free.  And I own the copyright, mwa ha.
+
+People ask me about making games in Sphere and what you can and can't do with
+them.  I personally would prefer that they be free with all the scripts available
+for viewing.  However, you can go ahead and make commercial games or shareware or
+whatever.  You can include the Sphere binaries with your game, although you must
+say that Sphere is available for free at http://www.aegisknight.org/. 
+Also please talk with me beforehand so I can approve the distribution.
+I think that's all.
+
+This document is a result of typing important stuff late at night.

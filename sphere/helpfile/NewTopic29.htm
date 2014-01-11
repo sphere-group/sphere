@@ -1,0 +1,154 @@
+<html>
+<HEAD>
+<TITLE>Working with the Sphere IDE</TITLE>
+</HEAD>
+<body bgcolor="#ffffff" leftmargin="0" topmargin="0" rightmargin="0">
+<table width="100%" border="0" cellspacing="0" cellpadding="2">
+<tr>
+<td bgcolor="#660000">
+&nbsp;
+</td>
+</tr>
+<tr>
+<td bgcolor="#000000" height="2">
+</td>
+</tr>
+<tr>
+<td bgcolor="#cc0000">&nbsp;<IMG
+    src="Images\sphere.jpg">
+</td>
+</tr>
+<tr>
+<td bgcolor="#cccccc" height="1">
+</td>
+</tr>
+<tr>
+<td bgcolor="#666666">
+&nbsp;
+</td>
+</tr>
+<tr>
+<td bgcolor="#000000" height="2">
+</td>
+</tr>
+</table>
+
+<table cellpadding="6"><TBODY><tr><td>
+      <P><font face="verdana" size="3"><STRONG>    Loops</STRONG>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</font></P>
+      <P><FONT face=Verdana><FONT
+        
+      face="Times New Roman"><FONT face=Verdana>This is how to repeat certain
+      parts of code, over and over...<BR>Say you want to do something 20 times,
+      but that something doesn't actually change much each time...<BR>An example
+      of this is, showing all the text from an array of text.<BR><BR>You have an
+      array of text strings, defined like so:-<BR></FONT><BR></FONT></P>
+      <DIV class=code>var txt = new Array();<BR>txt[0] = "Once apon a
+      time...";<BR>txt[1] = " In a land far far away.";<BR>txt[2] = " A boy met
+      the girls of his dreams...";<BR>txt[3] = " This girl was in trouble
+      though, and needed help.";<BR>
+      <DIV class=comment>// this is a tutorial, not a story, heh. ;)</DIV>txt[7]
+      = " He got ready to start his quest...";<BR>txt[8] = " Hoping nothing was
+      going to go wrong...";<BR>txt[9] = " This was his destiny!";<BR></DIV>
+      <P><BR>Now to me it seems obvious how to draw this to the screen, in
+      succession.<BR>Simply make a loop.<BR><BR>You could do this:-<BR><BR></P>
+      <DIV class=code>var index = 0;<BR>while(index &lt; 10)<BR>{
+      <DIV style="MARGIN-LEFT: 10px">var txt =  
+      txt[index];<BR>GetSystemFont().drawText(0,0, txt);<BR>var start =
+      GetTime();<BR>while(start + 2000 &lt; GetTime());<BR>index = index + 1;
+      </DIV>} </DIV>
+      <P><BR>Now if you know arrays, this is easy to understand. All you are
+      doing is putting the index'ed element of the array into the txt parameter
+      of the font.drawText method.<BR>However, you could write it out the long
+      way round. But this way saves you all that time and effort.<BR><BR>Now,
+      the problem with this is using that damn index variable. ;)<BR>Its just a
+      pain to do, so lets use the for loop.<BR><BR></P>
+      <DIV class=code>for(var index = 0; index &lt; 10; ++index)<BR>{
+      <DIV style="MARGIN-LEFT: 10px">var txt =  
+      txt[index];<BR>GetSystemFont().drawText(0,0, txt);<BR>var start =
+      GetTime();<BR>while(start + 2000 &lt; GetTime());<BR></DIV>} </DIV>
+      <P><BR>Now this does exactly the same, but in a easier to manage
+      way.<BR>The index has been defined in the for loop's header, and given the
+      value of 0.<BR>For variable index is 0, to when index is less than 10 is
+      not true, increase index by one.<BR>Huh?! Well, for(initialization;
+      condition; increment) is the syntax of the for loop.<BR>initialization is
+      var index = 0<BR>condition is index &lt; 10<BR>increment is
+      ++index<BR><BR>This may not seem helpful, but it is.<BR>Note loops take
+      this syntax:<BR><BR>loopname(loopdefinition)<BR></P>
+      <DIV style="MARGIN-LEFT: 10px">statement</DIV>
+      <P><BR>This means that:- <BR></P>
+      <DIV class=code>while(blah); </DIV>
+      <P><BR>Does nothing!<BR>The statement preceding this while loop is a null
+      statement, or a semicolon.<BR>Semicolons go at the end of lines of code,
+      loops are more like the begining of a new paragraph. ;)<BR><BR>Alright,
+      next thing.<BR>Notice that if your condition in the while loop is false it
+      will not run?<BR><BR></P>
+      <DIV class=code>var condition = false;<BR>while(condition)<BR>{
+      <DIV style="MARGIN-LEFT: 10px">
+      <DIV class=comment>// this will not run, because the condition is
+      evaluated to false</DIV></DIV>}<BR></DIV>
+      <P><BR>To make a loop run once no matter what, you can do
+      this:-<BR><BR></P>
+      <DIV class=code>do {
+      <DIV style="MARGIN-LEFT: 10px">
+      <DIV class=comment>// this will run, atleast once</DIV></DIV>}
+      while(condition);<BR></DIV>
+      <P><BR>Alright, an example of a cool condition that is designed to be
+      ended in the body of the loop.<BR><BR></P>
+      <DIV class=code>var done = false;<BR>while(!done) <SPAN class=comment>//
+      while not done... ;)</SPAN><BR>{
+      <DIV style="MARGIN-LEFT: 10px">
+      <DIV class=comment>// when you are ready to stop using this code over and
+      over...</DIV>
+      <DIV class=comment>// set done eqaul to true</DIV>
+      <DIV class=comment>// like so:- done = true;</DIV><BR>if(blah() ==
+      true)<BR>{<BR>
+      <DIV style="MARGIN-LEFT: 20px">done = 
+true;<BR></DIV>}<BR></DIV>}<BR></DIV>
+      <P>Finally, I think I'll cover break statements.<BR>Sometimes in a loop
+      you want it to end before it runs all the way through and back to the
+      header.<BR>Loops only end when the header is evaluated.<BR>This means that
+      I might have alot of code that gets executed when it shouldn't!<BR>The
+      solution to this problem, is to just break from the loop
+      altogether.<BR><BR></P>
+      <DIV class=code>var done = false;<BR>for(var i = 0; i &lt; 30;
+      ++i)<BR>{<BR>
+      <DIV style="MARGIN-LEFT: 10px">
+      <DIV class=comment>// blah...</DIV><BR>if(done == true)<BR>
+      <DIV style="MARGIN-LEFT: 10px">break;</DIV></DIV>}<BR></DIV>
+      <P><BR>This will break from the code.<BR>The other thing is continue
+      statements.<BR>In a loop if you put:-<BR><BR></P>
+      <DIV class=code>continue;<BR></DIV>
+      <P><BR>It will go back to the header of the loop and evaluate it.<BR>Now
+      you know the basics of loops, breaks and continues. ;)<BR><BR>Thats its
+      folks, soon, I will cover some info on map rendering.<BR></P>
+      <P>This tutorial is made by <A href="mailto:flik@r67.net"
+      value="hi">Flik</A>!<BR></P></FONT><FONT face=Verdana>
+      <P><A href="javascript:history.back(1);"><FONT
+
+
+      
+      face=Verdana>Back</FONT></A><FONT face=Verdana> | </FONT><A
+      href="newtopic1.htm"><FONT
+ face=Verdana
+     >Home</FONT></A></P></FONT></td></tr></TBODY></table>
+
+</body>
+</HTML>

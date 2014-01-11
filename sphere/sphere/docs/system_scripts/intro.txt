@@ -1,0 +1,19 @@
+The intro system script is a simple way to make intro's for your game.
+see the script itself for more details.
+
+e.g.
+
+EvaluateSystemScript("intro.js");
+
+function test_intro() {
+  var intro = new Intro();
+
+  intro.addText("Once upon a time...");
+  intro.addText("There was a...");
+  intro.addSpace(15);
+  intro.addImage(LoadImage("warrior.png"));
+  intro.addSpace(15);
+  intro.addText("And so the quest begins!");
+
+  intro.play();
+}

@@ -1,0 +1,218 @@
+Building Sphere in Linux (g++)
+--------
+
+Spherical (http://www.spheredev.org/)
+2008.01.08 (Version 1.4)
+
+
+= NB: UBUNTU USERS =
+
+A step-by-step, easy-to-follow guide is available at Spheriki:
+
+ http://www.spheredev.org/wiki/Compiling_Sphere
+
+
+= Requirements =
+
+As with all software, try to find these in your distro's repositories
+before attempting to download, compile and install manually. The URLs
+have been provided in case such a package is not available through
+such means.
+
+== Essential for building Sphere ==
+
+* A C++ compiler (such as g++)
+* scons (http://www.scons.org/)
+
+== Essential libs ==
+
+* Audiere (http://audiere.sf.net/)
+* Corona (http://corona.sf.net/)
+* libmng (http://www.libmng.com/)
+* libpng (http://www.libpng.org/)
+* SDL (http://www.libsdl.org/)
+* SpiderMonkey JS (http://www.mozilla.org/js/spidermonkey/)
+* zlib (http://www.gzip.org/zlib/)
+
+== Optional libs ==
+
+* libjpeg (http://www.ijg.org/)
+* libvorbis (http://www.vorbis.com/)
+* wxwidgets (http://www.wxwidgets.org/)
+
+
+= Installing the dependencies =
+
+Since Audiere and Corona are somewhat rare in the package
+repositories, it is likely that they will be the ones that you will
+need to compile and install manually (I found audiere inside apt
+repositories, no such luck with corona).
+
+Skip down a few sections if you need help with the other packages.
+
+== Corona ==
+
+Once you have corona.tar.gz, extract it like this:
+
+ gunzip corona-1.0.2.tar.gz
+ tar -xf corona-1.0.2.tar
+
+Enter the directory and build it:
+
+ cd corona-1.0.2/
+ ./configure
+ make
+
+And install it as root:
+
+ sudo make install
+
+OR
+
+ su
+ <enter root password>
+ make install
+
+Sometimes the lib will be installed to a location the system can't
+find it (such as /usr/local/lib/), so we should copy the symbolic
+link to the library to where it can be found (/lib/ or /usr/lib):
+
+ cd src/.libs/
+ cp libcorona-1.0.2.so /lib
+
+OR
+
+ cp libcorona-1.0.2.so /usr/lib
+
+Then run ldconfig as root to update your library path details. If
+you're already root from before, just type the following. Otherwise,
+run the following command with sudo, or run su and then run the
+following command.
+
+ ldconfig
+
+You're done, but if you want to check that corona supports PNG:
+
+ cd ../../examples/formats/
+ ./formats
+
+Does it say png is supported? Good! If not, Sphere pretty much won't
+run.
+
+== Audiere ==
+
+The process is similar to that of installing Corona. Extract:
+
+ gunzip audiere-1.9.4.tar.gz
+ tar -xf audiere-1.9.4.tar
+
+Change directory and build it:
+
+ cd audiere-1.9.4/
+ ./configure
+ make
+
+Install it as root:
+
+ sudo make install
+
+OR
+
+ su
+ <enter root password>
+ make install
+
+Sometimes the lib will be installed to a location the system can't
+find it (such as /usr/local/lib/), so we should copy the symbolic
+link to the library to where it can be found (/lib/ or /usr/lib):
+
+ cd src/.libs/
+ cp libaudiere-1.9.4.so /lib
+
+OR
+
+ cp libaudiere-1.9.4.so /usr/lib
+
+Then run ldconfig as root to update your library path details. If
+you're already root from before, just type the following. Otherwise,
+run the following command with sudo, or run su and then run the
+following command.
+
+ ldconfig
+
+== Everything else ==
+
+The same process of
+
+ ./configure && make && sudo make install
+
+works as a general guide for most everything that comes as source in
+Linux. Specific instructions can be found in build-linux-old.txt, in
+the same directory as this document, targeting RPM-based distros, and
+also Gentoo users.
+
+
+= Getting the Sphere source =
+
+Using your favorite CVS client, download the sphere module from CVS.
+Instructions are at <https://sourceforge.net/cvs/?group_id=1551>.
+
+They should be either:
+
+ cvs -z3 -d:pserver:anonymous@sphere.cvs.sourceforge.net:/cvsroot/sphere co sphere
+
+or
+
+ export CVS_RSH=ssh
+ cvs -z3 -d:ext:developername@sphere.cvs.sourceforge.net:/cvsroot/sphere co sphere
+
+A subdirectory named sphere should appear in the current directory,
+depending on how you've configured your CVS client.
+
+
+= Building Sphere =
+
+Now for the fun bit! We can now build Sphere natively for Linux, so
+type these:
+
+ cd sphere/
+ scons
+
+You should get the first few lines looking like:
+
+ [brian@localhost sphere]$ scons
+ scons: Reading SConscript files ...
+ Using compiler: linux
+ Found sdl-config: /usr/bin/sdl-config
+ Using subsystem:  unix
+
+Note that if it doesn't say "Using compiler: linux" then
+you'll have to use "scons compiler=linux" rather than just "scons".
+
+
+= Running Sphere =
+
+The engine and wxeditor should be located in sphere/build/linux/,
+so we can try them out now.
+
+ cd build/linux/
+ ./engine
+
+And for wxeditor (it's not that great, truth be told):
+
+ ./wxeditor
+
+
+= Getting help =
+
+The Spherical community welcomes anybody with an interest in the
+Sphere RPG engine, and will gladly help out anybody who is having
+trouble building it from source. The community website is at the top
+of this document, and the forums are always active
+(http://www.spheredev.org/forums/), so drop by and say hi!
+
+
+This document was adapted from one originally written by Brian Robb
+(Flikky).
+
+-- Tung Nguyen a.k.a. tunginobi

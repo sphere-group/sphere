@@ -1,0 +1,92 @@
+= Running Sphere from the command line =
+
+Spherical Community (http://www.spheredev.org/)
+2007.12.12
+
+
+Sphere has some options that can be entered from the command line.
+
+
+== Summary ==
+
+ engine.exe -benchmark
+ engine.exe -game "game_folder"
+ engine.exe -game "game_folder" -parameters="..."
+ engine.exe -package "game_package.spk"
+ engine.exe -version
+ engine.exe -help
+
+The last option will just print the above message.
+
+
+== Perform benchmarks ==
+
+Using the '-benchmark' option
+
+ engine.exe -benchmark
+
+The Sphere engine will run a number of video performance benchmarks.
+You won't need this unless you're working on improving Sphere.
+
+
+== Run a game ==
+
+To bypass the startup game, use the '-game' option:
+
+ engine -game somegame
+
+to run 'somegame' in your Sphere games/ directory, or
+
+ engine -game "C:\Path\To\Your\Game"
+
+to launch a game located anywhere.
+
+
+== Passing parameters into games ==
+
+It is possible to pass parameters to your game() function if you use the
+'-parameters' option with the '-game' option.
+
+ engine -game input_demo -parameters 'test_map.rmp','-debug','-cheat'
+
+Note the lack of spaces between the parameters.
+
+The game() function can be written to detect them like this:
+
+ function game()
+ {
+   var debug_mode = false;
+   var cheat_mode = false;
+   
+   for (var i = 0; i < game.arguments.length; i++) {
+     if (game.arguments[i] == "-debug") debug_mode = true;
+     if (game.arguments[i] == "-cheat") cheat_mode = true;
+   }
+   
+   if (game.arguments.length > 0) {
+     if (game.arguments[0].indexOf(".rmp") == game.arguments.length - 4) {
+        MapEngine(game.arguments[0], 60);
+        return;
+     }
+   }
+   
+   // normal game code...
+ }
+
+
+== Run a game in a package ==
+
+As mentioned in packages.txt, the '-package' option can be used to
+launch a game distributed as a package.
+
+ engine -package package.spk
+
+
+== Sphere version ==
+
+To find the version of Sphere
+
+ engine.exe -version
+
+The info includes the version number and date the program was compiled.
+This can be useful in bug reports.

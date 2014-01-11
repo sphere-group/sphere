@@ -1,0 +1,14 @@
+import os
+true, false = 1, 0
+
+compile_flags = "-I../common/ "
+compile_flags += os.popen('wx-config --cflags').read().strip()
+if ARGUMENTS.get('debug', '0') == 1:
+    compile_flags += " -g"
+else:
+    compile_flags += " -O2 -s"
+
+
+env = Environment(CPPFLAGS=compile_flags, LINKFLAGS=os.popen('wx-config --libs').read().strip())
+
+env.Program(target="glome", source=["main.cpp","project.cpp", "../common/DefaultFileSystem.cpp","../common/DefaultFile.cpp","../common/configfile.cpp"])

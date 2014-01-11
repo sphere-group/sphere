@@ -1,0 +1,50 @@
+Running Sphere under Linux using Wine
+-----------------------------------------------
+
+Sphere has been confirmed to work acceptably under
+Wine. Some users may still experience problems
+with audio.
+
+Don't forget that as of version 1.12, Sphere's
+source can easily be compiled under Linux for
+native sound, video and increased performance to
+boot.
+
+What you need:
+
+1. A quite recent version of wine and kernel
+   OR
+   Winex 2 or above (Cedega)
+   (could work with earlier though)
+2. Latest sphere binaries
+3. mfc42.dll*
+
+* You can retrieve it this way:
+
+Mount you windows drive. Open up your windows
+directory, browse to system32 if you're using
+XP or system if you're using earlier versions
+of windows. Then, search and copy mfc42.dll to
+your working directory.
+
+Extract the latest sphere binaries to your working
+directory.
+
+Put mfc42.dll there as well.
+
+If you want to run Sphere inside a virtual Windows
+desktop, rather than a window inside your window
+manager (KDE or GNOME), run winecfg and set
+Desktop to "640x480"
+
+Now open the terminal or run dialog and type:
+
+ wine editor.exe
+
+or
+
+ winelauncher editor.exe
+
+To run Sphere itself, you can press the lightning
+bolt toolbar button, or substitute editor.exe for
+engine.exe.

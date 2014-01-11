@@ -1,0 +1,42 @@
+circles.js is a simple script used to add circle-drawing functionality to sphere.
+
+---------------------------------------------------------
+
+there are three functions included in the script:
+
+function LineCircle( radius, color )
+	function: draws a circle outline
+	arguments: the radius of the circle and the color of the circle
+	returns: an image with the width and height twice the size of the radius
+		plus one pixel
+
+function Circle( radius, color )
+	function: draws a filled circle
+	arguments: the radius of the circle and the color of the circle
+	returns: an image with the width and height twice the size of the radius
+
+function GradientCircle( radius, color1, color2 )
+	function: draws a filled circle with a 'sunburst' gradient
+	arguments: the radius of the circle and the two colors that form the
+		gradient
+	returns: an image with the width and height twice the size of the radius
+
+---------------------------------------------------------
+
+usage:
+	all three functions return an image, which can be directly blitted to
+	the screen, but would be better used by being stored in a variable
+	(this saves the processing time needed to recreate the circles)
+
+usage example:
+	var line_circle = LineCircle( 42, CreateColor( 255, 0, 0 ) );
+	var filled_circle = Circle( 28, CreateColor( 0, 255, 0, 128 ) );
+	var gradient_circle = GradientCircle(
+					     60,
+					     CreateColor( 0, 0, 255 ),
+					     CreateColor( 0, 0, 0, 0 )
+					     );
+
+	line_circle.blit( 0,0 );
+	filled_circle.blit( 100, 0 );
+	gradient_circle.blit( 72, 40 );

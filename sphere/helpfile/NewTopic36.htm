@@ -1,0 +1,373 @@
+<html>
+<HEAD>
+<TITLE>Working with the Sphere IDE</TITLE>
+</HEAD>
+<body bgcolor="#ffffff" leftmargin="0" topmargin="0" rightmargin="0">
+<table width="100%" border="0" cellspacing="0" cellpadding="2">
+<tr>
+<td bgcolor="#660000">
+&nbsp;
+</td>
+</tr>
+<tr>
+<td bgcolor="#000000" height="2">
+</td>
+</tr>
+<tr>
+<td bgcolor="#cc0000">&nbsp;<IMG
+    src="Images\sphere.jpg">
+</td>
+</tr>
+<tr>
+<td bgcolor="#cccccc" height="1">
+</td>
+</tr>
+<tr>
+<td bgcolor="#666666">
+&nbsp;
+</td>
+</tr>
+<tr>
+<td bgcolor="#000000" height="2">
+</td>
+</tr>
+</table>
+
+<table cellpadding="6"><TBODY><tr><td>
+      <P><font face="verdana" ><STRONG>
+
+      Creating a
+
+      Menu</STRONG>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</font></P>
+      <P><FONT face=Verdana>Download the
+      menu object from Flik's page <A
+      
+      href="http://www.mastercain.com/flik/files/fmenu_demo.zip" 
+     >http://www.mastercain.com/flik/files/fmenu_demo.zip</A>
+</FONT></P>
+      <P><FONT face=Verdana><FONT
+
+
+
+
+
+
+
+        
+      face="Times New Roman"><FONT face=Verdana><FONT face="Times New Roman"><FONT face=Verdana><FONT
+
+
+      face="Times New Roman"><FONT face=Verdana><FONT face="Times New Roman"><FONT face=Verdana><FONT face="Times New Roman"><FONT
+
+
+      
+      face=Verdana><FONT face="Times New Roman"><FONT
+      face=Verdana><FONT
+        
+      face="Times New Roman"><FONT face=Verdana>Time to create a menu in
+      Sphere...<BR>To do this you can download my menu object from my files
+      page, and add the line:-<BR></FONT><BR></FONT></P>
+      <DIV class=code>EvaluateScript("fmenu.js"); </DIV>
+      <P><BR>.. to one of your scripts...<BR>Now in that script you can now
+      create a menu object..<BR>First off, a simple menu, using only
+      text.<BR><BR></P>
+      <DIV class=code>var MyMenu = new Menu(0,0);<BR>MyMenu.addText("New Game",
+      New_Game);<BR>MyMenu.addText("Load Game",
+      Load_Game);<BR>MyMenu.addText("Exit Game",
+      Exit_Game);<BR>MyMenu.execute();<BR></DIV>
+      <P><BR>Fairly simple stuff...<BR>Now lets add some descriptions to our
+      choices...<BR><BR></P>
+      <DIV class=code>menu_descriptions = new Array();<BR>menu_descriptions[0] =
+      "Start a new game";<BR>menu_descriptions[1] = "Load a previously saved
+      game";<BR>menu_descriptions[2] = "Exit the game like the coward you
+      are";<BR><BR>var MyMenu = new Menu(0,64); // move the menu down screen a
+      bit ^^ MyMenu.preRender = function(){
+      <DIV style="MARGIN-LEFT: 10px"><SPAN class=code>// whenever you refer the
+      the menu's selection attribute, always handleSelection first, so it
+      doesn't
+      crash...</SPAN><BR>MyMenu.handleSelection();<BR>GetSystemFont().drawText(16,
+      32,
+      menu_descriptions[MyMenu.selection]);<BR></DIV>}<BR><BR>MyMenu.addText("New
+      Game", New_Game);<BR>MyMenu.addText("Load Game",
+      Load_Game);<BR>MyMenu.addImage("exit_game.jpg",
+      Exit_Game);<BR>MyMenu.execute(); </DIV>
+      <P><BR>So now you've made a menu, where it shows useful help alongside the
+      menu, and has an image for one of the menu items.<BR>The text alongside
+      the menu is created by just putting it in the MyMenu.preRender
+      function.<BR><BR>So now lets add mouse support to the menu...<BR><BR></P>
+      <DIV class=code>MyMenu.mouseSupport =
+      true;<BR>MyMenu.addDefaultMouseButtons();<BR>MyMenu.mouse =
+      LoadImage("mouse.png");<BR></DIV>
+      <P><BR>Another, simplier way of adding an image to the menu, is using
+      MyMenu.addImage(filename, action [, normaltint, highlighttint,
+      pointer])<BR>e.g. MyMenu.addImage("woot.png", ImageWoot);<BR>It is also
+      possible, for each item's action to point to the same function...<BR></P>
+      <DIV class=code>function MenuChoice(i)<BR>{
+      <DIV style="MARGIN-LEFT: 10px">switch(i)<BR>{
+      <DIV style="MARGIN-LEFT: 10px">case (1): ChoiceOne();<BR>case (2):
+      ChoiceTwo();<BR>case (3): ChoiceThree();<BR>case (4):
+      ChoiceFour();<BR></DIV>} </DIV>} <BR>MyMenu.addText("Choice I",
+      function(){ MenuChoice(MyMenu.selection); }); </DIV>
+      <P><BR>Now we can make the menu escapeable, by doing:-<BR><BR></P>
+      <DIV class=code>MyMenu.escapeable = function(){ return true;
+      }<BR>MyMenu.escape_function = function()<BR>{
+      <DIV style="MARGIN-LEFT: 10px"><SPAN class=comment>//
+      whatever</SPAN><BR></DIV>}<BR></DIV>
+      <P><BR>To add shortcut keys, or whatever, to the menu, you can
+      do:-<BR><BR></P>
+      <DIV class=code>function PAUSE_FUNCTION()<BR>{
+      <DIV style="MARGIN-LEFT: 10px">while(AreKeysLeft()) GetKey();<BR>var done
+      = false;<BR>do<BR>{
+      <DIV style="MARGIN-LEFT: 10px">GetSystemFont().drawText(70, 70, "Game
+      Paused!");<BR>if(IsKeyPressed(KEY_ENTER))<BR>
+      <DIV style="MARGIN-LEFT: 20px">done =
+      true;<BR></DIV>FlipScreen();<BR></DIV>}
+      while(!done);<BR></DIV>}<BR>MyMenu.addKey(KEY_P, PAUSE_FUNCTION); </DIV>
+      <P><BR>What more could you want?<BR>A pretty window style around the
+      menu?<BR><BR></P>
+      <DIV class=code>MyMenu.preRender = function() {
+      <DIV style="MARGIN-LEFT: 10px">var window =     GetSystemWindowStyle();
+      window.drawWindow(MyMenu.x, MyMenu.y, MyMenu.getWidth(),
+      MyMenu.getHeight());<BR></DIV>} </DIV>
+      <P><BR>That preRender function just draws a windowstyle around the
+      items... since the items can be at any x and y point, the function needs
+      to calculate the values...<BR><BR>Want to make a menu that doesn't stop
+      your games running process?<BR></P>
+      <DIV class=code>while(!MyMenu.done) {
+      <DIV style="MARGIN-LEFT: 10px">GetSystemFont().drawText(Math.random()*20,
+      Math.random()*20, "Behind the menu..."); MyMenu.go();
+      GetSystemFont().drawText(Math.random()*20, Math.random()*20, "Infront of
+      the menu..."); </DIV>} </DIV>
+      <P><BR>Actually, you could do that using the MyMenu.preRender, and
+      MyMenu.postRender methods...<BR>Heh. I'm too used to eval'ing actions into
+      the menu... Any advice?<BR>Yeah, if you want to eval something into the
+      menu, you can do:- </P>
+      <DIV class=code>MyMenu.addText("whatever", function(){ eval("code")
+      });<BR><BR><SPAN class=comment>// This is the same as changing the
+      .onSelection method lke so:-<BR>// MyMenu.items[index].onSelection =
+      function(){ eval("code"); }<BR>// where index is the item you want to
+      change number'.<BR></SPAN></DIV>
+      <P><BR>How about mouse support?<BR>Well, simply provide a mouse
+      image...<BR><BR></P>
+      <DIV class=code>function Mouse_Right_Was_Clicked() {
+      <DIV style="MARGIN-LEFT: 10px"><SPAN class=comment>//
+      whatever</SPAN><BR></DIV>}<BR>MyMenu.mouseSupport = true;<BR>MyMenu.mouse
+      =
+      LoadImage("mouse.png");<BR>MyMenu.addDefaultMouseButtons();<BR>MyMenu.addMouseButton(MOUSE_RIGHT,
+      Mouse_Right_Was_Clicked, 0);<BR></DIV>
+      <P><BR>
+      <TABLE width=430>
+
+        <TR>
+          <TD class=hr><IMG height=1 src="../images/trans.gif"
+        width=430></TD></TR></TABLE><BR>Menu
+      (Syntax)<BR><B>Menu_Object.add</B>(x, y, item, width, height, drawMethod,
+      highLightMethod, isSelectable, onSelection)<BR></P>
+      <BLOCKQUOTE>Adds 'item', whatever object item is, to the menu.items
+        list.. You define the x and y of where it will be drawn.<BR>width,
+        height are provided so that the mouse support works, and new items can
+        refer to the last item's location...<BR>drawMethod is a function that
+        tells the menu how to render the 'item'. highLightMethod is a function
+        that is called if the 'item' is selected. The drawMethod is not called
+        if the item is selected. Only the highLightMethod is
+        called.<BR>isSelectable is a function that returns true or false as to
+        whether you can select the item. e.g. if the item, was a ShopItem, with
+        the property of ShopItem.price, it would check to see if you had the
+        correct amount of money to buy the item, and return true if you did,
+        else return false.<BR>onSelection is a function that happens when you
+        press KEY_ENTER (by default), and does not internally mean the menu is
+        ended. Only if the onSelection method says:- Menu_Object.done = true;
+        will the menu actually end.<BR></BLOCKQUOTE>
+      <P><B>Menu_Object.addKey</B>(KEY, action)<BR></P>
+      <BLOCKQUOTE>Adds a key (look in sphere/docs/keys.txt for list of keys)
+        to the menu, and performs the action function, if the key is
+      pressed.<BR></BLOCKQUOTE>
+      <P><B>Menu_Object.removeKey</B>(KEY)<BR></P>
+      <BLOCKQUOTE>Removes the key from the menu's list of keys to check
+        for...<BR></BLOCKQUOTE>
+      <P><B>Menu_Object.addMouseButton</B>(BUTTON, action)<BR></P>
+      <BLOCKQUOTE>Same as addKey, but for the mouse.. BUTTON should be
+        MOUSE_LEFT or MOUSE_RIGHT or MOUSE_MIDDLE<BR></BLOCKQUOTE>
+      <P><B>Menu_Object.go</B>(selection)<BR></P>
+      <BLOCKQUOTE>Draws the menu and handles input, but does not take control
+        of the game.. E.g. the game doesn't stop for the menu...<BR>'selection'
+        is the choice that you want the Menu_Object.selection to become, if its
+        not defined though, it will default to
+      Menu_Object.selection.<BR></BLOCKQUOTE>
+      <P><B>Menu_Object.execute</B>()<BR></P>
+      <BLOCKQUOTE>Same as Menu_Object.go, but takes control of the
+      game.<BR></BLOCKQUOTE>
+      <P><B>Menu_Object.addDefaultKeys</B>()<BR></P>
+      <BLOCKQUOTE>Adds the default key setup, this is KEY_UP, KEY_DOWN,
+        KEY_ESCAPE and KEY_ENTER.<BR>KEY_UP takes 1 away from the
+        Menu_Object.selection and KEY_DOWN adds 1 to the
+        Menu_Object.selection.<BR></BLOCKQUOTE>
+      <P><B>Menu_Object.addDefaultMouseButtons</B>()<BR></P>
+      <BLOCKQUOTE>Adds the MOUSE_LEFT to do the same thing as the default
+        KEY_ENTER does.<BR></BLOCKQUOTE>
+      <P><B>Menu_Object.mouseSupport</B>;<BR></P>
+      <BLOCKQUOTE>Menu_Object.mouseSupport is true or false depending on
+        whether you want to use the mouse or not. Default is
+      false.<BR></BLOCKQUOTE>
+      <P><B>Menu_Object.mouse</B>;<BR></P>
+      <BLOCKQUOTE>Menu_Object.mouse is an image object. That defaults to the
+        system arrow (GetSystemArrow())...<BR>This:- Menu_Object.mouse =  
+        LoadImage("whatever.png");<BR>... changes the image that the menu
+        uses...<BR></BLOCKQUOTE>
+      <P><B>Menu_Object.escapeable</B>()<BR></P>
+      <BLOCKQUOTE>A function that returns true or false depending on if you
+        can escape from the menu or not. I.e. press KEY_ESCAPE.<BR>The default
+        is Menu_Object.escapeable = function(){ return false; }<BR></BLOCKQUOTE>
+      <P><B>Menu_Object.escape_function</B>()<BR></P>
+      <BLOCKQUOTE>The function that is called when you escape the
+      menu.<BR></BLOCKQUOTE>
+      <P><B>Menu_Object.handleSelection</B>()<BR></P>
+      <BLOCKQUOTE>A function that is called to handle the selection.<BR>E.g.
+        If the current selection is greater than the total number of selections,
+        you can reset the selection value to 0.<BR>Or move all the x and y
+        values of the Menu_Object.items list to make moving menu's... E.g. A
+        menu where the items move around in a circle.<BR></BLOCKQUOTE>
+      <P><B>Menu_Object.draw</B>()<BR></P>
+      <BLOCKQUOTE>This handles the drawing process of the menu
+      items.<BR></BLOCKQUOTE>
+      <P><B>Menu_Object.preRender</B>()<BR></P>
+      <BLOCKQUOTE>You can make the menu draw a window style here if you
+        wish.<BR></BLOCKQUOTE>
+      <P><B>Menu_Object.postRender</B>()<BR></P>
+      <BLOCKQUOTE>After the drawing of the menu items you can render it using
+        this function.<BR></BLOCKQUOTE>
+      <P><B>Menu_Object.whenOffScreen</B>()<BR></P>
+      <BLOCKQUOTE>Called when the current item is offscreen (not within the
+        drawing box of the menu).<BR>Defaulty used for providing automatic
+        scrolling of menu items.<BR></BLOCKQUOTE>
+      <P>
+      <TABLE width=430>
+
+        <TR>
+          <TD class=hr><IMG height=1 src="../images/trans.gif"
+        width=430></TD></TR></TABLE><BR>Extension
+      Methods:<BR><B>Menu_Object.addText</B>(name, action [,font, color,
+      highlightcolor, pointer]) </P>
+      <BLOCKQUOTE>Adds 'name' using 'font' and 'color' to the menu.<BR>font,
+        color, highlightcolor and pointer can all be omitted from the calling
+        function.<BR>E.g. Menu_Object.addText("woo", function(){ Abort("Woo was
+        selected."); }); </BLOCKQUOTE>
+      <P><B>Menu_Object.addImage</B>(filename, action [, normaltint,
+      highlighttint, pointer]) </P>
+      <BLOCKQUOTE>Adds 'filename' image using normaltint to the menu.<BR>font,
+        normaltint, highlighttint and pointer can all be omitted from the
+        calling function.<BR>E.g. Menu_Object.addImage("wee.png", function(){
+        Abort("Wee was selected."); });<BR>E.g. Menu_Object.addImage("cool.jpg",
+        function(){ Abort("Cool was selected."); }, CreateColor(255,255,255),
+        CreateColor(0,255,0); LoadImage("mypointer.png"));<BR></BLOCKQUOTE>
+      <P><B>Menu_Object.addSpriteset</B>(filename, action [, normaltint,
+      highlighttint, text, font, space, pointer]) </P>
+      <BLOCKQUOTE>Adds 'filename' spriteset using normaltint to the
+        menu.<BR>normaltint, highlighttint, text, font, space and pointer can
+        all be omitted from the calling function.<BR>E.g.
+        Menu_Object.addSpriteset("aegis.rss", function(){ ExitMessage("Woo...");
+        }, undefined,undefined, "Aegis sprite", undefined,
+      30,undefined);<BR></BLOCKQUOTE>
+      <P><B>Menu_Object.getX</B>() </P>
+      <BLOCKQUOTE>Returns the coordinate of the menu that is the most to the
+        left.<BR></BLOCKQUOTE>
+      <P><B>Menu_Object.getY</B>() </P>
+      <BLOCKQUOTE>Returns the coordinate of the menu that is the most to the
+        right.<BR></BLOCKQUOTE>
+      <P><B>Menu_Object.getWidth</B>() </P>
+      <BLOCKQUOTE>Returns the 'dynamic' width of the menu, static width would
+        just be <B>Menu_Object.width</B>.<BR></BLOCKQUOTE>
+      <P><B>Menu_Object.getHeight</B>() </P>
+      <BLOCKQUOTE>Returns the 'dynamic' height of the menu, static width would
+        just be <B>Menu_Object.height</B>.<BR></BLOCKQUOTE>
+      <P><B>Menu_Object.configureRowsForKeys</B>(rows) </P>
+      <BLOCKQUOTE>Designed to modify the keys and input keys so that the menu
+        behaves as if it was in columns.<BR>(Doesn't work 100%
+      correctly.<BR></BLOCKQUOTE>
+      <P>FAQ I want to create a shop, any ideas how I could do this? Sure, all
+      you need is to show a description of the items on sell, the items, and
+      allow the person to buy it if they have enough money.<BR>So, create an
+      array of shop_items_names, an array of shop_items_descs and an array of
+      shop_items_price.<BR>Or an a shop item object:- </P><PRE><FONT face=Verdana>var shop_items = new Array();
+
+function shop_item(name, cost, desc){
+  this.name = name;
+  this.cost = cost;
+  this.desc = desc;
+}
+
+var shop_background = LoadImage("shopbg.png");
+
+ShopMenu.preRender = function(){
+  shop_background.blit(0,0);
+  ShopMenu.handleSelection():
+  var selection = ShopMenu.selection;
+  var desc = shop_items[selection].desc;
+  var cost = shop_items[selection].cost;
+  GetSystemFont().drawText(0, 0, desc);
+  GetSystemFont().drawText(64, 32, "$" + cost);
+}
+
+function BuyItem()
+{
+  ShopMenu.handleSelection():
+  var selection = ShopMenu.selection;
+  if(money - shop_items[selection].cost &gt;= 0)
+    inventory[shop_items[selection].name] += 1;
+  else
+    GetSystemFont(0,0, "Not enough money!");
+}
+
+shop_items[0] = new shop_item("herb", 4,
+                "Neat herb to cure wounds...");
+shop_items[1] = new shop_item("candy", 3,
+                Candy that increases energy.,,");
+
+
+for(var i = 0; i &lt; shop_items.length; ++i)
+  ShopMenu.addText(shop_items[i].name, BuyItem);
+
+ShopMenu.execute();</FONT>
+</PRE>
+      <P><BR>Thats its folks, soon, I will cover *whatever* anyone wants me
+      to..</P>
+      <P></FONT></FONT></FONT><FONT
+      face=Verdana>This tutorial is made by <A href="mailto:flik@r67.net"
+      value="hi">Flik</A>!</P></FONT></FONT>
+      <P></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT><FONT face=Verdana><A href="javascript:history.back(1);"><FONT
+
+
+
+
+
+
+
+
+
+      
+      face=Verdana>Back</FONT></A><FONT face=Verdana> | </FONT><A
+      href="newtopic1.htm"><FONT
+ face=Verdana
+     >Home</FONT></A></P>
+      <P></P></FONT></td></tr></TBODY></table>
+
+</body>
+</HTML>  

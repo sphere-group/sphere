@@ -1,0 +1,37 @@
+convert.js function list
+
+
+
+ScreenX(mapx)
+
+ - Returns a screen x-coordinate from a map x-coordinate
+
+
+
+ScreenY(mapy)
+
+ - Returns a screen y-coordinate from a map-y coordinate
+
+
+
+TopX()
+
+ - Returns the left-most map x-coordinate
+
+
+
+TopY()
+
+ - Returns the top-most map y-coordinate
+
+
+
+MapX(screenx)
+
+ - Returns a map x-coordinate from a screen x-coordinate
+
+
+
+MapY(screeny)
+
+ - Returns a map y-coordinate from a screen y-coordinate

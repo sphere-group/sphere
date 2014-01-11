@@ -1,0 +1,56 @@
+RPG Tileset File Format
+Chad Austin
+1.14.99
+
+
+---- 256 byte header ----
+
+byte signature[4];     // Must be ".rts"
+word version;          // Must be 1
+word num_tiles;
+word tile_width;
+word tile_height;
+word tile_bpp;         // Must be 32
+byte compression;      // 0 (compression not supported)
+byte has_obstructions; //
+byte reserved[240];
+
+
+---- Tileset data ----
+
+Each tile is (tile_width * tile_height * (tile_bpp / 8)) bytes.  You read each
+like a normal top-down bitmap.
+
+
+---- Tile information block ----
+
+Every tile has a corresponding 32-byte information block:
+
+struct TILE_INFORMATION_BLOCK
+  byte obsolete1_;
+  byte animated;
+  word nexttile;      // For animated tiles
+  word delay;         // number of frames to wait until next tile switch
+  byte obsolete2_;
+  byte blocked;       // 0 = no obstruction data, 1 = old obstruction data, 2 = new obstruction data
+  word num_segments;
+  byte reserved[22];
+end struct
+
+
+---- Obstruction data (OBSOLETE) ----
+
+If blocked == 1, then...
+
+There are tile_width * tile_height bytes in the obstruction data area.  Each pixel in the tile
+can currently be either blocked (1) or not blocked (0).  Values 2 through 255 are reserved for
+future use.
+
+If blocked == 2, then...
+
+There are num_segments obstruction segments within this tile.  Each is defined as such:
+
+word x1;
+word y1;
+word x2;
+word y2;

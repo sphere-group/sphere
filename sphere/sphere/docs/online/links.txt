@@ -1,0 +1,60 @@
+General
+  http://sphere.sourceforge.net/
+    Skill: All
+    The official Sphere site. Rather bare, but links to other places.
+
+  http://www.spheredev.org/
+    Skill: All
+    Spherical community news, tutorials, games and information.
+
+  http://www.spheredev.org/forums/
+    Skill: All
+    Spherical community forums.
+
+Scripting
+  http://sphere.sourceforge.net/flik/
+    Skill: All
+    Absolutely great documents which cover some sphere specifics,
+    including networkings. Must read.
+
+  http://www.mozilla.org/js/scripting/
+    Skill: All
+    A great collection of links for any skill level.
+
+  http://tech.irt.org/articles/script14.htm
+    Skill: Newbie
+    These documents cover alot of number/string methods and some of
+    the Math objects' properties. Ignore the ones that use their
+    random number script and the one for scrolling text. They're not
+    very applicable.
+
+  http://tech.irt.org/articles/js054/index.htm
+    Skill: Newbie to Familiar
+    This covers Arrays in general, but then shows how to use the sort
+    method, which can be very very handy in many cases.
+
+  http://tech.irt.org/articles/js028/index.htm
+    Skill: Familiar
+    Interesting document on the difference between string objects and
+    text data.
+
+  http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Guide
+    Skill: Familiar
+    
+
+  http://www.mozilla.org/js/language/
+    Skill: Advanced
+    The ECMAScript standards themselves. These have all of the info
+    but are presented as a reference aimed at the higher level
+    people. If you need to check exacts about anything, this is your
+    source.
+
+  http://www.miislita.com/searchito/javascript-optimization.html
+    Skill: Advanced
+    An article discussing how to optimize JavaScript.
+
+Art
+  http://www.petesqbsite.com/sections/tutorials/tuts/tsugumo/default.htm
+  http://mirror.motherhamster.org/tsugumo/
+    Skill: Beginner
+    Tsugamo's famous pixel art tutorials. A must read.

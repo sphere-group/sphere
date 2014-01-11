@@ -1,0 +1,34 @@
+= Index of files in this directory =
+
+All documentation directories have this file. It describes the
+contents of all files in the same directory so that they can be
+seen from a bird's-eye view.
+
+* aaulia_changelog.txt - aaulia's development notes while getting
+  Sphere to compile again under Windows.
+
+* aaulia_readme.txt - aaulia's advice to those wishing to compile
+  Sphere under Windows. Most of the info in this file can be found
+  in build-msvc.txt.
+
+* build-cygwin.txt - Sphere building/compiling instructions for
+  CygWin. Not very comprehensive; you may want to look at
+  build-linux.txt for manual library compilation and installation
+  details.
+
+* build-linux.txt - Sphere building/compiling instructions for Linux.
+
+* build-linux-old.txt - Older instructions for building/compiling
+  Sphere under Linux. May be useful if not all required libs can be
+  found in repositories.
+
+* build-msvc.txt - Sphere building/compiling instructions for
+  Microsoft Visual C++.
+
+* build-unix.txt - Outdated instructions for building Sphere on
+  Unix-based systems. Kept for historical purposes.
+
+* index.txt - This file.
+
+* release-howto.txt - How to create an installer for Sphere on
+  Windows using the Nullsoft Simple Installation System (NSIS).

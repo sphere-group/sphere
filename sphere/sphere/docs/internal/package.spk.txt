@@ -1,0 +1,36 @@
+Sphere Package Format
+Chad Austin
+2000.11.13
+
+
+I originally meant to use .tar.gz for packages, but seeking in zlib streams is
+slow.  Then I tried .zip, but there are no good reference libraries for zip
+files.  Finally, I resorted to making my own format.  ;_;  It's basically like
+a zip file, but it has some simpler implementation details to make the code
+easier to write (and avoid unnecessary things like encryption).
+
+
+--- 16-byte header ---
+
+byte  signature[4];  // ".spk"
+word  version;       // 1
+dword num_files;
+dword index_offset; 
+byte  reserved[2];
+
+
+--- directory format ---
+
+[0..num_files]
+  word  entry_version;    // 1
+  word  file_name_length; // including null-termination
+  dword file_offset;
+  dword file_size;
+  dword compressed_size;
+  byte  file_name[file_name_length];  // null-terminated
+
+
+--- file format ---
+
+Each file is a zlib-compressed stream of size 'compressed_size' which will
+uncompress to size 'file_size'.

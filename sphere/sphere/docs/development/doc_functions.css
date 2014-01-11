@@ -1,0 +1,50 @@
+a:link {
+	text-decoration: none;
+}
+
+div.section {
+	background-color: #F0E68C;
+	border: thin dashed;
+}
+
+div.jsobject {
+	background-color: #95F08C;
+	border: thin dashed;
+}
+
+div.property {
+	background-color: transparent;
+	font-style: italic;
+	text-indent: 20px;
+}
+
+div.constantheader {
+	font-size: larger;
+	font-style: normal;
+	font-weight: bold;
+}
+
+div.constant {
+	margin-left: 20px;
+}
+
+#id {
+border: 1px dashed #0000FF;
+color: #000000;
+text-align: center;
+width: 100px;
+margin: 0px;
+padding: 4px;
+}
+
+span, span.type_object {
+	font-style: italic;
+	font-weight: bold;
+	color: Blue;
+}
+
+span.type_string {
+	font-style: italic;
+	font-weight: bold;
+	color: Blue;
+}

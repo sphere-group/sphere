@@ -1,0 +1,159 @@
+Getting Started with the Sphere RPG Engine
+Chad Austin
+2003.01.22
+
+
+This document is only a BRIEF introduction to Sphere.  It does not
+cover much at all about scripting.
+
+
+--==[ INTRODUCTION ]==--
+
+You may have just downloaded this "Sphere", but have no idea what to
+do what to do with it.  This document will walk you through creating a
+game, creating a map, creating a spriteset, and then writing some
+script to glue them all together.
+
+
+--==[ CREATING THE GAME ]==--
+
+Open the editor from the start menu.  The Sphere Development
+Environment is where you will spend a lot of time making a game, so
+try to get used to it.  :)
+
+The first step in making any game with Sphere is creating the game
+directory.  Click on the blank white paper in the toolbar, or click
+File | New | Project.
+
+Enter a project name (the name of the game directory) and a game title
+(what the game will be called in the Sphere main menu).  Click OK, and
+an empty project window will appear.  The project window is an index
+of all of your game resources, such as maps, spritesets, scripts, and
+images.
+
+
+--==[ CREATING A MAP ]==--
+
+First off, let's create a very simple map.  Click File | New | Map.
+Normally, we may wish to specify the initial map size, and the tileset
+it uses, but for now, the defaults are okay.  Just click OK.  And yes,
+we want to use an empty tileset.
+
+A map window will appear, along with four palette windows.  If this is
+the first map you have created, the palette windows will all be on top
+of each other.  Click the "tileset" tab in the map editor window.
+This is where you edit tiles.  Choose a nice green color, right-click
+on the edit section, and select "Fill RGB".  Plain green is okay, but
+we can add a little texture to the tile with the image editor's
+filters.  Right-click on the tile editor, and choose Filter | Noise.
+If there is too much noise, try the blur filter.
+
+Now that we have a grass tile, let's add a water one.  Find the
+"Tiles" palette and right-click on it.  Select "Append Tile" and click
+just to the right of the grass tile.  Now follow the same steps we
+used to make the grass tile, but use a dark blue as the base color.
+Making two tiles wasn't so bad!
+
+Click on the "Map" tab in the map editor window, and you should see
+that the entire map is filled with the grass tile.  Select the water
+tile from the tiles palette and draw a small lake or river or
+something.  Of course, there aren't any border tiles from grass to
+water and back, so it won't look very realistic.  But for now, that's
+okay.
+
+The map is pretty much done, so click the little floppy disk toolbar
+button to save it.  Make sure you're going to save the map in the
+"maps" subdirectory of your game directory and save it as 'field.rmp'.
+Close the map window, so that only the project window shows up.  You
+may be wondering why the map isn't listed in the maps section on the
+project.  When you save a file, the Sphere Editor doesn't immediately
+know that a new file may have been added to the project.  Click
+Refresh under the Project menu, and a plus button will appear next to
+the maps section.  If it didn't, you didn't save the map in the right
+place.
+
+
+--==[ CREATING A SPRITESET ]==--
+
+Use the File | New menu to create a new spriteset.  You should see a
+window with a bunch of directions and one frame in each direction.
+Spritesets in Sphere work in a different way than you may be used to.
+There are a list of images and each frame in a direction simply points
+to one of the images.  Look for the "Spriteset Images" palette.  There
+is only one blank image in it right now.  Try going to the Edit tab
+and drawing a circle.  Then go to the Base tab and draw a rectangle
+around the circle.  The "base" of the sprite is the rectangle where it
+touches the ground.  Think of it as the feet of a person.  Sphere uses
+the base rectangle to figure out how the spriteset collides with other
+things on the map.  If you want to go ahead and make other images,
+feel free.  To add animation to your spriteset, right/click on a frame
+in the Frames view and Append a new one.  Create a new image, assign
+it to the frame, and use the frame properties option in the
+right-click menu to assign a delay (in frames, usually 60 frames per
+second).  Finally, save your spriteset and put it in the project, the
+same way you did with the map.
+
+
+--==[ WRITING THE GAME SCRIPT ]==--
+
+You can have all of the game files in the world ready, but how do you
+tell Sphere what to do with them?  The answer to that question is by
+writing a script.  Sphere uses JavaScript as a scripting language, so
+hopefully a few of you will already be somewhat familiar with it.
+
+Right-click on Scripts in the project window, and then select Insert.
+Now make sure you're in the game's script directory, and type a
+filename.  (game.js, main.js, and startup.js are good choices for a
+game script.)  Now that the project has a new empty script, you'll
+want to tell Sphere that this script is the game script.  Double-click
+on "Game Settings" in the project window and select your startup
+script.  Click OK.
+
+Now open up the startup script in the script editor.  Looks like
+Notepad, eh?  The first thing Sphere does when it starts your game is
+load the main script and call the game function.  The simplest game
+function is as follows:
+
+function game()
+{
+}
+
+This function does absolutely nothing.  :)  A more useful game function is:
+
+function game()
+{
+  CreatePerson("aegis", "aegis.rss", false);
+  AttachInput("aegis");
+  AttachCamera("aegis");
+  MapEngine("field.rmp", 60);
+}
+
+The scope of this document doesn't cover how exactly how to script
+everything, but I'll try to explain what the above function does.
+
+== CreatePerson("aegis", "aegis.rss", false); ==
+
+Creates a person named "aegis" using spriteset "aegis.rss".  The third
+parameter, false, means that the entity will not be destroyed during
+map switches.
+
+== AttachInput("aegis"); ==
+
+Attaches the input to the entity named "aegis".  This allows you to
+move it around the map with the keyboard.
+
+== AttachCamera("aegis"); ==
+
+Attaches the camera to the entity so that, if possible, the entity
+will be shown in the center of the screen.
+
+== MapEngine("field.rmp", 60); ==
+
+This starts the map engine at 60 frames per second, using "field.rmp"
+as the initial map.
+
+
+--==[ CONCLUSION ]==--
+
+We have a working (albeit small) game!  Click the lightning bolt in
+the editor's toolbar and walk around on the map a little.  :)

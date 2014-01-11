@@ -1,0 +1,60 @@
+= named_parameters.js =
+
+What if it were possible to give parameters to a function
+by its name, rather than having to remember the positions of
+each one? Or changing the parameters of a function without
+having to overhaul all of your code to make it work again?
+
+named_parameters.js aims to make it easy to do this.
+
+This system uses JS's object literal syntax a lot, so brush
+up on that at the Mozilla's JS docs if you aren't already
+familiar with it. JSON familiarity is fine too.
+
+
+== Usage ==
+
+Start with the function, with a single object parameter.
+
+  function drawText(param)
+  {
+  }
+
+Make a default set of parameter values for your function.
+
+  function drawText(param)
+  {
+    var data = {text: "", title: "", position: {x:2, y:2}};
+  }
+
+Merge in the parameters. What happens is that any members
+of the param object will be transfered to the data object.
+
+  function drawText(param)
+  {
+    var data = {text: "", title: "", position: {x:2, y:2}};
+    data.merge(param);
+  }
+
+Now you can use the stuff in the data where you would use
+normal parameters.
+
+  function drawText(param)
+  {
+    var data = {text: "", title: "", position: {x:2, y:2}};
+    data.merge(param);
+    
+    myFont.drawText(
+        data.position.x,
+        data.position.y,
+        data.text);
+    myFont.drawText(
+        data.position.x + 4,
+        data.position.y - myFont.getHeight(),
+        data.title);
+  }
+
+For optional parameters, I recommend putting in a null.
+Happy coding!
+
+-- tunginobi

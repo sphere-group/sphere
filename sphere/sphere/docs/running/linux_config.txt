@@ -1,0 +1,62 @@
+= Configuring Sphere under Linux =
+
+Spherical Community (http://www.spheredev.org/)
+2006.09.03
+
+
+Currently, there is no graphical interface for configuring Sphere under
+Linux. But fret not; the instructions are right here.
+
+All configuration options are placed in the file "engine.ini", in the
+same directory as the Sphere engine binary itself.
+
+
+== Audio ==
+
+This setting is ignored.
+
+
+== Filter ==
+
+This allows you to set the colour filter of Sphere's graphical output.
+Don't use it yet, it's really ugly, even on full alpha.
+
+* r - Red component of filter (0 - 255)
+* g - Green component of filter (0 - 255)
+* b - Blue component of filter (0 - 255)
+* a - Alpha component of filter (0 - 255)
+
+
+== Network ==
+
+Enables or disables the ability for Sphere to access the local network
+and the Internet.
+
+* Allowed - 1 to enable, 0 to disable
+
+
+== Player[1-4] ==
+
+Sets the keys used by up to four different players. At the time of
+writing, only the direction keys can be set.
+
+* JoypadAllowed - 1 to enable joypad/stick, 0 to disable for the player
+* KeyboardAllowed - 1 to enable keyboard input, 0 to disable
+* KeyUp, KeyDown, KeyLeft, KeyRight - A keycode each, as described in
+  docs/development/keys.txt, determining the player's keyboard controls
+
+
+== Video ==
+
+Recently, the Linux SDL video driver has been brought up to speed with
+the Windows drivers, namely in terms of features.
+
+* Driver - sdl32 for 32-bit graphics (default), sdl16 for 16-bit
+* Filter - 0 to disable (default), 1 to enable
+* Fullscreen - 0 to start in windowed mode, 1 to start in fullscreen
+  mode. This can be toggled at any time while Sphere is running by
+  pressing F10.
+* Render - scale2x for 2x scaling, scale3x for 3x scaling. Leave it
+  blank to default to no scaling, which is faster most of the time.
+* ShowCursor - 0 to hide the mouse cursor when it is inside the Sphere
+  window, 1 to let it show.

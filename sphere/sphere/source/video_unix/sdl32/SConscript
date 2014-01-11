@@ -1,0 +1,12 @@
+Import('base_env COMPILER VideoDriver')
+
+env = base_env.Clone()
+COMPILER.SetupSDL(env)
+
+config = env.SharedObject('configfile',        '../../common/configfile.cpp')
+file   = env.SharedObject('defaultfile',       '../../common/DefaultFile.cpp')
+system = env.SharedObject('defaultfilesystem', '../../common/DefaultFileSystem.cpp')
+
+src_files = ['sdl32.cpp', config, file, system]
+
+VideoDriver('sdl32', src_files, [''])

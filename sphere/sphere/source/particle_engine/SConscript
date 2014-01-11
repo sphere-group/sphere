@@ -1,0 +1,17 @@
+Import('base_env COMPILER')
+
+env = base_env.Clone()
+COMPILER.SetupAudiere(env)
+COMPILER.SetupCorona(env)
+COMPILER.SetupMNG(env)
+COMPILER.SetupJS(env)
+
+env.Library('particle_engine', Split("""
+   ParticleInitializer.cpp
+   ParticleRenderer.cpp
+   ParticleSystemBase.cpp
+   ParticleSystemChild.cpp
+   ParticleSystemParent.cpp
+   ParticleUpdater.cpp
+   ScriptInterface.cpp
+"""))

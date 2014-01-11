@@ -1,0 +1,25 @@
+# @todo build make_new_clut and make_old_clut...  then use them to
+# generate the actual table files in source/common
+
+
+import os
+import sys
+import string
+
+Import('base_env BUILD_DIR COMPILER')
+
+env = base_env.Clone()
+COMPILER.SetupSphereCommon(env)
+COMPILER.SetupCorona(env)
+
+if (string.find(sys.platform, 'freebsd') != -1):
+  env.Append(CPPPATH = ['/usr/local/include'],
+             LIBPATH = ['/usr/local/lib'])
+
+utils = ['alphamerge', 'chr2rss', 'image2map', 'image2rss', 'rss2image',
+         'setrsstrans', 'spktest', 'tst2rts', 'vmap2rmp', 'vsp2rts']
+
+for u in utils:
+    program = env.Program(os.path.join(u, u), os.path.join(u, u + '.cpp'))
+    env.Install(os.path.join(BUILD_DIR, 'util'), program)
+

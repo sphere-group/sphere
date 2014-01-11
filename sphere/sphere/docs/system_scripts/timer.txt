@@ -1,0 +1,8 @@
+For all of you people who thought we needed a HookTimer...
+
+EvaluateSystemScript("timer.js");
+
+var a = new Timer();
+a.pause();            // pauses the timer for a bit
+a.unpause();          // resume updating the timer!
+a.getMilliseconds();  // returns number of milliseconds since timer was created

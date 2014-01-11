@@ -1,0 +1,46 @@
+RPG Window Style Format
+Chad Austin et al.
+7.16.03
+
+---- 64 byte header ----
+
+byte signature[4];     // must be ".rws"
+word version;          // must be 1 or 2
+byte edge_width;       // only valid if version == 1
+byte background_mode;  // 0 = tiled, 1 = stretched, 2 = gradient (uses corner_colors), 3 = tiled with gradient, 4 = stretched with gradient
+RGBA corner_colors[4]; // upper left, upper right, lower left, lower right
+byte edge_offsets[4]; // left, top, right, bottom
+byte reserved[36];
+
+
+---- Version 1 ----
+
+The rest of the file contains nine bitmaps.  Each bitmap is edge_width * edge_width
+pixels.  The order of the bitmaps are as follows:
+
+upper-left
+top
+upper-right
+right
+lower-right
+bottom
+lower-left
+left
+background
+
+
+---- Version 2 ----
+
+The rest of the file contains nine bitmaps.  The first and second words are the width
+and height, respectively.  The rest of the bitmap is width*height RGBA pixels.
+
+The bitmaps are in the same order as version 1.
+
+---- Version 2.1 ----
+
+The new edge_offsets array allows the user to specify an amount (in pixels) by which to
+expand the background section of a window style. This way you can have the background
+displayed under the edge bitmaps, for better looking windowstyles.
+
+Also, two new background modes are supported: TILED_GRADIENT (tiled background with
+gradient on top), and STRETCHED_GRADIENT (stretched background with gradient on top).
