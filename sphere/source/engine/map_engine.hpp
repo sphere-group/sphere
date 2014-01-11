@@ -9,6 +9,7 @@
 #include "input.hpp"
 #include <string>
 
+
 #include "../common/Playlist.hpp"
 struct PersonData
 {
@@ -283,8 +284,9 @@ public:
 	bool GetMapMusicName(std::string& result);
 	int GetMapMusicType();
 	audiere::OutputStreamPtr getMusic(){return m_Music;};
+#if defined(WIN32) && defined(USE_MIDI)
 	audiere::MIDIStreamPtr getMidi(){return m_Midi;};
-
+#endif
 private:
     struct DelayScript
     {
