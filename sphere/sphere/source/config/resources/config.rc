@@ -1,3 +1,0 @@
-IDI_CONFIG_ICON    ICON    DISCARDABLE    "config.ico"
-
-#include <wx/msw/wx.rc>
