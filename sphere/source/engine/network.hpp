@@ -1,4 +1,4 @@
-#include "platform.h"
+#include "../common/platform.h"
 
 #if SPHERE_MAC_OSX
 # include "mac/mac_network.h"

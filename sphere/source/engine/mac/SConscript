@@ -1,0 +1,16 @@
+Import('base_env COMPILER')
+
+env = base_env.Clone()
+COMPILER.SetupSDL(env)
+
+env.Library('mac', Split("""
+    mac_audio.cpp
+    mac_filesystem.cpp
+    mac_input.cpp
+    mac_network.cpp
+    mac_screenshot.cpp
+    mac_sphere_config.cpp
+    mac_time.cpp
+    mac_video.cpp
+    mac_main.cpp
+    """))

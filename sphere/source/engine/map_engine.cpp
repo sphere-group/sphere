@@ -5059,7 +5059,7 @@ CMapEngine::UpdatePerson(int person_index, bool& activated)
     {
         // if the activation key is pressed
         if ( (m_Keys[m_TalkActivationKey] && !IsKeyBound(m_TalkActivationKey))
-                || (GetNumJoysticks() > 0 && IsJoystickButtonPressed(0, m_JoystickTalkButton)) && !IsJoystickButtonBound(0, m_JoystickTalkButton))
+                || ((GetNumJoysticks() > 0 && IsJoystickButtonPressed(0, m_JoystickTalkButton)) && !IsJoystickButtonBound(0, m_JoystickTalkButton)))
         {
             int talk_x = int(m_Persons[m_InputPerson].x);
             int talk_y = int(m_Persons[m_InputPerson].y);

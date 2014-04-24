@@ -5,6 +5,10 @@
 #include <unistd.h>
 #include <cstring>
 
+#if __APPLE__
+# include <SDL/SDL_main.h>
+#endif
+
 #include "unix_internal.h"
 #include "unix_filesystem.h"
 #include "unix_audio.h"
@@ -21,8 +25,6 @@
 
 static char unix_data_dir[MAX_UNIX_PATH] = DATADIR;
 static char* original_directory;
-
-////////////////////////////////////////////////////////////////////////////////
 
 int KeyStringToKeyCode(const char* key_string)
 {
@@ -141,17 +143,13 @@ int KeyStringToKeyCode(const char* key_string)
     return -1;
 }
 
-////////////////////////////////////////////////////////////////////////////////
-
 static void LoadSphereConfiguration(SPHERECONFIG* config)
 {
   // Loads configuration settings
   LoadSphereConfig(config, (GetSphereDirectory() + "/engine.ini").c_str());
 }
 
-////////////////////////////////////////////////////////////////////////////////
-
-int main(int argc, const char* argv[])
+extern "C" int main(int argc, char* argv[])
 {
     SetSphereDirectory();
 
@@ -209,8 +207,7 @@ int main(int argc, const char* argv[])
     atexit(CloseVideo);
     atexit(CloseAudio);
 
-    RunSphere(argc, argv);
+    RunSphere(argc, const_cast<const char **>(argv));
 
+    return 0;
 }
-
-////////////////////////////////////////////////////////////////////////////////

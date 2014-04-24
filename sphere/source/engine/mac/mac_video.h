@@ -1,7 +1,7 @@
-#ifndef UNIX_VIDEO_H
-#define UNIX_VIDEO_H
+#ifndef MAC_VIDEO_H
+#define MAC_VIDEO_H
 
-#include "platform.h"
+#include "../../common/platform.h"
 #include "../../common/Image32.hpp"
 #include "../../common/rgb.hpp"
 #include "../../common/VectorStructs.hpp"

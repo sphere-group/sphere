@@ -1,5 +1,5 @@
-#include <SDL.h>
-#include <SDL_getenv.h>
+#include <SDL/SDL.h>
+#include <SDL/SDL_getenv.h>
 #include <string>
 
 #include "../../common/Image32.hpp"
@@ -7,12 +7,13 @@
 #include "../../common/VectorStructs.hpp"
 #include "../../common/primitives.hpp"
 #include "../../common/configfile.hpp"
+#include "../../common/platform.h"
 
 #include "scale.h"
 #include "hq2x.h"
 #include "2xSaI.h"
 
-#define EXPORT(ret) extern "C" ret __attribute__((stdcall))
+#define EXPORT(ret) extern "C" ret SPHERE_STDCALL
 
 #define calculate_clipping_metrics(width, height)   /* EVIL! */      \
   int image_offset_x = 0;                                            \
@@ -64,7 +65,7 @@ typedef struct _clipper
     int right;
     int bottom;
 
-} clipper;
+} sdl_clipper;
 
 enum SCALING_FILTER
 {
@@ -141,7 +142,7 @@ std::string    WindowTitle;
 
 static VideoConfiguration Config;
 
-static clipper ClippingRectangle;
+static sdl_clipper ClippingRectangle;
 
 static SDL_Surface* SDLScreenBuffer;
 
@@ -153,7 +154,6 @@ static int     ScreenBufferHeight = 0;
 
 static int     ScreenWidth        = 0;
 static int     ScreenHeight       = 0;
-
 
 ////////////////////////////////////////////////////////////////////////////////
 EXPORT(void) GetDriverInfo(DRIVERINFO* driverinfo)
@@ -1497,10 +1497,10 @@ inline RGBA interpolateRGBA(RGBA a, RGBA b, int i, int range)
 
     RGBA result =
     {
-        (a.red   * (range - i) + b.red   * i) / range,
-        (a.green * (range - i) + b.green * i) / range,
-        (a.blue  * (range - i) + b.blue  * i) / range,
-        (a.alpha * (range - i) + b.alpha * i) / range,
+        static_cast<byte>((a.red   * (range - i) + b.red   * i) / range),
+        static_cast<byte>((a.green * (range - i) + b.green * i) / range),
+        static_cast<byte>((a.blue  * (range - i) + b.blue  * i) / range),
+        static_cast<byte>((a.alpha * (range - i) + b.alpha * i) / range),
     };
 
     return result;

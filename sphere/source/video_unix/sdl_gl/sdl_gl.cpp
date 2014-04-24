@@ -8,7 +8,7 @@
 #include "../../common/rgb.hpp"
 #include "../../common/VectorStructs.hpp"
 #include "../../common/configfile.hpp"
-
+#include "../../common/platform.h"
 
 #if !defined(APIENTRY)
 #   define APIENTRY
@@ -32,7 +32,7 @@
 #endif
 
 
-#define EXPORT(ret) extern "C" ret __attribute__((stdcall))
+#define EXPORT(ret) extern "C" ret SPHERE_STDCALL
 #define SCALE()  (Config.scale ? 2 : 1)
 #define FILTER() (SCALE() == 1 ? GL_NEAREST : (Config.bilinear_filter ? GL_LINEAR : GL_NEAREST))
 
@@ -109,6 +109,8 @@ static GLint  MaxTexSize; // width or height
 std::string   WindowTitle;
 DRIVERCONFIG  Config;
 
+// The SDL main function, calling into the sphere main function.
+extern int sphere_main(int, char**);
 
 ////////////////////////////////////////////////////////////////////////////////
 EXPORT(void) GetDriverInfo(DRIVERINFO* driverinfo)

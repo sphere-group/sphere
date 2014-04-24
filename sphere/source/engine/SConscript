@@ -37,9 +37,12 @@ engine_sources = Split("""
     PlayerConfig.cpp
     """)
 
-if (COMPILER.is_unix()):
+if (COMPILER.is_linux()):
     COMPILER.UnixSubsystem(env)
     md = 'unix'
+if (COMPILER.is_mac()):
+    COMPILER.MacSubsystem(env)
+    md = 'unix' # mac
 
 print "Using subsystem: " + md
 

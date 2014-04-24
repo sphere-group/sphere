@@ -12,7 +12,7 @@ env = base_env.Clone()
 COMPILER.SetupSphereCommon(env)
 COMPILER.SetupCorona(env)
 
-if (string.find(sys.platform, 'freebsd') != -1):
+if COMPILER.is_unix():
   env.Append(CPPPATH = ['/usr/local/include'],
              LIBPATH = ['/usr/local/lib'])
 

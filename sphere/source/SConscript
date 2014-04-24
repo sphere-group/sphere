@@ -2,7 +2,9 @@ Import('COMPILER')
 
 SConscript(dirs = ['common', 'engine', 'util', 'particle_engine'])
 
-if COMPILER.is_unix():
-    SConscript(dirs = ['video_unix'])
+if COMPILER.is_mac():
+	SConscript(dirs = ['video_mac'])
+elif COMPILER.is_unix():
+	SConscript(dirs = ['video_unix','config'])
 else:
-    SConscript(dors = ['config'])
+	SConscript(dirs = ['video_win32','config'])

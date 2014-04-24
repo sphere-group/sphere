@@ -92,8 +92,8 @@ inline bool path_compare(const char* p1, const char* p2)
                 return false;
             }
         }
-        *p1++;
-        *p2++;
+        p1++;
+        p2++;
     }
     while (*p1 && *p2);
 

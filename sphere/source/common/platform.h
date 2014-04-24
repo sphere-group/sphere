@@ -17,6 +17,7 @@
 # define SPHERE_WIN32 1
 #elif __APPLE__ && __MACH__
 # define SPHERE_MAC_OSX 1
+// # define SPHERE_UNIX 1
 #elif __linux
 # define SPHERE_LINUX 1
 # define SPHERE_UNIX 1
@@ -46,6 +47,13 @@
 # define SPHERE_STDCALL __attribute__((stdcall))
 #else
 # define SPHERE_STDCALL
+#endif
+
+#ifndef __has_feature
+# define __has_feature(x) 0
+#endif
+#ifndef __has_extension
+# define __has_extension __has_feature
 #endif
 
 #endif // SPHERE_PLATFORM_H

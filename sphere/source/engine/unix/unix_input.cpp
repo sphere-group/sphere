@@ -15,7 +15,7 @@ static std::queue<int> KeyQueue;
 // keyboard state tables
 static bool KeyBuffer[MAX_KEY];
 static bool CurrentKeyBuffer[MAX_KEY];
-static bool ModKeyStates[2];
+static bool ModKeyStates[MODKEY_LAST+1];
 
 // queue for mouse wheel events
 static std::queue<int> MouseWheelQueue;
@@ -147,6 +147,8 @@ bool RefreshInput()
 {
   // update currently pressed keys
   memcpy(KeyBuffer, CurrentKeyBuffer, sizeof(bool) * MAX_KEY);
+
+  return true;
 }
 
 ///////////////////////////////////////////////////////////

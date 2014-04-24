@@ -5110,7 +5110,7 @@ end_func()
 */
 begin_func(DoesPersonExist, 1)
 arg_str(name);
-if (name == "")
+if (name == NULL || strnlen(name,1) == 0)
 {
     JS_ReportError(cx, "DoesPersonExist: empty person name given");
     return JS_FALSE;
@@ -7492,7 +7492,7 @@ static JSClass clasp =
 // create the object
 JSObject* object = JS_NewObject(cx, &clasp, NULL, NULL);
 if (!object || !JS_AddRoot(cx, &object))
-    return NULL;
+    return JS_FALSE;
 
 // assign methods to the object
 static JSFunctionSpec fs[] =
@@ -10152,14 +10152,13 @@ end_property()
 */
 begin_method(SS_COLOR, ssColorToJSON, 0)
 char json2[64];
-sprintf(json2,
-    // If the alpha is 255, then dont print it
-    object->color.alpha == 255 ? "CreateColor(%d,%d,%d)" : "CreateColor(%d,%d,%d,%d)",
-    object->color.red,
-    object->color.green,
-    object->color.blue,
-    object->color.alpha
-);
+
+// If the alpha is 255, then dont print it
+if(object->color.alpha == 255)
+    sprintf(json2,"CreateColor(%d,%d,%d)",object->color.red,object->color.green,object->color.blue);
+else
+    sprintf(json2,"CreateColor(%d,%d,%d,%d)",object->color.red,object->color.green,object->color.blue,object->color.alpha);
+
 
 return_str(json2);
 // This works too (), especially if sprintf cannot handle your type conversion. It is also handles its own buffer
@@ -13262,7 +13261,7 @@ if (object->surface->FindColor(aColor,x,y))
 
     JSObject* a_obj = JS_NewObject(cx, &a_clasp, NULL, NULL);
     if (!a_obj || !JS_AddRoot(cx, &a_obj))
-        return NULL;
+        return JS_FALSE;
 
     JS_DefineProperty(cx, a_obj, "x",      INT_TO_JSVAL(x), JS_PropertyStub, JS_PropertyStub, JSPROP_ENUMERATE | JSPROP_READONLY | JSPROP_PERMANENT);
     JS_DefineProperty(cx, a_obj, "y",      INT_TO_JSVAL(y), JS_PropertyStub, JS_PropertyStub, JSPROP_ENUMERATE | JSPROP_READONLY | JSPROP_PERMANENT);

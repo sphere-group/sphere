@@ -171,4 +171,10 @@ CVSROOT
 
 *.o
 **/*.sconsign.dblite
-sphere/build/linux/docs
+sphere/build/linux
+!sphere/build/linux/engine.ini
+sphere/build/mac
+!sphere/build/mac/engine.ini
+*.a
+*.os
+*.dylib

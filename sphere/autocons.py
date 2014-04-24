@@ -29,6 +29,8 @@ def ParseConfig(env, command, options):
                 env.Append(LIBS = [arg[2:]])
             elif arg[0:11] == '-Wl,-rpath,':
                 env.Append(LINKFLAGS = [arg])
+            elif arg[0:15] == '-Wl,-framework,':
+                env.Append(LINKFLAGS = [arg])
             else:
                 env.Append(CXXFLAGS = [arg])
         else:

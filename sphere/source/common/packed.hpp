@@ -4,10 +4,17 @@
 #include <assert.h>
 #include <stdlib.h>
 
+#include "platform.h"
+
 #ifdef NDEBUG
-#define ASSERT_STRUCT_SIZE(name, size) ;
+# define ASSERT_STRUCT_SIZE(name, size) ;
 #else
-#define ASSERT_STRUCT_SIZE(name, size)		\
+# if __has_feature(cxx_static_assert)
+#  define ASSERT_STRUCT_SIZE(name, size) static_assert(sizeof(name) == size, "sizeof(" # name ") == " # size);
+# elif __has_feature(c_static_assert)
+#  define ASSERT_STRUCT_SIZE(name, size) _Static_assert(sizeof(name) == size, "sizeof(" # name ") == " # size);
+# else // SPHERE_CLANG
+#  define ASSERT_STRUCT_SIZE(name, size)		\
 	static class name##_AssertStructSize__	\
   {											\
   public:									\
@@ -16,6 +23,7 @@
 	assert(sizeof(name) == size);			\
 	}										\
   } name##_AssertStructSize___;
-
+# endif // !SPHERE_CLANG
 #endif // NDEBUG
+
 #endif // PACKED_HPP

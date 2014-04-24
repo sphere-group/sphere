@@ -604,10 +604,10 @@ bool sTileset::SaveToFile(IFile* file) const
         for (int j = 0; j < obs_map.GetNumSegments(); j++)
         {
             word coordinates[4] = {
-                                      obs_map.GetSegment(j).x1,
-                                      obs_map.GetSegment(j).y1,
-                                      obs_map.GetSegment(j).x2,
-                                      obs_map.GetSegment(j).y2
+                                      (word)obs_map.GetSegment(j).x1,
+                                      (word)obs_map.GetSegment(j).y1,
+                                      (word)obs_map.GetSegment(j).x2,
+                                      (word)obs_map.GetSegment(j).y2
                                   };
 
             coordinates[0] = mtol_w(coordinates[0]);

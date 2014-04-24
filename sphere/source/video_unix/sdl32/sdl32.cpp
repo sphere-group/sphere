@@ -1,4 +1,5 @@
 #include <SDL/SDL.h>
+#include <SDL/SDL_main.h>
 #include <SDL/SDL_getenv.h>
 #include <string>
 
@@ -7,13 +8,14 @@
 #include "../../common/VectorStructs.hpp"
 #include "../../common/primitives.hpp"
 #include "../../common/configfile.hpp"
+#include "../../common/platform.h"
 
 #include "scale.h"
 #include "hq2x.h"
 #include "2xSaI.h"
 
 
-#define EXPORT(ret) extern "C" ret __attribute__((stdcall))
+#define EXPORT(ret) extern "C" ret SPHERE_STDCALL
 
 #define calculate_clipping_metrics(width, height)   /* EVIL! */      \
   int image_offset_x = 0;                                            \
@@ -156,7 +158,6 @@ static int     ScreenBufferHeight = 0;
 
 static int     ScreenWidth        = 0;
 static int     ScreenHeight       = 0;
-
 
 ////////////////////////////////////////////////////////////////////////////////
 EXPORT(void) GetDriverInfo(DRIVERINFO* driverinfo)

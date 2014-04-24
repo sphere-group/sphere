@@ -1,4 +1,4 @@
-#include "platform.h"
+#include "../common/platform.h"
 
 #if SPHERE_WIN32
 # include "win32/win32_video.hpp"

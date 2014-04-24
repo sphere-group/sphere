@@ -11,7 +11,9 @@
 #include <iostream>
 #include <sys/poll.h>
 
-#define POLLSTANDARD (POLLIN|POLLPRI|POLLOUT|POLLRDNORM|POLLRDBAND|POLLWRBAND|POLLERR|POLLHUP|POLLNVAL)
+#ifndef POLLSTANDARD
+# define POLLSTANDARD (POLLIN|POLLPRI|POLLOUT|POLLRDNORM|POLLRDBAND|POLLWRBAND|POLLERR|POLLHUP|POLLNVAL)
+#endif
 
 #define PRINT_STANDARD_ERROR(infn, causefn) std::cerr << #infn ":" #causefn ": " << strerror(errno) << std::endl;
 #define PRINT_HOST_ERROR(infn, causefn) std::cerr << #infn ":" #causefn ": " << hstrerror(h_errno) << std::endl;

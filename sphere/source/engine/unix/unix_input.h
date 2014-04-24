@@ -101,6 +101,7 @@
 #define MODKEY_CAPSLOCK     1
 #define MODKEY_NUMLOCK      2
 #define MODKEY_SCROLLOCK    3
+#define MODKEY_LAST			MODKEY_SCROLLOCK
 
 #define MOUSE_LEFT          0
 #define MOUSE_MIDDLE        1

@@ -1,5 +1,5 @@
-#ifndef INTERNAL_H
-#define INTERNAL_H
+#ifndef WIN32_INTERNAL_H
+#define WIN32_INTERNAL_H
 #include <windows.h>
 #include "win32_sphere_config.hpp"
 #include "../system.hpp"

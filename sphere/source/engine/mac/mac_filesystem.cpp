@@ -1,5 +1,6 @@
 #include "mac_filesystem.h"
 #include <errno.h>
+#include <stdlib.h>
 
 using std::string;
 

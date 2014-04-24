@@ -1,5 +1,5 @@
-#ifndef INTERNAL_H
-#define INTERNAL_H
+#ifndef UNIX_INTERNAL_H
+#define UNIX_INTERNAL_H
 
 // video
 extern bool InitVideo(SPHERECONFIG* config);

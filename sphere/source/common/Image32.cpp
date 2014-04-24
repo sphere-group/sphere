@@ -1549,10 +1549,10 @@ inline RGBA interpolateRGBA(RGBA a, RGBA b, int i, int range)
     }
 
     RGBA result = {
-                      (a.red   * (range - i) + b.red   * i) / range,
-                      (a.green * (range - i) + b.green * i) / range,
-                      (a.blue  * (range - i) + b.blue  * i) / range,
-                      (a.alpha * (range - i) + b.alpha * i) / range,
+                      static_cast<byte>((a.red   * (range - i) + b.red   * i) / range),
+                      static_cast<byte>((a.green * (range - i) + b.green * i) / range),
+                      static_cast<byte>((a.blue  * (range - i) + b.blue  * i) / range),
+                      static_cast<byte>((a.alpha * (range - i) + b.alpha * i) / range),
                   };
 
     return result;

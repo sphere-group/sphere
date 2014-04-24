@@ -1,5 +1,5 @@
-#include <SDL.h>
-#include <SDL_getenv.h>
+#include <SDL/SDL.h>
+#include <SDL/SDL_getenv.h>
 #include <OpenGL/gl.h>
 #include <math.h>
 #include <string>
@@ -8,7 +8,7 @@
 #include "../../common/rgb.hpp"
 #include "../../common/VectorStructs.hpp"
 #include "../../common/configfile.hpp"
-
+#include "../../common/platform.h"
 
 #if !defined(APIENTRY)
 #   define APIENTRY
@@ -32,7 +32,7 @@
 #endif
 
 
-#define EXPORT(ret) extern "C" ret __attribute__((stdcall))
+#define EXPORT(ret) extern "C" ret SPHERE_STDCALL
 #define SCALE()  (Config.scale ? 2 : 1)
 #define FILTER() (SCALE() == 1 ? GL_NEAREST : (Config.bilinear_filter ? GL_LINEAR : GL_NEAREST))
 
@@ -81,10 +81,6 @@ struct DRIVERCONFIG
     bool bilinear_filter;
 };
 
-
-// extension function pointers
-void (*glBlendEquationEXT)(GLenum);
-
 // FUNCTION PROTOTYPES //
 EXPORT(RGBA*) LockImage(IMAGE image);
 EXPORT(void)  UnlockImage(IMAGE image, bool pixels_changed);
@@ -107,7 +103,6 @@ static GLint  MaxTexSize; // width or height
 
 std::string   WindowTitle;
 DRIVERCONFIG  Config;
-
 
 ////////////////////////////////////////////////////////////////////////////////
 EXPORT(void) GetDriverInfo(DRIVERINFO* driverinfo)
@@ -236,7 +231,7 @@ EXPORT(bool) InitVideo(int w, int h, std::string sphere_dir)
 
 
     // try to get glBlendEquationEXT
-    if (strstr((const char*)glGetString(GL_EXTENSIONS), "GL_EXT_blend_minmax"))
+    /*if (strstr((const char*)glGetString(GL_EXTENSIONS), "GL_EXT_blend_minmax"))
     {
         glBlendEquationEXT = (void (APIENTRY*)(GLenum))SDL_GL_GetProcAddress("glBlendEquationEXT");
     }
@@ -244,7 +239,7 @@ EXPORT(bool) InitVideo(int w, int h, std::string sphere_dir)
     {
         fprintf(stderr, "GL_EXT_blend_minmax extension not available\n");
         return false;
-    }
+    }*/
 
     // make sure GL_EXT_blend_subtract is also available
     if (!strstr((const char*)glGetString(GL_EXTENSIONS), "GL_EXT_blend_subtract"))
@@ -750,6 +745,9 @@ EXPORT(void) BlitImageMask(IMAGE image, int x, int y, CImage32::BlendMode blendm
         {
             blit_image(image, tx, ty, mask);
         }
+
+        default:
+            break;
     }
 }
 
@@ -806,6 +804,9 @@ EXPORT(void) TransformBlitImageMask(IMAGE image, int x[4], int y[4], CImage32::B
         {
             blit_image(image, x, y, mask);
         }
+
+        default:
+            break;
     }
 }
 
@@ -1109,8 +1110,8 @@ EXPORT(void) DrawPolygon(VECTOR_INT** points, int length, int invert, RGBA color
 
             for (i = 0; i < length; i++)
             {
-                if (points[i]->y <= c_y && points[j]->y > c_y ||
-                    points[j]->y <= c_y && points[i]->y > c_y)
+                if ((points[i]->y <= c_y && points[j]->y > c_y) ||
+                    (points[j]->y <= c_y && points[i]->y > c_y))
                 {
                     if (points[i]->x >= c_x && points[j]->x >= c_x)
                     {

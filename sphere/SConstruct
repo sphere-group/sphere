@@ -4,9 +4,7 @@ import string
 import SCons
 import autocons
 
-###########################################################
-
-def BuildLinuxEnv():
+def BuildLinuxEnv(compiler):
     env = Environment(ENV = os.environ)
     env['BUILD_DIR'] = "#/build/linux"
 
@@ -19,37 +17,68 @@ def BuildLinuxEnv():
             CCFLAGS = ['-O2', '-s'],
             LINKFLAGS = ['-s'])
 
-    # no write_mng support for linux
+    # no write_mng support for unix
     # Also, SCons is stupid and needs to be told where user libraries reside.
     env.Append(CXXFLAGS = ['-DNO_WRITE_MNG','-I/usr/local/include'])
 
     return env
 
-###########################################################
+def BuildMacEnv(compiler):
+    env = Environment(ENV = os.environ)
+    env['BUILD_DIR'] = "#/build/mac"
+
+    if ARGUMENTS.get('debug'):
+        env.Append(
+            CCFLAGS = ['-DDEBUG', '-g'],
+            LINKFLAGS = ['-g'])
+    elif ARGUMENTS.get('opt'):
+        env.Append(
+            CCFLAGS = ['-O2', '-s'],
+            LINKFLAGS = ['-s'])
+
+    # no write_mng support for unix
+    # Also, SCons is stupid and needs to be told where user libraries reside.
+    env.Append(CXXFLAGS = ['-DNO_WRITE_MNG','-I/usr/local/include','-std=c++11'])
+    env.Append(LINKFLAGS = ['-framework','Cocoa'])
+
+    return env
 
 class Compiler:
     def __init__(self, name):
-        if not name in ['linux']:
+        if not name in ['linux','mac']:
             raise ValueError, "Invalid compiler specified"
 
         self.name = name
 
         if name == 'linux':
-            self.env = BuildLinuxEnv()
+            self.env = BuildLinuxEnv(self)
+        elif name == 'mac':
+            self.env = BuildMacEnv(self)
 
     def __str__(self):
         return self.name
 
     def is_unix(self):
+        return self.name in ['linux','mac']
+
+    def is_linux(self):
         return self.name in ['linux']
 
+    def is_mac(self):
+        return self.name in ['mac']
+
     def needs_sdl(self):
-        return self.name in ['linux']
+        return self.is_unix();
 
     def get_env(self):
         return self.env
 
     def UnixSubsystem(self, env):
+      env.Append(CPPPATH = ['#/source/engine/unix'],
+                 LIBPATH = ['#/source/engine/unix'],
+                 LIBS = ['unix'])
+
+    def MacSubsystem(self, env):
       env.Append(CPPPATH = ['#/source/engine/unix'],
                  LIBPATH = ['#/source/engine/unix'],
                  LIBS = ['unix'])
@@ -64,7 +93,7 @@ class Compiler:
         env.Append(LIBS = ['htmlhelp'])
 
     def SetupJS(self, env):
-        if self.name == 'linux':
+        if self.is_unix():
             env.Append(CCFLAGS = ['-DXP_UNIX'])
             if os.path.exists('/usr/include/smjs'):
                 env.Append(LIBS = ['smjs'])
@@ -72,6 +101,9 @@ class Compiler:
             elif os.path.exists('/usr/include/js'):
                 env.Append(LIBS = ['js'])
                 env.Append(CPPPATH = [Dir('/usr/include/js')])
+            elif os.path.exists('/usr/local/include/js'):
+                env.Append(LIBS = ['js'])
+                env.Append(CPPPATH = [Dir('/usr/local/include/js')])
             elif os.path.exists('/usr/include/mozjs'):
                 env.Append(LIBS = ['mozjs'])
                 env.Append(CPPPATH = [Dir('/usr/include/mozjs')])
@@ -80,18 +112,18 @@ class Compiler:
                 env.Append(CPPPATH = [Dir('/usr/local/include/mozjs')])
             else:
                 print "SCons could not find a JavaScript engine. Please install SpiderMonkey."
-		Exit(1)
+                Exit(1)
 
     def SetupMNG(self, env):
-        if self.name == 'linux':
+        if self.is_unix():
             env.Append(LIBS = ['mng', 'jpeg', 'z'])
 
     def SetupSDL(self, env):
-        if self.name == 'linux':
+        if self.is_unix():
             autocons.ParseConfig(env, 'sdl-config', ['--cflags', '--libs'])
 
     def SetupWXWidgets(self, env):
-        if self.name == 'linux':
+        if self.is_unix():
             autocons.ParseConfig(env, 'wx-config', ['--cppflags', '--libs'])
 
     def SetupSphereCommon(self, env):
@@ -111,6 +143,8 @@ if string.find(sys.platform, 'linux') != -1:
     default_compiler = 'linux'
 elif string.find(sys.platform, 'freebsd') != -1:
     default_compiler = 'linux'
+elif string.find(sys.platform, 'darwin') != -1:
+    default_compiler = 'mac'
 else:
     print "Can't determine default compiler!  Defaulting to Linux..."
     default_compiler = 'linux'

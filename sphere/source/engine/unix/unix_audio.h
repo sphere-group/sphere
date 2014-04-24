@@ -1,5 +1,5 @@
-#ifndef WIN32_AUDIO_HPP
-#define WIN32_AUDIO_HPP
+#ifndef UNIX_AUDIO_HPP
+#define UNIX_AUDIO_HPP
 
 
 #include <audiere.h>
