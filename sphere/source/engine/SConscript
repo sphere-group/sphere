@@ -38,11 +38,11 @@ engine_sources = Split("""
     """)
 
 if (COMPILER.is_linux()):
-    COMPILER.UnixSubsystem(env)
+    COMPILER.LinuxSubsystem(env)
     md = 'unix'
 if (COMPILER.is_mac()):
     COMPILER.MacSubsystem(env)
-    md = 'unix' # mac
+    md = 'mac'
 
 print "Using subsystem: " + md
 

@@ -15,14 +15,18 @@
 
 #ifdef _WIN32
 # define SPHERE_WIN32 1
+# define SPHERE_HAS_NETWORKING 1
 #elif __APPLE__ && __MACH__
 # define SPHERE_MAC_OSX 1
 // # define SPHERE_UNIX 1
+# define SPHERE_HAS_NETWORKING 0
 #elif __linux
 # define SPHERE_LINUX 1
 # define SPHERE_UNIX 1
+# define SPHERE_HAS_NETWORKING 1
 #elif __unix
 # define SPHERE_UNIX 1
+# define SPHERE_HAS_NETWORKING 1
 #else
 # error unsupported platform
 #endif

@@ -91,6 +91,7 @@ SS_FUNCTION(OpenLog, 1)
   SS_FUNCTION(GetTime, 0)
 
   // networking
+  #if SPHERE_HAS_NETWORKING
   SS_FUNCTION(GetLocalName, 0)
   SS_FUNCTION(GetLocalAddress, 0)
   SS_FUNCTION(OpenAddress, 2)
@@ -99,6 +100,7 @@ SS_FUNCTION(OpenLog, 1)
   // socket.getPendingReadSize()
   // socket.write(byte_array)
   // socket.read(size)
+  #endif
 
 // sphere objects
 

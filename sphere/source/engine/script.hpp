@@ -23,6 +23,7 @@
 #include "../common/ColorMatrix.hpp"
 #include "../common/Map.hpp"
 #include "../common/Layer.hpp"
+#include "../common/platform.h"
 
 #include "../particle_engine/ParticleSystemParent.hpp"
 #include "../particle_engine/ParticleSystemChild.hpp"
@@ -193,7 +194,7 @@ private:
   declare_method(ssParticleSystemChildKill);
   declare_method(ssParticleSystemChildRevive);
 
-
+#if SPHERE_HAS_NETWORKING
   // sockets
   declare_constructor1(CreateSocketObject, NSOCKET socket);
   declare_finalizer(ssFinalizeSocket);
@@ -202,6 +203,7 @@ private:
   declare_method(ssSocketWrite);
   declare_method(ssSocketRead);
   declare_method(ssSocketClose);
+#endif
 
   // logs
   declare_constructor1(CreateLogObject, CLog* log);

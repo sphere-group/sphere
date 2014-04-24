@@ -1,7 +1,7 @@
 #include <dlfcn.h>
 #include <string>
 
-#include "platform.h"
+#include "../../common/platform.h"
 #include "mac_video.h"
 #include "mac_input.h"
 #include "mac_time.h"

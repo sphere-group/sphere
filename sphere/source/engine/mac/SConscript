@@ -7,7 +7,6 @@ env.Library('mac', Split("""
     mac_audio.cpp
     mac_filesystem.cpp
     mac_input.cpp
-    mac_network.cpp
     mac_screenshot.cpp
     mac_sphere_config.cpp
     mac_time.cpp

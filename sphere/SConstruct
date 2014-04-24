@@ -50,9 +50,9 @@ class Compiler:
 
         self.name = name
 
-        if name == 'linux':
+        if self.is_linux():
             self.env = BuildLinuxEnv(self)
-        elif name == 'mac':
+        elif self.is_mac():
             self.env = BuildMacEnv(self)
 
     def __str__(self):
@@ -73,15 +73,15 @@ class Compiler:
     def get_env(self):
         return self.env
 
-    def UnixSubsystem(self, env):
+    def LinuxSubsystem(self, env):
       env.Append(CPPPATH = ['#/source/engine/unix'],
                  LIBPATH = ['#/source/engine/unix'],
                  LIBS = ['unix'])
 
     def MacSubsystem(self, env):
-      env.Append(CPPPATH = ['#/source/engine/unix'],
-                 LIBPATH = ['#/source/engine/unix'],
-                 LIBS = ['unix'])
+      env.Append(CPPPATH = ['#/source/engine/mac'],
+                 LIBPATH = ['#/source/engine/mac'],
+                 LIBS = ['mac'])
 
     def SetupAudiere(self, env):
         env.Append(LIBS = ['audiere'])

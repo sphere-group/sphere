@@ -4,7 +4,7 @@ SConscript(dirs = ['common', 'engine', 'util', 'particle_engine'])
 
 if COMPILER.is_mac():
 	SConscript(dirs = ['video_mac'])
-elif COMPILER.is_unix():
+elif COMPILER.is_linux():
 	SConscript(dirs = ['video_unix','config'])
 else:
 	SConscript(dirs = ['video_win32','config'])

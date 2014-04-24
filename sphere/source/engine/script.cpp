@@ -24,6 +24,7 @@
 #include "../common/sphere_version.h"
 #include "../common/configfile.hpp"
 #include "../common/Entities.hpp"
+#include "../common/platform.h"
 
 #include "../common/md5global.h"
 #include "../common/md5.h"
@@ -131,10 +132,12 @@ BEGIN_SS_OBJECT(SS_PARTICLE_DESCENDANTS)
 ParticleSystemParent* system;
 END_SS_OBJECT()
 
+#if SPHERE_HAS_NETWORKING
 BEGIN_SS_OBJECT(SS_SOCKET)
 NSOCKET socket;
 bool is_open;
 END_SS_OBJECT()
+#endif
 
 BEGIN_SS_OBJECT(SS_LOG)
 CLog* log;
@@ -151,7 +154,7 @@ END_SS_OBJECT()
 
 BEGIN_SS_OBJECT(SS_SOUND)
 audiere::OutputStream* sound;
-#if defined(WIN32) && defined(USE_MIDI)
+#if SPHERE_WIN32 && defined(USE_MIDI)
 audiere::MIDIStream* midi;
 #endif
 audiere::File* memoryfile;
@@ -3436,6 +3439,8 @@ if (!system)
 return_object(CreateParticleSystemChildObject(cx, system));
 end_func()
 
+#if SPHERE_HAS_NETWORKING
+
 ////////////////////////////////////////////////////////////////////////////////
 // section: networking //
 /**
@@ -3496,6 +3501,8 @@ else
     return_object(CreateSocketObject(cx, s));
 }
 end_func()
+
+#endif
 ////////////////////////////////////////////////////////////////////////////////
 // section: byte_arrays //
 /**
@@ -9789,6 +9796,8 @@ end_method()
 // SOCKET OBJECTS //////////////////////
 ////////////////////////////////////////
 
+#if SPHERE_HAS_NETWORKING
+
 JSObject*
 CScript::CreateSocketObject(JSContext* cx, NSOCKET socket)
 {
@@ -9958,6 +9967,8 @@ if (object->socket && object->is_open)
 }
 object->is_open = false;
 end_method()
+
+#endif
 
 ////////////////////////////////////////
 ////////////////////////////////////////

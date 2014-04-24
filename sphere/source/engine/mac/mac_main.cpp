@@ -201,8 +201,9 @@ int main(int argc, char* argv[])
     atexit(CloseVideo);
     atexit(CloseAudio);
 
-    RunSphere(argc, argv);
+    RunSphere(argc, const_cast<const char **>(argv));
 
+    return 0;
 }
 
 ////////////////////////////////////////////////////////////////////////////////
