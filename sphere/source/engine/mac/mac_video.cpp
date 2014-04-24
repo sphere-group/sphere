@@ -1,6 +1,7 @@
 #include <dlfcn.h>
 #include <string>
 
+#include "platform.h"
 #include "mac_video.h"
 #include "mac_input.h"
 #include "mac_time.h"
@@ -18,45 +19,45 @@ static void*  GraphicsDriver;
 
 
 // this function should not be exposed
-static void (STDCALL * _FlipScreen)();
+static void (SPHERE_STDCALL * _FlipScreen)();
 
-void  (STDCALL * SetClippingRectangle)(int x, int y, int w, int h);
-void  (STDCALL * GetClippingRectangle)(int* x, int* y, int* w, int* h);
-IMAGE (STDCALL * CreateImage)(int width, int height, const RGBA* data);
-IMAGE (STDCALL * CloneImage)(IMAGE image);
-IMAGE (STDCALL * GrabImage)(int x, int y, int width, int height);
-void  (STDCALL * DestroyImage)(IMAGE image);
-void  (STDCALL * BlitImage)(IMAGE image, int x, int y, CImage32::BlendMode blendmode);
-void  (STDCALL * BlitImageMask)(IMAGE image, int x, int y, CImage32::BlendMode blendmode, RGBA mask, CImage32::BlendMode mask_blendmode);
-void  (STDCALL * TransformBlitImage)(IMAGE image, int x[4], int y[4], CImage32::BlendMode blendmode);
-void  (STDCALL * TransformBlitImageMask)(IMAGE image, int x[4], int y[4], CImage32::BlendMode blendmode, RGBA mask, CImage32::BlendMode mask_blendmode);
-int   (STDCALL * GetImageWidth)(IMAGE image);
-int   (STDCALL * GetImageHeight)(IMAGE image);
-RGBA* (STDCALL * LockImage)(IMAGE image);
-void  (STDCALL * UnlockImage)(IMAGE image, bool pixels_changed);
-void  (STDCALL * DirectBlit)(int x, int y, int w, int h, RGBA* pixels);
-void  (STDCALL * DirectTransformBlit)(int x[4], int y[4], int w, int h, RGBA* pixels);
-void  (STDCALL * DirectGrab)(int x, int y, int w, int h, RGBA* pixels);
-void  (STDCALL * DrawPoint)(int x, int y, RGBA color);
-void  (STDCALL * DrawPointSeries)(VECTOR_INT** points, int length, RGBA color);
-void  (STDCALL * DrawLine)(int x[2], int y[2], RGBA color);
-void  (STDCALL * DrawGradientLine)(int x[2], int y[2], RGBA color[2]);
-void  (STDCALL * DrawLineSeries)(VECTOR_INT** points, int length, RGBA color, int type);
-void  (STDCALL * DrawBezierCurve)(int x[4], int y[4], double step, RGBA color, int cubic);
-void  (STDCALL * DrawTriangle)(int x[3], int y[3], RGBA color);
-void  (STDCALL * DrawGradientTriangle)(int x[3], int y[3], RGBA color[3]);
-void  (STDCALL * DrawPolygon)(VECTOR_INT** points, int length, int invert, RGBA color);
-void  (STDCALL * DrawOutlinedRectangle)(int x, int y, int w, int h, int size, RGBA color);
-void  (STDCALL * DrawRectangle)(int x, int y, int w, int h, RGBA color);
-void  (STDCALL * DrawGradientRectangle)(int x, int y, int w, int h, RGBA color[4]);
-void  (STDCALL * DrawOutlinedComplex)(int r_x, int r_y, int r_w, int r_h, int circ_x, int circ_y, int circ_r, RGBA color, int antialias);
-void  (STDCALL * DrawFilledComplex)(int r_x, int r_y, int r_w, int r_h, int circ_x, int circ_y, int circ_r, float angle, float frac_size, int fill_empty, RGBA colors[2]);
-void  (STDCALL * DrawGradientComplex)(int r_x, int r_y, int r_w, int r_h, int circ_x, int circ_y, int circ_r, float angle, float frac_size, int fill_empty, RGBA colors[3]);
-void  (STDCALL * DrawOutlinedEllipse)(int x, int y, int rx, int ry, RGBA color);
-void  (STDCALL * DrawFilledEllipse)(int x, int y, int rx, int ry, RGBA color);
-void  (STDCALL * DrawOutlinedCircle)(int x, int y, int r, RGBA color, int antialias);
-void  (STDCALL * DrawFilledCircle)(int x, int y, int r, RGBA color, int antialias);
-void  (STDCALL * DrawGradientCircle)(int x, int y, int r, RGBA color[2], int antialias);
+void  (SPHERE_STDCALL * SetClippingRectangle)(int x, int y, int w, int h);
+void  (SPHERE_STDCALL * GetClippingRectangle)(int* x, int* y, int* w, int* h);
+IMAGE (SPHERE_STDCALL * CreateImage)(int width, int height, const RGBA* data);
+IMAGE (SPHERE_STDCALL * CloneImage)(IMAGE image);
+IMAGE (SPHERE_STDCALL * GrabImage)(int x, int y, int width, int height);
+void  (SPHERE_STDCALL * DestroyImage)(IMAGE image);
+void  (SPHERE_STDCALL * BlitImage)(IMAGE image, int x, int y, CImage32::BlendMode blendmode);
+void  (SPHERE_STDCALL * BlitImageMask)(IMAGE image, int x, int y, CImage32::BlendMode blendmode, RGBA mask, CImage32::BlendMode mask_blendmode);
+void  (SPHERE_STDCALL * TransformBlitImage)(IMAGE image, int x[4], int y[4], CImage32::BlendMode blendmode);
+void  (SPHERE_STDCALL * TransformBlitImageMask)(IMAGE image, int x[4], int y[4], CImage32::BlendMode blendmode, RGBA mask, CImage32::BlendMode mask_blendmode);
+int   (SPHERE_STDCALL * GetImageWidth)(IMAGE image);
+int   (SPHERE_STDCALL * GetImageHeight)(IMAGE image);
+RGBA* (SPHERE_STDCALL * LockImage)(IMAGE image);
+void  (SPHERE_STDCALL * UnlockImage)(IMAGE image, bool pixels_changed);
+void  (SPHERE_STDCALL * DirectBlit)(int x, int y, int w, int h, RGBA* pixels);
+void  (SPHERE_STDCALL * DirectTransformBlit)(int x[4], int y[4], int w, int h, RGBA* pixels);
+void  (SPHERE_STDCALL * DirectGrab)(int x, int y, int w, int h, RGBA* pixels);
+void  (SPHERE_STDCALL * DrawPoint)(int x, int y, RGBA color);
+void  (SPHERE_STDCALL * DrawPointSeries)(VECTOR_INT** points, int length, RGBA color);
+void  (SPHERE_STDCALL * DrawLine)(int x[2], int y[2], RGBA color);
+void  (SPHERE_STDCALL * DrawGradientLine)(int x[2], int y[2], RGBA color[2]);
+void  (SPHERE_STDCALL * DrawLineSeries)(VECTOR_INT** points, int length, RGBA color, int type);
+void  (SPHERE_STDCALL * DrawBezierCurve)(int x[4], int y[4], double step, RGBA color, int cubic);
+void  (SPHERE_STDCALL * DrawTriangle)(int x[3], int y[3], RGBA color);
+void  (SPHERE_STDCALL * DrawGradientTriangle)(int x[3], int y[3], RGBA color[3]);
+void  (SPHERE_STDCALL * DrawPolygon)(VECTOR_INT** points, int length, int invert, RGBA color);
+void  (SPHERE_STDCALL * DrawOutlinedRectangle)(int x, int y, int w, int h, int size, RGBA color);
+void  (SPHERE_STDCALL * DrawRectangle)(int x, int y, int w, int h, RGBA color);
+void  (SPHERE_STDCALL * DrawGradientRectangle)(int x, int y, int w, int h, RGBA color[4]);
+void  (SPHERE_STDCALL * DrawOutlinedComplex)(int r_x, int r_y, int r_w, int r_h, int circ_x, int circ_y, int circ_r, RGBA color, int antialias);
+void  (SPHERE_STDCALL * DrawFilledComplex)(int r_x, int r_y, int r_w, int r_h, int circ_x, int circ_y, int circ_r, float angle, float frac_size, int fill_empty, RGBA colors[2]);
+void  (SPHERE_STDCALL * DrawGradientComplex)(int r_x, int r_y, int r_w, int r_h, int circ_x, int circ_y, int circ_r, float angle, float frac_size, int fill_empty, RGBA colors[3]);
+void  (SPHERE_STDCALL * DrawOutlinedEllipse)(int x, int y, int rx, int ry, RGBA color);
+void  (SPHERE_STDCALL * DrawFilledEllipse)(int x, int y, int rx, int ry, RGBA color);
+void  (SPHERE_STDCALL * DrawOutlinedCircle)(int x, int y, int r, RGBA color, int antialias);
+void  (SPHERE_STDCALL * DrawFilledCircle)(int x, int y, int r, RGBA color, int antialias);
+void  (SPHERE_STDCALL * DrawGradientCircle)(int x, int y, int r, RGBA color[2], int antialias);
 
 ////////////////////////////////////////////////////////////////////////////////
 // helps eliminate warnings
@@ -172,9 +173,9 @@ void CloseVideo()
 {
     if (GraphicsDriver)
     {
-        void (STDCALL * close_video)();
+        void (SPHERE_STDCALL * close_video)();
 
-        close_video = (void (STDCALL *)())dlsym(GraphicsDriver, "CloseVideo");
+        close_video = (void (SPHERE_STDCALL *)())dlsym(GraphicsDriver, "CloseVideo");
 
         if (close_video != NULL)
             close_video();
@@ -198,9 +199,9 @@ void ToggleFPS ()
 ////////////////////////////////////////////////////////////////////////////////
 bool SetWindowTitle(const char* text)
 {
-    bool (STDCALL * set_window_title)(const char* text);
+    bool (SPHERE_STDCALL * set_window_title)(const char* text);
 
-    set_window_title = (bool (STDCALL *)(const char*))dlsym(GraphicsDriver, "SetWindowTitle");
+    set_window_title = (bool (SPHERE_STDCALL *)(const char*))dlsym(GraphicsDriver, "SetWindowTitle");
 
     if (set_window_title == NULL)
         return false;
@@ -211,9 +212,9 @@ bool SetWindowTitle(const char* text)
 ////////////////////////////////////////////////////////////////////////////////
 void ToggleFullScreen()
 {
-    bool (STDCALL * toggle_fullscreen)();
+    bool (SPHERE_STDCALL * toggle_fullscreen)();
 
-    toggle_fullscreen = (bool (STDCALL *)())dlsym(GraphicsDriver, "ToggleFullScreen");
+    toggle_fullscreen = (bool (SPHERE_STDCALL *)())dlsym(GraphicsDriver, "ToggleFullScreen");
 
     if (toggle_fullscreen != NULL)
         toggle_fullscreen();
@@ -226,9 +227,9 @@ bool SwitchResolution (int w, int h)
     ScreenWidth  = w;
     ScreenHeight = h;
 
-    bool (STDCALL * init_video)(int w, int h, std::string sphere_dir);
+    bool (SPHERE_STDCALL * init_video)(int w, int h, std::string sphere_dir);
 
-    init_video = (bool (STDCALL *)(int, int, std::string))dlsym(GraphicsDriver, "InitVideo");
+    init_video = (bool (SPHERE_STDCALL *)(int, int, std::string))dlsym(GraphicsDriver, "InitVideo");
 
     if (init_video == NULL)
         return false;

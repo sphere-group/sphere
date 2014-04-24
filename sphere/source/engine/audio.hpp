@@ -1,13 +1,7 @@
-#if   defined(MAC)
-#include "mac/mac_audio.h"
-
-#elif defined(WIN32)
-#include "win32/win32_audio.hpp"
-
-#elif defined(unix)
-#include "unix/unix_audio.h"
-
-#else
-#error unsupported platform
-
+#if SPHERE_MAC_OSX 
+# include "mac/mac_audio.h"
+#elif SPHERE_WIN32
+# include "win32/win32_audio.hpp"
+#elif SPHERE_UNIX
+# include "unix/unix_audio.h"
 #endif

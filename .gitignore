@@ -164,3 +164,11 @@ pip-log.txt
 # CVS crap
 CVSROOT
 .cvsignore
+
+#################
+## Unix
+#################
+
+*.o
+**/*.sconsign.dblite
+sphere/build/linux/docs

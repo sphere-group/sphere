@@ -20,7 +20,8 @@ def BuildLinuxEnv():
             LINKFLAGS = ['-s'])
 
     # no write_mng support for linux
-    env.Append(CXXFLAGS = ['-DNO_WRITE_MNG'])
+    # Also, SCons is stupid and needs to be told where user libraries reside.
+    env.Append(CXXFLAGS = ['-DNO_WRITE_MNG','-I/usr/local/include'])
 
     return env
 
