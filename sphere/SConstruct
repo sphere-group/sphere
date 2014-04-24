@@ -75,6 +75,12 @@ class Compiler:
             elif os.path.exists('/usr/include/mozjs'):
                 env.Append(LIBS = ['mozjs'])
                 env.Append(CPPPATH = [Dir('/usr/include/mozjs')])
+            elif os.path.exists('/usr/local/include/mozjs'):
+                env.Append(LIBS = ['mozjs'])
+                env.Append(CPPPATH = [Dir('/usr/local/include/mozjs')])
+            else:
+                print "SCons could not find a JavaScript engine. Please install SpiderMonkey."
+		Exit(1)
 
     def SetupMNG(self, env):
         if self.name == 'linux':

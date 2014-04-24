@@ -1,13 +1,9 @@
-#if   defined(MAC)
-#include "mac/mac_filesystem.h"
+#include "platform.h"
 
-#elif defined(WIN32)
-#include "win32/win32_filesystem.hpp"
-
-#elif defined(unix)
-#include "unix/unix_filesystem.h"
-
-#else
-#error unsupported platform
-
+#if SPHERE_MAC_OSX
+# include "mac/mac_filesystem.h"
+#elif SPHERE_WIN32
+# include "win32/win32_filesystem.hpp"
+#elif SPHERE_UNIX
+# include "unix/unix_filesystem.h"
 #endif
